@@ -2,20 +2,27 @@
 
 Landing page bán hàng dịp 20/10 cho **Laan Plant & Gift Store** — bộ sưu tập "HER, beyond ordinary".
 
+🔗 **Bản đang chạy:** https://nguyenmanhcuong91-cyber.github.io/Laan---20.10-landing-page/
+
 ## Nội dung
 
 | File | Mô tả |
 |------|-------|
-| `her-beyond-ordinary-1.html` | Trang landing page (một file HTML tự chứa, gồm CSS nội tuyến và hình nền nhúng base64). |
+| `index.html` | Trang landing page (một file HTML tự chứa, gồm CSS nội tuyến và hình nền nhúng base64). |
 
-## Xem thử
+## Xem thử tại máy
 
-Mở trực tiếp `her-beyond-ordinary-1.html` bằng trình duyệt, hoặc chạy một web server tĩnh:
+Mở trực tiếp `index.html` bằng trình duyệt, hoặc chạy một web server tĩnh:
 
 ```bash
 python3 -m http.server 8000
-# rồi mở http://localhost:8000/her-beyond-ordinary-1.html
+# rồi mở http://localhost:8000/
 ```
+
+## Triển khai
+
+Trang được host bằng **GitHub Pages** (Settings → Pages → Deploy from a branch → `main` / `/root`).
+Mỗi lần push lên nhánh `main`, GitHub Pages tự build lại sau ~1 phút.
 
 ## Ghi chú
 
