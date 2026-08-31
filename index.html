@@ -251,6 +251,55 @@
 
   ::selection{background:var(--rose-deep);color:var(--cream);}
 
+  /* ===== ORDER BUTTON + MODAL ===== */
+  .card-body .btn-order{
+    margin-top:16px;display:inline-block;cursor:pointer;
+    background:var(--rose-deep);color:var(--cream);border:none;
+    padding:11px 26px;border-radius:999px;
+    font-family:'Jost',sans-serif;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .card-body .btn-order:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(156,59,84,0.3);}
+
+  .modal-overlay{
+    position:fixed;inset:0;z-index:200;display:none;
+    align-items:center;justify-content:center;padding:24px;
+    background:rgba(58,35,44,0.55);backdrop-filter:blur(3px);
+  }
+  .modal-overlay.open{display:flex;}
+  .modal{
+    background:var(--cream);border-radius:8px;max-width:440px;width:100%;
+    padding:38px 34px 32px;position:relative;
+    box-shadow:0 30px 70px rgba(58,35,44,0.35);
+    max-height:90vh;overflow-y:auto;
+  }
+  .modal h3{font-family:'Cormorant Garamond',serif;font-size:1.9rem;color:var(--plum);margin-bottom:4px;}
+  .modal .m-sub{font-size:0.85rem;color:#7a5c68;margin-bottom:22px;}
+  .modal .m-close{
+    position:absolute;top:14px;right:18px;background:none;border:none;cursor:pointer;
+    font-size:1.6rem;line-height:1;color:#9a7d88;
+  }
+  .modal label{display:block;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-deep);margin:14px 0 6px;}
+  .modal input,.modal textarea{
+    width:100%;border:1px solid rgba(92,50,67,0.25);border-radius:5px;
+    padding:11px 13px;font-family:'Jost',sans-serif;font-size:0.92rem;color:var(--ink);background:#fff;
+  }
+  .modal input:focus,.modal textarea:focus{outline:none;border-color:var(--rose-deep);}
+  .modal textarea{resize:vertical;min-height:60px;}
+  .modal .qty-row{display:flex;gap:12px;align-items:flex-end;}
+  .modal .qty-row .qty-field{width:90px;flex:none;}
+  .modal .m-submit{
+    margin-top:22px;width:100%;cursor:pointer;border:none;
+    background:var(--rose-deep);color:var(--cream);
+    padding:14px;border-radius:999px;font-family:'Jost',sans-serif;
+    font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;
+  }
+  .modal .m-submit:disabled{opacity:0.6;cursor:default;}
+  .modal .m-msg{margin-top:14px;font-size:0.86rem;line-height:1.5;display:none;}
+  .modal .m-msg.err{display:block;color:var(--rose-deep);}
+  .modal .m-msg.ok{display:block;color:#3c7a4e;}
+  .modal .m-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;}
+
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important;}
   }
@@ -309,6 +358,7 @@
         <div class="cat">Nước hoa</div>
         <h3>Rose Noir Eau de Parfum</h3>
         <div class="price">890.000₫</div>
+        <button class="btn-order" data-code="SP-ROSENOIR" data-name="Rose Noir Eau de Parfum">Đặt mua</button>
       </div>
     </div>
 
@@ -322,6 +372,7 @@
         <div class="cat">Trang sức</div>
         <h3>Vòng tay Petal Gold 18K</h3>
         <div class="price">2.450.000₫</div>
+        <button class="btn-order" data-code="SP-PETALGOLD" data-name="Vòng tay Petal Gold 18K">Đặt mua</button>
       </div>
     </div>
 
@@ -337,6 +388,7 @@
         <div class="cat">Nến thơm</div>
         <h3>Nến Blush Peony 3 tim</h3>
         <div class="price">590.000₫</div>
+        <button class="btn-order" data-code="SP-BLUSHPEONY" data-name="Nến Blush Peony 3 tim">Đặt mua</button>
       </div>
     </div>
 
@@ -350,6 +402,7 @@
         <div class="cat">Túi & Phụ kiện</div>
         <h3>Túi lụa mini Ivory</h3>
         <div class="price"><span class="old">1.290.000₫</span>990.000₫</div>
+        <button class="btn-order" data-code="SP-TUILUA" data-name="Túi lụa mini Ivory">Đặt mua</button>
       </div>
     </div>
 
@@ -363,6 +416,7 @@
         <div class="cat">Chăm sóc da</div>
         <h3>Bộ dưỡng ẩm Silk Ritual</h3>
         <div class="price">1.150.000₫</div>
+        <button class="btn-order" data-code="SP-SILKRITUAL" data-name="Bộ dưỡng ẩm Silk Ritual">Đặt mua</button>
       </div>
     </div>
 
@@ -377,6 +431,7 @@
         <div class="cat">Hộp quà trọn bộ</div>
         <h3>Hộp quà "For Her" Deluxe</h3>
         <div class="price">1.680.000₫</div>
+        <button class="btn-order" data-code="SP-FORHER" data-name="Hộp quà &quot;For Her&quot; Deluxe">Đặt mua</button>
       </div>
     </div>
 
@@ -441,6 +496,134 @@
   </div>
   <div>© 2026 Laan Plant &amp; Gift Store — HER, beyond ordinary.</div>
 </footer>
+
+<!-- ===== ORDER MODAL ===== -->
+<div class="modal-overlay" id="orderModal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="omTitle">
+    <button class="m-close" type="button" aria-label="Đóng">&times;</button>
+    <h3 id="omTitle">Đặt quà 20.10</h3>
+    <p class="m-sub">Điền thông tin, chúng tôi sẽ liên hệ xác nhận và giao đúng ngày.</p>
+    <form id="orderForm" autocomplete="on">
+      <input class="m-hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="qty-row">
+        <div style="flex:1;">
+          <label for="omProduct">Sản phẩm</label>
+          <input type="text" id="omProduct" readonly>
+        </div>
+        <div class="qty-field">
+          <label for="omQty">Số lượng</label>
+          <input type="number" id="omQty" min="1" max="99" value="1">
+        </div>
+      </div>
+
+      <label for="omName">Họ và tên</label>
+      <input type="text" id="omName" name="name" required autocomplete="name">
+
+      <label for="omPhone">Số điện thoại</label>
+      <input type="tel" id="omPhone" name="tel" required autocomplete="tel" inputmode="tel" placeholder="09xx xxx xxx">
+
+      <label for="omAddress">Địa chỉ nhận hàng</label>
+      <input type="text" id="omAddress" name="street-address" required autocomplete="street-address">
+
+      <label for="omNote">Ghi chú (không bắt buộc)</label>
+      <textarea id="omNote" name="note" rows="2" placeholder="Lời chúc, thời gian giao, gói quà riêng…"></textarea>
+
+      <button class="m-submit" type="submit">Gửi đơn đặt hàng</button>
+      <p class="m-msg" id="omMsg" role="status"></p>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  // ⚙️  Dán URL Cloudflare Worker của bạn vào đây (xem worker/README.md):
+  var ORDER_API = "https://REPLACE-ME.workers.dev";
+
+  var modal   = document.getElementById('orderModal');
+  var form    = document.getElementById('orderForm');
+  var msg     = document.getElementById('omMsg');
+  var fProduct= document.getElementById('omProduct');
+  var fQty    = document.getElementById('omQty');
+  var submit  = form.querySelector('.m-submit');
+  var current = { code:'', name:'' };
+
+  function openModal(code, name){
+    current.code = code; current.name = name;
+    fProduct.value = name;
+    fQty.value = 1;
+    msg.className = 'm-msg'; msg.textContent = '';
+    submit.disabled = false; submit.textContent = 'Gửi đơn đặt hàng';
+    modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function(){ document.getElementById('omName').focus(); }, 50);
+  }
+  function closeModal(){
+    modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.btn-order').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      openModal(btn.getAttribute('data-code'), btn.getAttribute('data-name'));
+    });
+  });
+  modal.querySelector('.m-close').addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    msg.className = 'm-msg'; msg.textContent = '';
+
+    var payload = {
+      name:    document.getElementById('omName').value.trim(),
+      phone:   document.getElementById('omPhone').value.trim(),
+      address: document.getElementById('omAddress').value.trim(),
+      note:    document.getElementById('omNote').value.trim(),
+      company: form.company.value,               // honeypot
+      items: [{ code: current.code, quantity: parseInt(fQty.value,10) || 1 }]
+    };
+
+    if(!payload.name || !payload.phone || !payload.address){
+      msg.className = 'm-msg err'; msg.textContent = 'Vui lòng điền đủ họ tên, số điện thoại và địa chỉ.';
+      return;
+    }
+    if(ORDER_API.indexOf('REPLACE-ME') !== -1){
+      msg.className = 'm-msg err';
+      msg.textContent = 'Chưa cấu hình ORDER_API — xem worker/README.md.';
+      return;
+    }
+
+    submit.disabled = true; submit.textContent = 'Đang gửi…';
+
+    fetch(ORDER_API.replace(/\/$/,'') + '/order', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(r){ return r.json().then(function(j){ return { ok:r.ok, j:j }; }); })
+    .then(function(res){
+      if(res.ok && res.j && res.j.ok){
+        form.style.display = 'none';
+        msg.className = 'm-msg ok';
+        msg.innerHTML = 'Đã nhận đơn của bạn' +
+          (res.j.orderCode ? ' (mã <strong>'+res.j.orderCode+'</strong>)' : '') +
+          '. Chúng tôi sẽ gọi xác nhận sớm. Cảm ơn bạn! 💐';
+      } else {
+        submit.disabled = false; submit.textContent = 'Gửi đơn đặt hàng';
+        msg.className = 'm-msg err';
+        msg.textContent = (res.j && res.j.error) ? res.j.error : 'Gửi đơn thất bại, vui lòng thử lại hoặc gọi hotline.';
+      }
+    })
+    .catch(function(){
+      submit.disabled = false; submit.textContent = 'Gửi đơn đặt hàng';
+      msg.className = 'm-msg err';
+      msg.textContent = 'Không kết nối được máy chủ. Vui lòng thử lại hoặc gọi hotline.';
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
