@@ -2,7 +2,7 @@
 
 Landing page bán hàng dịp 20/10 cho **Laan Plant & Gift Store** — bộ sưu tập "HER, beyond ordinary".
 
-🔗 **Bản đang chạy:** https://nguyenmanhcuong91-cyber.github.io/Laan---20.10-landing-page/
+🔗 **Bản đang chạy:** https://laan.info
 
 ## Nội dung
 
