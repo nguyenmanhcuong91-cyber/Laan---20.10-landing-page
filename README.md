@@ -24,19 +24,28 @@ python3 -m http.server 8000
 Trang được host bằng **GitHub Pages** (Settings → Pages → Deploy from a branch → `main` / `/root`).
 Mỗi lần push lên nhánh `main`, GitHub Pages tự build lại sau ~1 phút.
 
-## Đặt hàng (hiện tại — Cách A)
+## Đặt hàng (hiện tại)
 
-Khách bấm **"Đặt mua"** trên mỗi sản phẩm → mở popup với 3 lựa chọn liên hệ:
+Khách bấm **"Đặt mua"** (mỗi sản phẩm) hoặc **"Đặt quà ngay"** (cuối trang) → mở popup gồm:
 
-- **Nhắn Zalo** → `https://zalo.me/0399995729` (nút chính)
-- **Nhắn Messenger** → `https://m.me/laan.plantstore`
-- **Gọi** → `tel:0399995729`
+1. **Form đơn hàng** — Sản phẩm, Số lượng, Họ tên, SĐT, Địa chỉ, Ghi chú → gửi email về shop
+   qua **Web3Forms** (`https://api.web3forms.com/submit`). Có validate + honeypot chống bot.
+2. **Nhắn trực tiếp** — Zalo / Messenger / Gọi (fallback).
 
-Kèm nút "Sao chép nội dung" tạo sẵn tin nhắn có tên sản phẩm. Ngoài ra có **thanh liên hệ nổi**
-(Zalo / Messenger / gọi) ở góc phải màn hình.
+Ngoài ra có **thanh liên hệ nổi** (Zalo / Messenger / gọi) ở góc phải màn hình.
 
-Số điện thoại/link được ghi trực tiếp trong `index.html` — sửa ở: các thẻ `.contact-fab`,
-modal `#orderModal`, footer, và biến `ZALO` trong `<script>`.
+### Kích hoạt form
+
+1. Vào https://web3forms.com → nhập email nhận đơn → lấy **Access Key** (gửi qua email).
+2. Mở `index.html`, thay `WEB3FORMS_KEY = "REPLACE-WITH-ACCESS-KEY"` bằng key đó.
+3. Commit + push. Gửi thử 1 đơn để xác nhận email về đúng hộp thư.
+
+> Access Key không phải mật khẩu — nó chỉ cho phép gửi email tới địa chỉ đã đăng ký.
+
+### Sửa số điện thoại / link liên hệ
+
+Trong `index.html`: các thẻ `.contact-fab`, `.m-quick` trong `#orderModal`, và footer.
+Hiện dùng: Zalo/hotline `0399995729`, Fanpage `facebook.com/laan.plantstore`.
 
 Nâng cấp tương lai: `worker/` chứa sẵn cầu nối tạo đơn thẳng vào KiotViet (xem `worker/README.md`),
 đang chờ bật Public API bên KiotViet.
