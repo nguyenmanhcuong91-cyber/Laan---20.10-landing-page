@@ -279,26 +279,44 @@
     position:absolute;top:12px;right:16px;background:none;border:none;cursor:pointer;
     font-size:1.7rem;line-height:1;color:#9a7d88;
   }
-  .modal .m-product{
-    font-size:0.9rem;color:var(--ink);background:#fff;border:1px solid rgba(92,50,67,0.15);
-    border-radius:6px;padding:12px 14px;margin-bottom:10px;
+  .modal label{display:block;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-deep);margin:13px 0 5px;}
+  .modal input,.modal textarea{
+    width:100%;border:1px solid rgba(92,50,67,0.25);border-radius:5px;
+    padding:11px 13px;font-family:'Jost',sans-serif;font-size:0.92rem;color:var(--ink);background:#fff;
   }
-  .modal .m-product strong{color:var(--rose-deep);}
-  .modal .m-hint{font-size:0.78rem;color:#8a6874;margin-bottom:18px;line-height:1.55;}
-  .modal .m-hint button{
-    background:none;border:none;color:var(--gold-deep);cursor:pointer;
-    font-family:'Jost',sans-serif;font-size:0.78rem;text-decoration:underline;padding:0;
+  .modal input:focus,.modal textarea:focus{outline:none;border-color:var(--rose-deep);}
+  .modal input[readonly]{background:#f6efe7;color:var(--plum);}
+  .modal textarea{resize:vertical;min-height:56px;}
+  .modal .f-row{display:flex;gap:12px;align-items:flex-end;}
+  .modal .f-row .f-grow{flex:1;}
+  .modal .f-row .f-qty{width:74px;flex:none;}
+  .modal .m-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0;}
+  .modal .m-submit{
+    margin-top:20px;width:100%;cursor:pointer;border:none;
+    background:var(--rose-deep);color:var(--cream);
+    padding:14px;border-radius:999px;font-family:'Jost',sans-serif;
+    font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;
+    transition:transform .2s ease;
   }
-  .modal .m-btn{
-    display:flex;align-items:center;justify-content:center;
-    width:100%;padding:14px;border-radius:999px;margin-top:10px;
-    font-family:'Jost',sans-serif;font-size:0.85rem;letter-spacing:0.05em;
-    font-weight:500;cursor:pointer;transition:transform .2s ease;
+  .modal .m-submit:hover{transform:translateY(-2px);}
+  .modal .m-submit:disabled{opacity:0.6;cursor:default;transform:none;}
+  .modal .m-msg{margin-top:12px;font-size:0.85rem;line-height:1.5;display:none;}
+  .modal .m-msg.err{display:block;color:var(--rose-deep);}
+  .modal .m-msg.ok{display:block;color:#3c7a4e;}
+  .modal .m-or{
+    text-align:center;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;
+    color:#9a7d88;margin:20px 0 12px;
   }
-  .modal .m-btn:hover{transform:translateY(-2px);}
-  .modal .m-btn.m-zalo{background:#0068ff;color:#fff;box-shadow:0 8px 20px rgba(0,104,255,0.3);}
-  .modal .m-btn.m-mess{background:#f2f0ec;color:var(--plum);border:1px solid rgba(92,50,67,0.2);}
-  .modal .m-btn.m-call{background:var(--rose-deep);color:var(--cream);}
+  .modal .m-quick{display:flex;gap:10px;}
+  .modal .m-quick a{
+    flex:1;text-align:center;padding:11px 0;border-radius:999px;
+    font-family:'Jost',sans-serif;font-size:0.8rem;font-weight:500;
+    transition:transform .2s ease;
+  }
+  .modal .m-quick a:hover{transform:translateY(-2px);}
+  .modal .m-quick .mq-zalo{background:#0068ff;color:#fff;}
+  .modal .m-quick .mq-mess{background:#0084ff;color:#fff;}
+  .modal .m-quick .mq-call{background:var(--rose-deep);color:var(--cream);}
 
   /* thanh liên hệ nổi */
   .contact-fab{
@@ -508,7 +526,7 @@
 <section class="cta-band">
   <h2>Đừng để 20.10 trôi qua như mọi năm</h2>
   <p>Đặt quà trước ngày 15.10 để được gói miễn phí và giao đúng ngày.</p>
-  <a href="#collection" class="btn-primary">Xem toàn bộ bộ sưu tập</a>
+  <a href="#collection" class="btn-primary" data-open-order>Đặt quà ngay</a>
 </section>
 
 <footer>
@@ -525,16 +543,45 @@
 <div class="modal-overlay" id="orderModal" aria-hidden="true">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="omTitle">
     <button class="m-close" type="button" aria-label="Đóng">&times;</button>
-    <h3 id="omTitle">Đặt mua</h3>
-    <p class="m-sub">Chọn cách liên hệ — shop sẽ tư vấn, chốt đơn, giao tận nơi và gói quà miễn phí.</p>
+    <h3 id="omTitle">Đặt hàng</h3>
+    <p class="m-sub">Để lại thông tin, shop gọi xác nhận trong 24h. Gói quà &amp; thiệp viết tay miễn phí.</p>
 
-    <div class="m-product">Sản phẩm: <strong id="omProduct">—</strong></div>
-    <p class="m-hint">Khi nhắn, gửi kèm tên sản phẩm này giúp shop nhé.
-      <button type="button" id="omCopy">Sao chép nội dung</button></p>
+    <form id="orderForm" autocomplete="on" novalidate>
+      <input class="m-hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-    <a class="m-btn m-zalo" id="omZalo" href="https://zalo.me/0399995729" target="_blank" rel="noopener">Nhắn Zalo đặt hàng</a>
-    <a class="m-btn m-mess" href="https://m.me/laan.plantstore" target="_blank" rel="noopener">Nhắn qua Messenger</a>
-    <a class="m-btn m-call" href="tel:0399995729">Gọi 0399 995 729</a>
+      <div class="f-row">
+        <div class="f-grow">
+          <label for="omProduct">Sản phẩm</label>
+          <input type="text" id="omProduct" readonly>
+        </div>
+        <div class="f-qty">
+          <label for="omQty">SL</label>
+          <input type="number" id="omQty" min="1" max="99" value="1">
+        </div>
+      </div>
+
+      <label for="omName">Họ và tên *</label>
+      <input type="text" id="omName" name="name" autocomplete="name" required>
+
+      <label for="omPhone">Số điện thoại *</label>
+      <input type="tel" id="omPhone" name="tel" autocomplete="tel" inputmode="tel" required placeholder="09xx xxx xxx">
+
+      <label for="omAddress">Địa chỉ nhận hàng *</label>
+      <input type="text" id="omAddress" name="street-address" autocomplete="street-address" required>
+
+      <label for="omNote">Ghi chú (lời chúc, thời gian giao…)</label>
+      <textarea id="omNote" name="note" rows="2"></textarea>
+
+      <button type="submit" class="m-submit">Gửi đơn hàng</button>
+      <p class="m-msg" id="omMsg" role="status"></p>
+    </form>
+
+    <div class="m-or">hoặc nhắn trực tiếp</div>
+    <div class="m-quick">
+      <a class="mq mq-zalo" id="omZalo" href="https://zalo.me/0399995729" target="_blank" rel="noopener">Zalo</a>
+      <a class="mq mq-mess" href="https://m.me/laan.plantstore" target="_blank" rel="noopener">Messenger</a>
+      <a class="mq mq-call" href="tel:0399995729">Gọi</a>
+    </div>
   </div>
 </div>
 
@@ -547,21 +594,31 @@
 
 <script>
 (function(){
-  var ZALO = "https://zalo.me/0399995729";
-  var modal   = document.getElementById('orderModal');
-  var elName   = document.getElementById('omProduct');
-  var elCopy   = document.getElementById('omCopy');
-  var currentName = "";
+  // ⚙️  Access Key của Web3Forms (lấy miễn phí tại https://web3forms.com — nhập email shop).
+  //     Key này chỉ dùng để gửi email đơn hàng về đúng địa chỉ đã đăng ký, không phải mật khẩu.
+  var WEB3FORMS_KEY = "REPLACE-WITH-ACCESS-KEY";
 
-  function messageFor(name){
-    return "Xin chào Laan, mình muốn đặt mua: " + name + ". Shop tư vấn giúp mình với ạ.";
-  }
+  var modal    = document.getElementById('orderModal');
+  var form     = document.getElementById('orderForm');
+  var msg      = document.getElementById('omMsg');
+  var submit   = form.querySelector('.m-submit');
+  var fProduct = document.getElementById('omProduct');
+  var fQty     = document.getElementById('omQty');
+  var fName    = document.getElementById('omName');
+  var fPhone   = document.getElementById('omPhone');
+  var fAddress = document.getElementById('omAddress');
+  var fNote    = document.getElementById('omNote');
+
   function openModal(name){
-    currentName = name;
-    elName.textContent = name;
+    fProduct.value = name || 'Tư vấn chọn quà';
+    fQty.value = 1;
+    form.style.display = '';
+    msg.className = 'm-msg'; msg.textContent = '';
+    submit.disabled = false; submit.textContent = 'Gửi đơn hàng';
     modal.classList.add('open');
     modal.setAttribute('aria-hidden','false');
     document.body.style.overflow = 'hidden';
+    setTimeout(function(){ fName.focus(); }, 60);
   }
   function closeModal(){
     modal.classList.remove('open');
@@ -574,33 +631,69 @@
       openModal(btn.getAttribute('data-name') || 'Sản phẩm 20.10');
     });
   });
+  document.querySelectorAll('[data-open-order]').forEach(function(el){
+    el.addEventListener('click', function(e){ e.preventDefault(); openModal('Tư vấn chọn quà'); });
+  });
   modal.querySelector('.m-close').addEventListener('click', closeModal);
   modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
 
-  function fallbackCopy(text){
-    try{
-      var ta = document.createElement('textarea');
-      ta.value = text; ta.setAttribute('readonly','');
-      ta.style.position = 'fixed'; ta.style.top = '-1000px'; ta.style.opacity = '0';
-      document.body.appendChild(ta); ta.focus(); ta.select();
-      var ok = document.execCommand('copy');
-      document.body.removeChild(ta);
-      return ok;
-    }catch(e){ return false; }
-  }
-  elCopy.addEventListener('click', function(){
-    var text = messageFor(currentName);
-    var done = function(){
-      elCopy.textContent = 'Đã sao chép ✓';
-      setTimeout(function(){ elCopy.textContent = 'Sao chép nội dung'; }, 2000);
-    };
-    if(navigator.clipboard && navigator.clipboard.writeText){
-      navigator.clipboard.writeText(text).then(done, function(){ if(fallbackCopy(text)) done(); });
-    } else if(fallbackCopy(text)){
-      done();
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    msg.className = 'm-msg'; msg.textContent = '';
+
+    if(form.company.value){ return; } // honeypot: bỏ qua bot
+
+    var name = fName.value.trim();
+    var phone = fPhone.value.trim().replace(/[^\d+]/g,'');
+    var address = fAddress.value.trim();
+
+    if(name.length < 2){ showErr('Vui lòng nhập họ và tên.'); fName.focus(); return; }
+    if(!/^(0|\+84)\d{8,10}$/.test(phone)){ showErr('Số điện thoại chưa đúng (vd 0912345678).'); fPhone.focus(); return; }
+    if(address.length < 6){ showErr('Vui lòng nhập địa chỉ nhận hàng.'); fAddress.focus(); return; }
+
+    if(WEB3FORMS_KEY.indexOf('REPLACE') !== -1){
+      showErr('Form chưa cấu hình (thiếu Web3Forms key). Bạn nhắn Zalo giúp shop nhé.');
+      return;
     }
+
+    submit.disabled = true; submit.textContent = 'Đang gửi…';
+
+    var payload = {
+      access_key: WEB3FORMS_KEY,
+      subject: 'Đơn 20/10 — ' + name + ' — ' + fProduct.value,
+      from_name: 'Landing 20/10 · laan.info',
+      'Sản phẩm': fProduct.value,
+      'Số lượng': String(parseInt(fQty.value,10) || 1),
+      'Họ tên': name,
+      'Điện thoại': phone,
+      'Địa chỉ': address,
+      'Ghi chú': fNote.value.trim() || '(không có)'
+    };
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(j){
+      if(j && j.success){
+        form.style.display = 'none';
+        msg.className = 'm-msg ok';
+        msg.textContent = 'Đã nhận đơn của bạn! Shop sẽ gọi xác nhận trong 24h. Cảm ơn bạn 💐';
+      } else {
+        submit.disabled = false; submit.textContent = 'Gửi đơn hàng';
+        showErr((j && j.message) ? j.message : 'Gửi chưa được. Bạn thử lại hoặc nhắn Zalo giúp shop nhé.');
+      }
+    })
+    .catch(function(){
+      submit.disabled = false; submit.textContent = 'Gửi đơn hàng';
+      showErr('Không kết nối được. Bạn thử lại hoặc nhắn Zalo / gọi hotline nhé.');
+    });
   });
+
+  function showErr(t){ msg.className = 'm-msg err'; msg.textContent = t; }
 })();
 </script>
 
