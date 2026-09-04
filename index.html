@@ -484,6 +484,15 @@
     *{animation:none !important;transition:none !important;}
   }
 </style>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TVDKK4YQHW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TVDKK4YQHW');
+</script>
 </head>
 <body>
 
@@ -909,6 +918,11 @@
     name: "CONG TY TNHH TONG HOP LAAN"
   };
 
+  /* ===================== ANALYTICS ===================== */
+  function track(name, params){
+    try{ if(typeof gtag === 'function') gtag('event', name, params || {}); }catch(e){}
+  }
+
   /* ===================== I18N ===================== */
   var LANG_KEY = 'laan_lang';
   var currentLang = localStorage.getItem(LANG_KEY) === 'en' ? 'en' : 'vi';
@@ -1095,7 +1109,11 @@
   }
 
   document.querySelectorAll('.lang-switch [data-lang]').forEach(function(btn){
-    btn.addEventListener('click', function(){ applyLang(btn.getAttribute('data-lang')); });
+    btn.addEventListener('click', function(){
+      var lang = btn.getAttribute('data-lang');
+      applyLang(lang);
+      track('language_change', { language: lang });
+    });
   });
 
   /* ===================== TOAST ===================== */
@@ -1137,6 +1155,15 @@
     if(item){ item.qty = Math.min(99, item.qty + (qty||1)); }
     else{ cart.push({ pid: pid, qty: qty||1 }); }
     saveCart(); renderCart();
+
+    var p = PRODUCTS[pid];
+    if(p){
+      track('add_to_cart', {
+        currency: 'VND',
+        value: p.price * (qty||1),
+        items: [{ item_id: pid, item_name: (currentLang==='en'?p.nameEn:p.nameVi), price: p.price, quantity: qty||1 }]
+      });
+    }
   }
   function setQty(pid, qty){
     if(qty <= 0){ removeFromCart(pid); return; }
@@ -1225,6 +1252,7 @@
     cartModal.classList.add('open');
     cartModal.setAttribute('aria-hidden','false');
     document.body.style.overflow = 'hidden';
+    track('view_cart', { currency: 'VND', value: cartTotal() });
   }
   function closeCart(){
     cartModal.classList.remove('open');
@@ -1267,6 +1295,7 @@
     modal.setAttribute('aria-hidden','false');
     document.body.style.overflow = 'hidden';
     setTimeout(function(){ fName.focus(); }, 60);
+    track('begin_checkout', { currency: 'VND', value: cartTotal() });
   }
   function closeModal(){
     modal.classList.remove('open');
@@ -1321,6 +1350,15 @@
       var nm = p ? (currentLang === 'en' ? p.nameEn : p.nameVi) : item.pid;
       return nm + ' x' + item.qty + (p ? ' (' + fmtVnd(p.price * item.qty) + ')' : '');
     }).join('; ') || S.noItems;
+    var gaItems = cart.map(function(item){
+      var p = PRODUCTS[item.pid];
+      return {
+        item_id: item.pid,
+        item_name: p ? (currentLang === 'en' ? p.nameEn : p.nameVi) : item.pid,
+        price: p ? p.price : 0,
+        quantity: item.qty
+      };
+    });
 
     var payload = {
       access_key: WEB3FORMS_KEY,
@@ -1358,6 +1396,14 @@
           qrBox.hidden = false;
         }
 
+        track('purchase', {
+          transaction_id: orderCode,
+          currency: 'VND',
+          value: total,
+          payment_type: payment,
+          items: gaItems
+        });
+
         cart = [];
         saveCart();
         renderCart();
@@ -1370,6 +1416,16 @@
       submit.disabled = false; submit.textContent = S.sendBtn;
       showErr(S.networkErr);
     });
+  });
+
+  document.querySelectorAll('.cf-zalo, .mq-zalo').forEach(function(a){
+    a.addEventListener('click', function(){ track('contact_click', { method: 'zalo' }); });
+  });
+  document.querySelectorAll('.cf-mess, .mq-mess').forEach(function(a){
+    a.addEventListener('click', function(){ track('contact_click', { method: 'messenger' }); });
+  });
+  document.querySelectorAll('.cf-call, .mq-call').forEach(function(a){
+    a.addEventListener('click', function(){ track('contact_click', { method: 'phone' }); });
   });
 
   renderCart();
