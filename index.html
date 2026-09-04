@@ -67,6 +67,21 @@
   .lang-switch button.active{background:var(--rose-deep);color:var(--cream);}
   @media(max-width:480px){ .lang-switch button{padding:6px 9px;} }
 
+  .cart-btn{
+    position:relative;background:none;border:none;cursor:pointer;
+    color:var(--plum);width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+    transition:color .2s ease;
+  }
+  .cart-btn:hover{color:var(--rose-deep);}
+  .cart-btn svg{width:22px;height:22px;}
+  .cart-btn .cart-count{
+    position:absolute;top:-2px;right:-4px;min-width:17px;height:17px;padding:0 4px;
+    border-radius:999px;background:var(--rose-deep);color:var(--cream);
+    font-family:'Jost',sans-serif;font-size:0.62rem;font-weight:600;
+    display:flex;align-items:center;justify-content:center;line-height:1;
+  }
+  .cart-btn .cart-count[hidden]{display:none;}
+
   /* ===== HERO ===== */
   .hero{
     position:relative;
@@ -365,6 +380,71 @@
   .modal .m-quick .mq-mess{background:#0084ff;color:#fff;}
   .modal .m-quick .mq-call{background:var(--rose-deep);color:var(--cream);}
 
+  /* giỏ hàng */
+  .modal-cart{max-width:460px;}
+  .cart-list{display:flex;flex-direction:column;gap:12px;margin:6px 0 6px;max-height:44vh;overflow-y:auto;}
+  .cart-item{
+    display:grid;grid-template-columns:1fr auto auto;gap:10px 14px;align-items:center;
+    padding:12px 0;border-bottom:1px solid rgba(92,50,67,0.12);
+  }
+  .cart-item .ci-name{font-size:0.9rem;color:var(--ink);line-height:1.4;}
+  .cart-item .ci-price{font-size:0.78rem;color:#9a7d88;margin-top:2px;}
+  .cart-item .ci-qty{display:flex;align-items:center;gap:8px;}
+  .cart-item .ci-qty button{
+    width:24px;height:24px;border-radius:50%;border:1px solid rgba(92,50,67,0.3);
+    background:#fff;color:var(--plum);cursor:pointer;font-size:0.9rem;line-height:1;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .cart-item .ci-qty button:hover{background:var(--blush);}
+  .cart-item .ci-qty span{min-width:16px;text-align:center;font-size:0.88rem;}
+  .cart-item .ci-sub{font-size:0.88rem;color:var(--rose-deep);font-weight:500;text-align:right;min-width:78px;}
+  .cart-item .ci-remove{
+    grid-column:1 / -1;justify-self:start;background:none;border:none;cursor:pointer;
+    color:#b39aa2;font-size:0.72rem;text-decoration:underline;padding:0;margin-top:-4px;
+  }
+  .cart-empty{font-size:0.88rem;color:#9a7d88;text-align:center;padding:20px 0;}
+  .cart-total-row{
+    display:flex;justify-content:space-between;align-items:baseline;
+    border-top:1px solid rgba(92,50,67,0.18);padding-top:14px;margin-top:6px;
+    font-size:0.85rem;color:var(--ink);
+  }
+  .cart-total-row strong{font-size:1.15rem;color:var(--rose-deep);}
+  #cartCheckoutBtn{margin-top:18px;}
+
+  /* tóm tắt giỏ trong form đặt hàng */
+  .checkout-summary{
+    background:#fff;border:1px solid rgba(92,50,67,0.15);border-radius:6px;
+    padding:12px 14px;margin-bottom:6px;font-size:0.85rem;color:var(--ink);
+  }
+  .checkout-summary .cs-line{display:flex;justify-content:space-between;gap:10px;padding:3px 0;}
+  .checkout-summary .cs-line span:first-child{color:#6b4a56;}
+  .checkout-summary .cs-total{
+    display:flex;justify-content:space-between;font-weight:600;color:var(--rose-deep);
+    border-top:1px solid rgba(92,50,67,0.15);margin-top:6px;padding-top:8px;
+  }
+  .edit-cart-link{
+    background:none;border:none;cursor:pointer;color:var(--gold-deep);
+    font-family:'Jost',sans-serif;font-size:0.76rem;text-decoration:underline;
+    padding:0;margin-bottom:16px;
+  }
+
+  /* thanh toán */
+  .pay-options{display:flex;flex-direction:column;gap:8px;margin-top:6px;}
+  .pay-opt{
+    display:flex;align-items:center;gap:9px;border:1px solid rgba(92,50,67,0.2);
+    border-radius:6px;padding:10px 12px;cursor:pointer;font-size:0.86rem;color:var(--ink);
+    transition:border-color .2s ease;
+  }
+  .pay-opt:has(input:checked){border-color:var(--rose-deep);background:#fdf3f2;}
+  .pay-opt input{accent-color:var(--rose-deep);}
+  .qr-box{
+    text-align:center;background:#fff;border:1px solid rgba(92,50,67,0.15);
+    border-radius:8px;padding:18px;margin-top:16px;
+  }
+  .qr-box img{width:220px;height:220px;max-width:100%;border-radius:6px;display:block;margin:0 auto 12px;}
+  .qr-box .qr-note{font-size:0.78rem;color:#7a5c68;line-height:1.5;}
+  .qr-box .qr-code{font-size:0.85rem;color:var(--rose-deep);font-weight:600;margin-top:8px;}
+
   /* thanh liên hệ nổi */
   .contact-fab{
     position:fixed;right:18px;bottom:18px;z-index:150;
@@ -389,6 +469,15 @@
   .contact-fab a:hover::after{opacity:1;}
   @media(max-width:600px){ .contact-fab a{width:46px;height:46px;} }
 
+  .toast{
+    position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);
+    background:var(--plum);color:#fff;padding:12px 24px;border-radius:999px;
+    font-family:'Jost',sans-serif;font-size:0.82rem;white-space:nowrap;
+    opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;
+    z-index:250;box-shadow:0 10px 24px rgba(0,0,0,0.22);
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important;}
   }
@@ -408,6 +497,13 @@
       <button type="button" data-lang="vi" class="active">VI</button>
       <button type="button" data-lang="en">EN</button>
     </div>
+    <button type="button" id="cartBtn" class="cart-btn" data-i18n-aria="cart.aria" aria-label="Giỏ hàng">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 4h2l2.4 12.2a2 2 0 0 0 2 1.8h7.2a2 2 0 0 0 2-1.6L20 8H6"/>
+        <circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/>
+      </svg>
+      <span class="cart-count" id="cartCount" hidden>0</span>
+    </button>
     <a href="#collection" class="nav-cta" data-i18n="nav.cta">Khám phá</a>
   </div>
 </nav>
@@ -453,7 +549,7 @@
         <div class="cat" data-i18n="cat.perfume">Nước hoa</div>
         <h3>Rose Noir Eau de Parfum</h3>
         <div class="price">890.000₫</div>
-        <button class="btn-order" data-code="SP-ROSENOIR" data-name="Rose Noir Eau de Parfum" data-name-en="Rose Noir Eau de Parfum" data-i18n="btn.order">Đặt mua</button>
+        <button class="btn-order" data-pid="rosenoir" data-price="890000" data-code="SP-ROSENOIR" data-name="Rose Noir Eau de Parfum" data-name-en="Rose Noir Eau de Parfum" data-i18n="btn.addcart">Thêm vào giỏ</button>
       </div>
     </div>
 
@@ -467,7 +563,7 @@
         <div class="cat" data-i18n="cat.jewelry">Trang sức</div>
         <h3 data-i18n="p.petalgold">Vòng tay Petal Gold 18K</h3>
         <div class="price">2.450.000₫</div>
-        <button class="btn-order" data-code="SP-PETALGOLD" data-name="Vòng tay Petal Gold 18K" data-name-en="Petal Gold 18K Bracelet" data-i18n="btn.order">Đặt mua</button>
+        <button class="btn-order" data-pid="petalgold" data-price="2450000" data-code="SP-PETALGOLD" data-name="Vòng tay Petal Gold 18K" data-name-en="Petal Gold 18K Bracelet" data-i18n="btn.addcart">Thêm vào giỏ</button>
       </div>
     </div>
 
@@ -483,7 +579,7 @@
         <div class="cat" data-i18n="cat.candle">Nến thơm</div>
         <h3 data-i18n="p.blushpeony">Nến Blush Peony 3 tim</h3>
         <div class="price">590.000₫</div>
-        <button class="btn-order" data-code="SP-BLUSHPEONY" data-name="Nến Blush Peony 3 tim" data-name-en="Blush Peony 3-Wick Candle" data-i18n="btn.order">Đặt mua</button>
+        <button class="btn-order" data-pid="blushpeony" data-price="590000" data-code="SP-BLUSHPEONY" data-name="Nến Blush Peony 3 tim" data-name-en="Blush Peony 3-Wick Candle" data-i18n="btn.addcart">Thêm vào giỏ</button>
       </div>
     </div>
 
@@ -497,7 +593,7 @@
         <div class="cat" data-i18n="cat.bags">Túi & Phụ kiện</div>
         <h3 data-i18n="p.tuilua">Túi lụa mini Ivory</h3>
         <div class="price"><span class="old">1.290.000₫</span>990.000₫</div>
-        <button class="btn-order" data-code="SP-TUILUA" data-name="Túi lụa mini Ivory" data-name-en="Ivory Mini Silk Pouch" data-i18n="btn.order">Đặt mua</button>
+        <button class="btn-order" data-pid="tuilua" data-price="990000" data-code="SP-TUILUA" data-name="Túi lụa mini Ivory" data-name-en="Ivory Mini Silk Pouch" data-i18n="btn.addcart">Thêm vào giỏ</button>
       </div>
     </div>
 
@@ -511,7 +607,7 @@
         <div class="cat" data-i18n="cat.skincare">Chăm sóc da</div>
         <h3 data-i18n="p.silkritual">Bộ dưỡng ẩm Silk Ritual</h3>
         <div class="price">1.150.000₫</div>
-        <button class="btn-order" data-code="SP-SILKRITUAL" data-name="Bộ dưỡng ẩm Silk Ritual" data-name-en="Silk Ritual Moisture Set" data-i18n="btn.order">Đặt mua</button>
+        <button class="btn-order" data-pid="silkritual" data-price="1150000" data-code="SP-SILKRITUAL" data-name="Bộ dưỡng ẩm Silk Ritual" data-name-en="Silk Ritual Moisture Set" data-i18n="btn.addcart">Thêm vào giỏ</button>
       </div>
     </div>
 
@@ -526,7 +622,7 @@
         <div class="cat" data-i18n="cat.giftbox">Hộp quà trọn bộ</div>
         <h3 data-i18n="p.forher">Hộp quà "For Her" Deluxe</h3>
         <div class="price">1.680.000₫</div>
-        <button class="btn-order" data-code="SP-FORHER" data-name="Hộp quà &quot;For Her&quot; Deluxe" data-name-en="&quot;For Her&quot; Deluxe Gift Box" data-i18n="btn.order">Đặt mua</button>
+        <button class="btn-order" data-pid="forher" data-price="1680000" data-code="SP-FORHER" data-name="Hộp quà &quot;For Her&quot; Deluxe" data-name-en="&quot;For Her&quot; Deluxe Gift Box" data-i18n="btn.addcart">Thêm vào giỏ</button>
       </div>
     </div>
 
@@ -551,7 +647,7 @@
       <div class="loose-body">
         <div class="name" data-i18n="l.candle">Nến mini Vanilla Bloom</div>
         <div class="price">120.000₫</div>
-        <button class="btn-order btn-order-sm" data-name="Nến mini Vanilla Bloom" data-name-en="Vanilla Bloom Mini Candle" data-i18n="btn.addcart">Thêm vào giỏ</button>
+        <button class="btn-order btn-order-sm" data-pid="l-candle" data-price="120000" data-name="Nến mini Vanilla Bloom" data-name-en="Vanilla Bloom Mini Candle" data-i18n="btn.addcart">Thêm vào giỏ</button>
       </div>
     </div>
 
@@ -565,7 +661,7 @@
       <div class="loose-body">
         <div class="name" data-i18n="l.soap">Xà phòng thơm Rose Clay</div>
         <div class="price">85.000₫</div>
-        <button class="btn-order btn-order-sm" data-name="Xà phòng thơm Rose Clay" data-name-en="Rose Clay Bar Soap" data-i18n="btn.addcart">Thêm vào giỏ</button>
+        <button class="btn-order btn-order-sm" data-pid="l-soap" data-price="85000" data-name="Xà phòng thơm Rose Clay" data-name-en="Rose Clay Bar Soap" data-i18n="btn.addcart">Thêm vào giỏ</button>
       </div>
     </div>
 
@@ -580,7 +676,7 @@
       <div class="loose-body">
         <div class="name" data-i18n="l.tea">Trà túi lọc Hoa Hồng (hộp 10 gói)</div>
         <div class="price">95.000₫</div>
-        <button class="btn-order btn-order-sm" data-name="Trà túi lọc Hoa Hồng" data-name-en="Rose Tea Bags" data-i18n="btn.addcart">Thêm vào giỏ</button>
+        <button class="btn-order btn-order-sm" data-pid="l-tea" data-price="95000" data-name="Trà túi lọc Hoa Hồng" data-name-en="Rose Tea Bags" data-i18n="btn.addcart">Thêm vào giỏ</button>
       </div>
     </div>
 
@@ -594,7 +690,7 @@
       <div class="loose-body">
         <div class="name" data-i18n="l.choco">Socola viên handmade (hộp 6 viên)</div>
         <div class="price">110.000₫</div>
-        <button class="btn-order btn-order-sm" data-name="Socola viên handmade" data-name-en="Handmade Chocolate Bites" data-i18n="btn.addcart">Thêm vào giỏ</button>
+        <button class="btn-order btn-order-sm" data-pid="l-choco" data-price="110000" data-name="Socola viên handmade" data-name-en="Handmade Chocolate Bites" data-i18n="btn.addcart">Thêm vào giỏ</button>
       </div>
     </div>
 
@@ -608,7 +704,7 @@
       <div class="loose-body">
         <div class="name" data-i18n="l.card">Thiệp viết tay + phong bì</div>
         <div class="price">25.000₫</div>
-        <button class="btn-order btn-order-sm" data-name="Thiệp viết tay + phong bì" data-name-en="Handwritten Card + Envelope" data-i18n="btn.addcart">Thêm vào giỏ</button>
+        <button class="btn-order btn-order-sm" data-pid="l-card" data-price="25000" data-name="Thiệp viết tay + phong bì" data-name-en="Handwritten Card + Envelope" data-i18n="btn.addcart">Thêm vào giỏ</button>
       </div>
     </div>
 
@@ -623,7 +719,7 @@
       <div class="loose-body">
         <div class="name" data-i18n="l.ribbon">Ruy băng lụa trang trí</div>
         <div class="price">30.000₫</div>
-        <button class="btn-order btn-order-sm" data-name="Ruy băng lụa trang trí" data-name-en="Decorative Silk Ribbon" data-i18n="btn.addcart">Thêm vào giỏ</button>
+        <button class="btn-order btn-order-sm" data-pid="l-ribbon" data-price="30000" data-name="Ruy băng lụa trang trí" data-name-en="Decorative Silk Ribbon" data-i18n="btn.addcart">Thêm vào giỏ</button>
       </div>
     </div>
 
@@ -637,7 +733,7 @@
       <div class="loose-body">
         <div class="name" data-i18n="l.bag">Túi giấy Kraft cao cấp</div>
         <div class="price">20.000₫</div>
-        <button class="btn-order btn-order-sm" data-name="Túi giấy Kraft cao cấp" data-name-en="Premium Kraft Gift Bag" data-i18n="btn.addcart">Thêm vào giỏ</button>
+        <button class="btn-order btn-order-sm" data-pid="l-bag" data-price="20000" data-name="Túi giấy Kraft cao cấp" data-name-en="Premium Kraft Gift Bag" data-i18n="btn.addcart">Thêm vào giỏ</button>
       </div>
     </div>
 
@@ -651,7 +747,7 @@
       <div class="loose-body">
         <div class="name" data-i18n="l.oil">Tinh dầu mini Lavender</div>
         <div class="price">90.000₫</div>
-        <button class="btn-order btn-order-sm" data-name="Tinh dầu mini Lavender" data-name-en="Lavender Mini Essential Oil" data-i18n="btn.addcart">Thêm vào giỏ</button>
+        <button class="btn-order btn-order-sm" data-pid="l-oil" data-price="90000" data-name="Tinh dầu mini Lavender" data-name-en="Lavender Mini Essential Oil" data-i18n="btn.addcart">Thêm vào giỏ</button>
       </div>
     </div>
 
@@ -716,26 +812,33 @@
   <div>© 2026 Laan Plant &amp; Gift Store — HER, beyond ordinary.</div>
 </footer>
 
-<!-- ===== ĐẶT MUA MODAL ===== -->
+<!-- ===== GIỎ HÀNG ===== -->
+<div class="modal-overlay" id="cartModal" aria-hidden="true">
+  <div class="modal modal-cart" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+    <button class="m-close" type="button" data-i18n-aria="modal.close" aria-label="Đóng">&times;</button>
+    <h3 id="cartTitle" data-i18n="cart.title">Giỏ hàng của bạn</h3>
+    <div class="cart-list" id="cartList"></div>
+    <p class="cart-empty" id="cartEmpty" data-i18n="cart.empty">Giỏ hàng đang trống. Chọn vài món bạn thích ở trên nhé!</p>
+    <div class="cart-total-row" id="cartTotalRow" hidden>
+      <span data-i18n="cart.total">Tổng cộng</span>
+      <strong id="cartTotalVal">0₫</strong>
+    </div>
+    <button type="button" class="m-submit" id="cartCheckoutBtn" data-i18n="cart.checkout" hidden>Tiến hành đặt hàng</button>
+  </div>
+</div>
+
+<!-- ===== ĐẶT HÀNG / THANH TOÁN ===== -->
 <div class="modal-overlay" id="orderModal" aria-hidden="true">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="omTitle">
     <button class="m-close" type="button" data-i18n-aria="modal.close" aria-label="Đóng">&times;</button>
     <h3 id="omTitle" data-i18n="modal.title">Đặt hàng</h3>
     <p class="m-sub" data-i18n="modal.sub">Để lại thông tin, shop gọi xác nhận trong 24h. Gói quà &amp; thiệp viết tay miễn phí.</p>
 
+    <div class="checkout-summary" id="checkoutSummary"></div>
+    <button type="button" class="edit-cart-link" id="editCartLink" data-i18n="cart.edit">Chỉnh sửa giỏ hàng</button>
+
     <form id="orderForm" autocomplete="on" novalidate>
       <input class="m-hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-      <div class="f-row">
-        <div class="f-grow">
-          <label for="omProduct" data-i18n="modal.product">Sản phẩm</label>
-          <input type="text" id="omProduct" readonly>
-        </div>
-        <div class="f-qty">
-          <label for="omQty" data-i18n="modal.qty">SL</label>
-          <input type="number" id="omQty" min="1" max="99" value="1">
-        </div>
-      </div>
 
       <label for="omName" data-i18n="modal.name">Họ và tên *</label>
       <input type="text" id="omName" name="name" autocomplete="name" required>
@@ -749,9 +852,27 @@
       <label for="omNote" data-i18n="modal.note">Ghi chú (lời chúc, thời gian giao…)</label>
       <textarea id="omNote" name="note" rows="2"></textarea>
 
+      <label data-i18n="modal.payment">Hình thức thanh toán</label>
+      <div class="pay-options">
+        <label class="pay-opt">
+          <input type="radio" name="payment" value="cod" checked>
+          <span data-i18n="pay.cod">Thanh toán khi nhận hàng (COD)</span>
+        </label>
+        <label class="pay-opt">
+          <input type="radio" name="payment" value="bank">
+          <span data-i18n="pay.bank">Chuyển khoản QR</span>
+        </label>
+      </div>
+
       <button type="submit" class="m-submit" data-i18n="modal.submit">Gửi đơn hàng</button>
       <p class="m-msg" id="omMsg" role="status"></p>
     </form>
+
+    <div class="qr-box" id="qrBox" hidden>
+      <img id="qrImg" alt="VietQR" width="220" height="220">
+      <p class="qr-note" data-i18n="pay.qrNote">Quét mã để chuyển khoản đúng số tiền. Nội dung chuyển khoản đã có sẵn mã đơn — vui lòng giữ nguyên để shop đối chiếu nhanh.</p>
+      <p class="qr-code" id="qrOrderCode"></p>
+    </div>
 
     <div class="m-or" data-i18n="modal.or">hoặc nhắn trực tiếp</div>
     <div class="m-quick">
@@ -769,11 +890,22 @@
   <a class="cf-call" href="tel:0399995729" data-i18n-label="fab.call" data-label="Gọi 0399 995 729" data-i18n-aria="fab.callAria" aria-label="Gọi hotline">&#9742;</a>
 </div>
 
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
 <script>
 (function(){
   // ⚙️  Access Key của Web3Forms (lấy miễn phí tại https://web3forms.com — nhập email shop).
   //     Key này chỉ dùng để gửi email đơn hàng về đúng địa chỉ đã đăng ký, không phải mật khẩu.
   var WEB3FORMS_KEY = "REPLACE-WITH-ACCESS-KEY";
+
+  // ⚙️  Thông tin nhận chuyển khoản (dùng để tạo mã QR VietQR) — điền khi kích hoạt thanh toán QR.
+  //     bin: mã ngân hàng theo VietQR (vd "vietcombank", "mbbank", "acb", "techcombank"…)
+  //     xem danh sách tại https://vietqr.io/danh-sach-ngan-hang
+  var BANK = {
+    bin: "REPLACE-BANK-CODE",
+    account: "REPLACE-ACCOUNT-NUMBER",
+    name: "REPLACE ACCOUNT NAME"
+  };
 
   /* ===================== I18N ===================== */
   var LANG_KEY = 'laan_lang';
@@ -816,8 +948,6 @@
     'p.silkritual': 'Silk Ritual Moisture Set',
     'p.forher': '"For Her" Deluxe Gift Box',
 
-    'btn.order': 'Order Now',
-
     'loose.h2': 'Mix &amp; Match<br>Single Items',
     'loose.p': 'Prefer to build your own gift box? Pick individual items below and message us to put together your own set.',
 
@@ -846,22 +976,32 @@
     'cta.p': 'Order before Oct 15 for free gift wrapping and on-time delivery.',
     'cta.btn': 'Order Now',
 
+    'cart.title': 'Your Cart',
+    'cart.empty': 'Your cart is empty. Pick a few things you like above!',
+    'cart.total': 'Total',
+    'cart.checkout': 'Proceed to Checkout',
+    'cart.edit': 'Edit cart',
+
     'modal.title': 'Place an Order',
     'modal.sub': 'Leave your details and we’ll call to confirm within 24h. Free gift wrap &amp; handwritten card.',
-    'modal.product': 'Product',
-    'modal.qty': 'Qty',
     'modal.name': 'Full name *',
     'modal.phone': 'Phone number *',
     'modal.address': 'Delivery address *',
     'modal.note': 'Note (wishes, delivery time…)',
+    'modal.payment': 'Payment method',
     'modal.submit': 'Send Order',
     'modal.or': 'or message us directly',
-    'modal.call': 'Call'
+    'modal.call': 'Call',
+
+    'pay.cod': 'Cash on delivery (COD)',
+    'pay.bank': 'Bank transfer (QR code)',
+    'pay.qrNote': 'Scan to transfer the exact amount. The transfer note already includes your order code — please keep it so we can match your payment quickly.'
   };
 
   // Bản dịch cho thuộc tính (aria-label, data-label)
   var EN_ATTR = {
     'modal.close': 'Close',
+    'cart.aria': 'Shopping cart',
     'fab.group': 'Quick contact',
     'fab.zalo': 'Zalo Chat',
     'fab.mess': 'Messenger',
@@ -869,39 +1009,58 @@
     'fab.callAria': 'Call hotline'
   };
 
-  // Chuỗi dùng trong logic JS (thông báo form, giá trị mặc định…)
+  // Chuỗi dùng trong logic JS (thông báo form, giỏ hàng…)
   var STR = {
     vi: {
       defaultProduct: 'Tư vấn chọn quà',
-      genericItem: 'Sản phẩm 20.10',
+      added: 'Đã thêm vào giỏ hàng',
+      remove: 'Xoá',
       errName: 'Vui lòng nhập họ và tên.',
       errPhone: 'Số điện thoại chưa đúng (vd 0912345678).',
       errAddress: 'Vui lòng nhập địa chỉ nhận hàng.',
       notConfigured: 'Form chưa cấu hình (thiếu Web3Forms key). Bạn nhắn Zalo giúp shop nhé.',
+      bankNotReady: 'Chuyển khoản QR chưa sẵn sàng. Bạn chọn COD hoặc nhắn Zalo giúp shop nhé.',
       sending: 'Đang gửi…',
       sendBtn: 'Gửi đơn hàng',
       success: 'Đã nhận đơn của bạn! Shop sẽ gọi xác nhận trong 24h. Cảm ơn bạn 💐',
       genericErr: 'Gửi chưa được. Bạn thử lại hoặc nhắn Zalo giúp shop nhé.',
       networkErr: 'Không kết nối được. Bạn thử lại hoặc nhắn Zalo / gọi hotline nhé.',
       noNote: '(không có)',
-      subject: 'Đơn 20/10'
+      noItems: '(chưa chọn sản phẩm — yêu cầu tư vấn)',
+      subject: 'Đơn 20/10',
+      paymentCod: 'Thanh toán khi nhận hàng (COD)',
+      paymentBank: 'Chuyển khoản QR',
+      orderCodeLabel: 'Mã đơn'
     },
     en: {
       defaultProduct: 'Gift consultation',
-      genericItem: '20.10 gift item',
+      added: 'Added to cart',
+      remove: 'Remove',
       errName: 'Please enter your full name.',
       errPhone: 'Phone number looks invalid (e.g. 0912345678).',
       errAddress: 'Please enter your delivery address.',
       notConfigured: 'Form is not set up yet — please message us on Zalo.',
+      bankNotReady: 'Bank transfer isn’t set up yet. Please choose COD or message us on Zalo.',
       sending: 'Sending…',
       sendBtn: 'Send Order',
       success: 'Your order has been received! We’ll call to confirm within 24h. Thank you 💐',
       genericErr: 'Could not send. Please try again or message us on Zalo.',
       networkErr: 'Connection failed. Please try again or message us on Zalo / call the hotline.',
       noNote: '(none)',
-      subject: '20/10 Order'
+      noItems: '(no items selected — general enquiry)',
+      subject: '20/10 Order',
+      paymentCod: 'Cash on delivery (COD)',
+      paymentBank: 'Bank transfer (QR)',
+      orderCodeLabel: 'Order code'
     }
   };
+
+  function fmtVnd(n){ return (n || 0).toLocaleString('vi-VN') + '₫'; }
+  function escapeHtml(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+    });
+  }
 
   function applyLang(lang){
     currentLang = lang;
@@ -928,30 +1087,178 @@
       btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
     });
 
-    // đồng bộ nhãn nút gửi (nếu không đang ở trạng thái "đang gửi")
     if(!submit.disabled) submit.textContent = STR[lang].sendBtn;
+    renderCart();
+    renderCheckoutSummary();
   }
 
   document.querySelectorAll('.lang-switch [data-lang]').forEach(function(btn){
     btn.addEventListener('click', function(){ applyLang(btn.getAttribute('data-lang')); });
   });
 
-  /* ===================== ORDER MODAL ===================== */
+  /* ===================== TOAST ===================== */
+  var toastEl = document.getElementById('toast');
+  var toastTimer;
+  function showToast(text){
+    toastEl.textContent = text;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove('show'); }, 1800);
+  }
+
+  /* ===================== GIỎ HÀNG ===================== */
+  var CART_KEY = 'laan_cart';
+  var PRODUCTS = {};
+  document.querySelectorAll('.btn-order[data-pid]').forEach(function(btn){
+    PRODUCTS[btn.getAttribute('data-pid')] = {
+      nameVi: btn.getAttribute('data-name'),
+      nameEn: btn.getAttribute('data-name-en') || btn.getAttribute('data-name'),
+      price: parseInt(btn.getAttribute('data-price'), 10) || 0
+    };
+  });
+
+  function loadCart(){
+    try{
+      var c = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+      return Array.isArray(c) ? c.filter(function(i){ return i && PRODUCTS[i.pid]; }) : [];
+    }catch(e){ return []; }
+  }
+  var cart = loadCart();
+  function saveCart(){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); }
+
+  function findItem(pid){
+    for(var i=0;i<cart.length;i++){ if(cart[i].pid === pid) return cart[i]; }
+    return null;
+  }
+  function addToCart(pid, qty){
+    var item = findItem(pid);
+    if(item){ item.qty = Math.min(99, item.qty + (qty||1)); }
+    else{ cart.push({ pid: pid, qty: qty||1 }); }
+    saveCart(); renderCart();
+  }
+  function setQty(pid, qty){
+    if(qty <= 0){ removeFromCart(pid); return; }
+    var item = findItem(pid);
+    if(!item) return;
+    item.qty = Math.min(99, qty);
+    saveCart(); renderCart();
+  }
+  function removeFromCart(pid){
+    cart = cart.filter(function(i){ return i.pid !== pid; });
+    saveCart(); renderCart();
+  }
+  function cartCount(){ return cart.reduce(function(s,i){ return s + i.qty; }, 0); }
+  function cartTotal(){
+    return cart.reduce(function(s,i){ var p = PRODUCTS[i.pid]; return s + (p ? p.price * i.qty : 0); }, 0);
+  }
+
+  var cartCountEl = document.getElementById('cartCount');
+  var cartListEl = document.getElementById('cartList');
+  var cartEmptyEl = document.getElementById('cartEmpty');
+  var cartTotalRow = document.getElementById('cartTotalRow');
+  var cartTotalVal = document.getElementById('cartTotalVal');
+  var cartCheckoutBtn = document.getElementById('cartCheckoutBtn');
+
+  function renderCart(){
+    var n = cartCount();
+    cartCountEl.textContent = String(n);
+    cartCountEl.hidden = n === 0;
+
+    if(!cartListEl) return;
+    cartListEl.innerHTML = '';
+
+    if(cart.length === 0){
+      cartEmptyEl.style.display = '';
+      cartTotalRow.hidden = true;
+      cartCheckoutBtn.hidden = true;
+      return;
+    }
+    cartEmptyEl.style.display = 'none';
+    cartTotalRow.hidden = false;
+    cartCheckoutBtn.hidden = false;
+
+    cart.forEach(function(item){
+      var p = PRODUCTS[item.pid];
+      if(!p) return;
+      var name = currentLang === 'en' ? p.nameEn : p.nameVi;
+      var row = document.createElement('div');
+      row.className = 'cart-item';
+      row.innerHTML =
+        '<div><div class="ci-name">' + escapeHtml(name) + '</div><div class="ci-price">' + fmtVnd(p.price) + '</div></div>' +
+        '<div class="ci-qty">' +
+          '<button type="button" class="ci-minus" aria-label="-">–</button>' +
+          '<span>' + item.qty + '</span>' +
+          '<button type="button" class="ci-plus" aria-label="+">+</button>' +
+        '</div>' +
+        '<div class="ci-sub">' + fmtVnd(p.price * item.qty) + '</div>' +
+        '<button type="button" class="ci-remove">' + STR[currentLang].remove + '</button>';
+      row.querySelector('.ci-minus').addEventListener('click', function(){ setQty(item.pid, item.qty - 1); });
+      row.querySelector('.ci-plus').addEventListener('click', function(){ setQty(item.pid, item.qty + 1); });
+      row.querySelector('.ci-remove').addEventListener('click', function(){ removeFromCart(item.pid); });
+      cartListEl.appendChild(row);
+    });
+
+    cartTotalVal.textContent = fmtVnd(cartTotal());
+  }
+
+  function renderCheckoutSummary(){
+    var el = document.getElementById('checkoutSummary');
+    if(!el) return;
+    if(cart.length === 0){
+      el.innerHTML = '<div class="cs-line"><span>' + escapeHtml(STR[currentLang].noItems) + '</span></div>';
+      return;
+    }
+    var lines = cart.map(function(item){
+      var p = PRODUCTS[item.pid];
+      if(!p) return '';
+      var name = currentLang === 'en' ? p.nameEn : p.nameVi;
+      return '<div class="cs-line"><span>' + escapeHtml(name) + ' × ' + item.qty + '</span><span>' + fmtVnd(p.price * item.qty) + '</span></div>';
+    }).join('');
+    el.innerHTML = lines + '<div class="cs-total"><span>' + escapeHtml(STR[currentLang === 'en' ? 'en' : 'vi'] ? (currentLang==='en'?'Total':'Tổng cộng') : 'Tổng cộng') + '</span><span>' + fmtVnd(cartTotal()) + '</span></div>';
+  }
+
+  var cartModal = document.getElementById('cartModal');
+  function openCart(){
+    renderCart();
+    cartModal.classList.add('open');
+    cartModal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCart(){
+    cartModal.classList.remove('open');
+    cartModal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('cartBtn').addEventListener('click', openCart);
+  cartModal.querySelector('.m-close').addEventListener('click', closeCart);
+  cartModal.addEventListener('click', function(e){ if(e.target === cartModal) closeCart(); });
+  cartCheckoutBtn.addEventListener('click', function(){ closeCart(); openOrderModal(); });
+
+  document.querySelectorAll('.btn-order[data-pid]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      addToCart(btn.getAttribute('data-pid'), 1);
+      showToast(STR[currentLang].added);
+    });
+  });
+
+  /* ===================== ĐẶT HÀNG / THANH TOÁN ===================== */
   var modal    = document.getElementById('orderModal');
   var form     = document.getElementById('orderForm');
   var msg      = document.getElementById('omMsg');
   var submit   = form.querySelector('.m-submit');
-  var fProduct = document.getElementById('omProduct');
-  var fQty     = document.getElementById('omQty');
   var fName    = document.getElementById('omName');
   var fPhone   = document.getElementById('omPhone');
   var fAddress = document.getElementById('omAddress');
   var fNote    = document.getElementById('omNote');
+  var qrBox    = document.getElementById('qrBox');
+  var qrImg    = document.getElementById('qrImg');
+  var qrOrderCode = document.getElementById('qrOrderCode');
 
-  function openModal(name){
-    fProduct.value = name || STR[currentLang].defaultProduct;
-    fQty.value = 1;
+  function openOrderModal(){
+    renderCheckoutSummary();
     form.style.display = '';
+    form.reset();
+    qrBox.hidden = true;
     msg.className = 'm-msg'; msg.textContent = '';
     submit.disabled = false; submit.textContent = STR[currentLang].sendBtn;
     modal.classList.add('open');
@@ -965,51 +1272,66 @@
     document.body.style.overflow = '';
   }
 
-  document.querySelectorAll('.btn-order').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var nameAttr = currentLang === 'en' ? 'data-name-en' : 'data-name';
-      openModal(btn.getAttribute(nameAttr) || btn.getAttribute('data-name') || STR[currentLang].genericItem);
-    });
-  });
   document.querySelectorAll('[data-open-order]').forEach(function(el){
-    el.addEventListener('click', function(e){ e.preventDefault(); openModal(STR[currentLang].defaultProduct); });
+    el.addEventListener('click', function(e){ e.preventDefault(); openOrderModal(); });
   });
+  document.getElementById('editCartLink').addEventListener('click', function(){ closeModal(); openCart(); });
   modal.querySelector('.m-close').addEventListener('click', closeModal);
   modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'Escape') return;
+    if(modal.classList.contains('open')) closeModal();
+    if(cartModal.classList.contains('open')) closeCart();
+  });
+
+  function showErr(t){ msg.className = 'm-msg err'; msg.textContent = t; }
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
     var S = STR[currentLang];
     msg.className = 'm-msg'; msg.textContent = '';
+    qrBox.hidden = true;
 
     if(form.company.value){ return; } // honeypot: bỏ qua bot
 
     var name = fName.value.trim();
     var phone = fPhone.value.trim().replace(/[^\d+]/g,'');
     var address = fAddress.value.trim();
+    var paymentEl = form.querySelector('input[name="payment"]:checked');
+    var payment = paymentEl ? paymentEl.value : 'cod';
 
     if(name.length < 2){ showErr(S.errName); fName.focus(); return; }
     if(!/^(0|\+84)\d{8,10}$/.test(phone)){ showErr(S.errPhone); fPhone.focus(); return; }
     if(address.length < 6){ showErr(S.errAddress); fAddress.focus(); return; }
 
-    if(WEB3FORMS_KEY.indexOf('REPLACE') !== -1){
-      showErr(S.notConfigured);
+    if(WEB3FORMS_KEY.indexOf('REPLACE') !== -1){ showErr(S.notConfigured); return; }
+    if(payment === 'bank' && (BANK.bin.indexOf('REPLACE') !== -1 || BANK.account.indexOf('REPLACE') !== -1)){
+      showErr(S.bankNotReady);
       return;
     }
 
     submit.disabled = true; submit.textContent = S.sending;
 
+    var orderCode = 'LAAN' + Date.now().toString(36).toUpperCase();
+    var total = cartTotal();
+    var itemsText = cart.map(function(item){
+      var p = PRODUCTS[item.pid];
+      var nm = p ? (currentLang === 'en' ? p.nameEn : p.nameVi) : item.pid;
+      return nm + ' x' + item.qty + (p ? ' (' + fmtVnd(p.price * item.qty) + ')' : '');
+    }).join('; ') || S.noItems;
+
     var payload = {
       access_key: WEB3FORMS_KEY,
-      subject: S.subject + ' — ' + name + ' — ' + fProduct.value,
+      subject: S.subject + ' [' + orderCode + '] — ' + name,
       from_name: 'Landing 20/10 · laan.info',
-      'Sản phẩm / Product': fProduct.value,
-      'Số lượng / Qty': String(parseInt(fQty.value,10) || 1),
+      'Mã đơn / Order code': orderCode,
+      'Sản phẩm / Items': itemsText,
+      'Tổng tiền / Total': fmtVnd(total),
       'Họ tên / Name': name,
       'Điện thoại / Phone': phone,
       'Địa chỉ / Address': address,
       'Ghi chú / Note': fNote.value.trim() || S.noNote,
+      'Thanh toán / Payment': payment === 'bank' ? S.paymentBank : S.paymentCod,
       'Ngôn ngữ / Language': currentLang
     };
 
@@ -1024,6 +1346,19 @@
         form.style.display = 'none';
         msg.className = 'm-msg ok';
         msg.textContent = S.success;
+
+        if(payment === 'bank'){
+          var qrUrl = 'https://img.vietqr.io/image/' + BANK.bin + '-' + BANK.account + '-compact2.png' +
+            '?amount=' + total + '&addInfo=' + encodeURIComponent(orderCode) +
+            '&accountName=' + encodeURIComponent(BANK.name);
+          qrImg.src = qrUrl;
+          qrOrderCode.textContent = S.orderCodeLabel + ': ' + orderCode;
+          qrBox.hidden = false;
+        }
+
+        cart = [];
+        saveCart();
+        renderCart();
       } else {
         submit.disabled = false; submit.textContent = S.sendBtn;
         showErr((j && j.message) ? j.message : S.genericErr);
@@ -1035,8 +1370,7 @@
     });
   });
 
-  function showErr(t){ msg.className = 'm-msg err'; msg.textContent = t; }
-
+  renderCart();
   applyLang(currentLang);
 })();
 </script>
