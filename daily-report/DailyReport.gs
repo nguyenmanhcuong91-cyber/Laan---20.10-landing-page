@@ -157,6 +157,75 @@ function fetchClaritySummary_() {
   }
 }
 
+/* ===================== DỊCH SỐ LIỆU CLARITY SANG TIẾNG VIỆT ===================== */
+// Trả về [nhãn tiếng Việt, giá trị dễ đọc] hoặc null nếu không có dữ liệu để hiển thị.
+var CLARITY_LABELS_ = {
+  Traffic: 'Lượt truy cập',
+  EngagementTime: 'Thời gian tương tác trung bình',
+  ScrollDepth: 'Độ cuộn trang trung bình',
+  DeadClickCount: 'Click "vô ích" (bấm nhưng trang không phản hồi)',
+  RageClickCount: 'Bấm liên tục vì bực (rage click)',
+  QuickbackClick: 'Vào trang rồi thoát ngay lập tức',
+  ExcessiveScroll: 'Cuộn trang quá nhanh / quá nhiều',
+  ScriptErrorCount: 'Lỗi kỹ thuật (JavaScript) trên trang',
+  ErrorClickCount: 'Bấm vào phần tử bị lỗi',
+  Browser: 'Trình duyệt phổ biến',
+  Device: 'Thiết bị phổ biến',
+  OS: 'Hệ điều hành phổ biến',
+  Country: 'Quốc gia truy cập',
+  PageTitle: 'Trang được xem nhiều',
+  ReferrerUrl: 'Nguồn giới thiệu (referrer)',
+  PopularPages: 'Trang phổ biến'
+};
+
+function formatClarityBlock_(block) {
+  var name = block.metricName;
+  var label = CLARITY_LABELS_[name] || name;
+  var info = (block.information || [])[0];
+  if (!info) return null;
+
+  switch (name) {
+    case 'Traffic':
+      var users = Number(info.distinctUserCount || 0);
+      var sessions = Number(info.totalSessionCount || 0);
+      var bots = Number(info.totalBotSessionCount || 0);
+      return [label, users + ' người dùng · ' + sessions + ' phiên' + (bots > 0 ? ' (đã loại ' + bots + ' phiên bot)' : '')];
+
+    case 'EngagementTime':
+      if (info.activeTime == null) return [label, 'Chưa có dữ liệu'];
+      return [label, Math.round(Number(info.activeTime)) + ' giây/phiên'];
+
+    case 'ScrollDepth':
+      if (info.averageScrollDepth == null) return [label, 'Chưa có dữ liệu'];
+      return [label, Math.round(Number(info.averageScrollDepth)) + '%'];
+
+    case 'DeadClickCount':
+    case 'RageClickCount':
+    case 'QuickbackClick':
+    case 'ExcessiveScroll':
+    case 'ScriptErrorCount':
+    case 'ErrorClickCount':
+      var count = Number(info.sessionsCount || 0);
+      var pct = Number(info.sessionsWithMetricPercentage || 0);
+      return [label, count + ' phiên (' + pct + '% tổng số)'];
+
+    default: {
+      // Các mục liệt kê (Browser/Device/OS/Country/PageTitle/ReferrerUrl/PopularPages)
+      var rowsInfo = block.information || [];
+      if (!rowsInfo.length) return null;
+      var parts = rowsInfo.slice(0, 5).map(function (row) {
+        var keys = Object.keys(row);
+        var strKey = keys.filter(function (k) { return typeof row[k] === 'string'; })[0];
+        var numKey = keys.filter(function (k) { return k !== strKey; })[0];
+        var label2 = strKey ? row[strKey] : '?';
+        var val2 = numKey ? row[numKey] : '';
+        return label2 + (val2 !== '' ? ' (' + val2 + ')' : '');
+      });
+      return [label, parts.join(', ')];
+    }
+  }
+}
+
 /* ===================== TẠO NỘI DUNG EMAIL ===================== */
 
 function buildEmailHtml_(dateLabel, ga, clarity) {
@@ -203,22 +272,21 @@ function buildEmailHtml_(dateLabel, ga, clarity) {
   var devicesHtml = ga.devices && ga.devices.length ? table(ga.devices) : '<p style="color:#9a7d88;font-size:13px;">Chưa có dữ liệu.</p>';
 
   var clarityHtml;
+  var clarityNote = '';
   if (clarity.error) {
     clarityHtml = '<p style="color:#b3453b;font-size:13px;">Không lấy được dữ liệu Clarity: ' + clarity.error + '</p>';
   } else {
     var blocks = clarity.raw || [];
-    if (!blocks.length) {
-      clarityHtml = '<p style="color:#9a7d88;font-size:13px;">Chưa có dữ liệu (project mới thường cần 24–48h mới có số liệu).</p>';
+    var rowsArr = blocks.map(formatClarityBlock_).filter(function (r) { return r; });
+    if (!rowsArr.length) {
+      clarityHtml = '<p style="color:#9a7d88;font-size:13px;">Chưa có phiên truy cập nào hôm qua để phân tích.</p>';
     } else {
-      var rows = blocks.map(function (block) {
-        var info = (block.information || [])[0] || {};
-        var line = Object.keys(info).map(function (k) {
-          return k + ': <b>' + info[k] + '</b>';
-        }).join(' &nbsp;·&nbsp; ');
-        return '<tr><td style="padding:5px 10px;border-bottom:1px solid #f1e7ea;">' + block.metricName +
-          '</td><td style="padding:5px 10px;border-bottom:1px solid #f1e7ea;font-size:12px;">' + (line || '—') + '</td></tr>';
-      }).join('');
-      clarityHtml = '<table style="width:100%;border-collapse:collapse;font-size:13px;">' + rows + '</table>';
+      clarityHtml = table(rowsArr);
+      var traffic = (blocks.filter(function (b) { return b.metricName === 'Traffic'; })[0] || {}).information;
+      var sessionCount = traffic && traffic[0] ? Number(traffic[0].totalSessionCount || 0) : 0;
+      if (sessionCount < 5) {
+        clarityNote = '<p style="color:#9a7d88;font-size:12px;font-style:italic;margin-top:8px;">Lượng truy cập hôm qua còn ít nên phần lớn chỉ số bằng 0 — sẽ rõ nét hơn khi trang có nhiều khách ghé hơn.</p>';
+      }
     }
   }
 
@@ -232,7 +300,7 @@ function buildEmailHtml_(dateLabel, ga, clarity) {
     + h3('Doanh thu') + revenueTable
     + h3('Nguồn truy cập (top 5)') + sourcesHtml
     + h3('Thiết bị') + devicesHtml
-    + h3('Hành vi thao tác (Microsoft Clarity)') + clarityHtml
+    + h3('Hành vi thao tác (Microsoft Clarity)') + clarityHtml + clarityNote
     + '<p style="color:#9a7d88;font-size:12px;margin-top:30px;">Email tự động mỗi ngày. Xem chi tiết đầy đủ tại analytics.google.com và clarity.microsoft.com.</p>'
     + '</div>';
 }
