@@ -161,6 +161,15 @@
     z-index:250;box-shadow:0 10px 24px rgba(0,0,0,0.22);
   }
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+  .bulk-note{
+    display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;
+    font-size:0.85rem;color:#7a5c68;margin-bottom:20px;line-height:1.5;
+    background:#faf1ee;border:1px dashed rgba(156,59,84,0.35);border-radius:8px;
+    padding:11px 14px;
+  }
+  .bulk-note strong{color:var(--rose-deep);font-weight:600;}
+  .bulk-note a{color:var(--rose-deep);text-decoration:underline;text-underline-offset:2px;font-weight:500;white-space:nowrap;}
+  .bulk-note a:hover{color:var(--plum);}
 </style>
 </head>
 <body>
@@ -190,6 +199,10 @@
     <div class="cat">Người có gu tối giản, thanh lịch; thích những khoảng lặng riêng cho mình.</div>
     <h1>Blossom Her 02</h1>
     <div class="price-row"><span class="price">890.000₫</span></div>
+    <div class="bulk-note">
+      <span><strong>Chiết khấu 10%</strong> cho đơn từ 20 phần trở lên.</span>
+      <a href="https://zalo.me/0399995729" target="_blank" rel="noopener">Liên hệ tư vấn →</a>
+    </div>
     <div class="cta-row">
       <button type="button" class="btn-order" data-pid="set2" data-price="890000" data-name="Blossom Her 02" data-name-en="Blossom Her 02">Thêm vào giỏ</button>
       <a class="btn-call" href="https://zalo.me/0399995729" target="_blank" rel="noopener">Liên hệ Zalo</a>
