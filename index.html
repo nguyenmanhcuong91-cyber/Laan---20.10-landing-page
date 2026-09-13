@@ -297,6 +297,32 @@
   .step h3{font-size:1.3rem;font-weight:500;margin-bottom:10px;color:var(--ink);}
   .step p{font-size:0.9rem;line-height:1.7;color:#7a5c68;font-weight:300;}
 
+  /* ===== CORPORATE GIFTING ===== */
+  .corporate{padding:0 6vw 100px;}
+  .corporate-inner{
+    max-width:1100px;margin:0 auto;
+    background:linear-gradient(135deg,#f7e2e6,#f3ddd0);
+    border-radius:16px;padding:70px 6vw;text-align:center;
+  }
+  .corporate .section-head{
+    display:block;text-align:center;border:none;padding-bottom:0;margin:0 auto 50px;max-width:640px;
+  }
+  .corporate .section-head h2{margin-bottom:16px;}
+  .corporate .section-head p{max-width:none;margin:0 auto;}
+  .corp-features{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
+    max-width:900px;margin:0 auto 46px;text-align:left;
+  }
+  @media(max-width:820px){.corp-features{grid-template-columns:1fr;gap:22px;}}
+  .corp-feature{background:rgba(255,255,255,0.55);border-radius:10px;padding:26px 22px;}
+  .corp-feature .icon{
+    width:44px;height:44px;border-radius:50%;background:var(--rose-deep);
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+  }
+  .corp-feature .icon svg{width:22px;height:22px;stroke:#fff;}
+  .corp-feature h3{font-size:1.1rem;font-weight:500;color:var(--ink);margin-bottom:8px;}
+  .corp-feature p{font-size:0.87rem;line-height:1.6;color:#6b4a56;font-weight:300;}
+
   /* ===== CTA BAND ===== */
   .cta-band{
     margin:0 6vw 100px;
@@ -882,6 +908,34 @@
   </div>
 </section>
 
+<!-- CORPORATE GIFTING -->
+<section class="corporate" id="corporate">
+  <div class="corporate-inner">
+    <div class="section-head">
+      <h2 data-i18n="corp.h2">Quà tặng doanh nghiệp<br>In logo theo yêu cầu</h2>
+      <p data-i18n="corp.p">Các set quà trong bộ sưu tập 20/10 đều có thể in logo, thông điệp thương hiệu riêng — giúp món quà tặng nhân viên, đối tác, khách hàng của doanh nghiệp bạn thêm phần chuyên nghiệp và đáng nhớ.</p>
+    </div>
+    <div class="corp-features">
+      <div class="corp-feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/><circle cx="12" cy="13" r="2"/></svg></div>
+        <h3 data-i18n="corp.f1.h3">In logo thương hiệu</h3>
+        <p data-i18n="corp.f1.p">In logo hoặc thông điệp riêng lên hộp quà, thiệp hoặc túi đựng theo yêu cầu của doanh nghiệp.</p>
+      </div>
+      <div class="corp-feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 15 15 9"/><circle cx="9.5" cy="9.5" r="0.6" fill="#fff"/><circle cx="14.5" cy="14.5" r="0.6" fill="#fff"/></svg></div>
+        <h3 data-i18n="corp.f2.h3">Chiết khấu số lượng lớn</h3>
+        <p data-i18n="corp.f2.p">Giảm 10% cho đơn đặt từ 20 phần trở lên.</p>
+      </div>
+      <div class="corp-feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+        <h3 data-i18n="corp.f3.h3">Tư vấn theo ngân sách</h3>
+        <p data-i18n="corp.f3.p">Gợi ý set quà phù hợp với ngân sách và số lượng nhân sự của công ty bạn.</p>
+      </div>
+    </div>
+    <a href="https://zalo.me/0399995729" target="_blank" rel="noopener" class="btn-primary" data-i18n="corp.btn">Liên hệ tư vấn quà tặng doanh nghiệp</a>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-band">
   <h2 data-i18n="cta.h2">20/10 này, hãy tạo nên một khoảng lặng yêu thương thật khác.</h2>
@@ -1108,6 +1162,16 @@
     'guide.2.p': 'Jewelry and perfume speak the language of lasting appreciation — subtle, never showy, always remembered.',
     'guide.3.h3': 'For colleagues, partners &amp; clients',
     'guide.3.p': 'A complete gift box, polished and elegant — refined enough to show genuine appreciation, distinctive enough to be remembered.',
+
+    'corp.h2': 'Corporate Gifting<br>Custom Logo on Request',
+    'corp.p': 'Every set in our 20.10 collection can be custom-branded with your company logo or message — making gifts for your team, partners, and clients feel professional and memorable.',
+    'corp.f1.h3': 'Brand Logo Printing',
+    'corp.f1.p': 'Print your logo or a custom message on the gift box, card, or bag as your company needs.',
+    'corp.f2.h3': 'Bulk Order Discount',
+    'corp.f2.p': '10% off for orders of 20 units or more.',
+    'corp.f3.h3': 'Budget-Based Consultation',
+    'corp.f3.p': 'We’ll help you pick the right set for your company’s budget and headcount.',
+    'corp.btn': 'Contact Us for Corporate Gifting',
 
     'cta.h2': 'This 20/10, create a quiet moment of love unlike any other.',
     'cta.p': 'Order before Oct 15 for free gift wrapping and on-time delivery.',
