@@ -6,7 +6,7 @@
 <title>Blossom Her 01 — Laan Plant &amp; Gift Store</title>
 <meta name="description" content="Nở rộ, rạng rỡ — phiên bản đầy sắc màu và sức sống của bộ chăm sóc bản thân.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&family=Noto+Sans:wght@300;400;500;600&family=Noto+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
     --blush:#f7e2e6; --blush-deep:#f0c9d1; --rose:#c05a72; --rose-deep:#9c3b54;
@@ -14,8 +14,8 @@
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{background:var(--cream);color:var(--ink);font-family:'Jost',sans-serif;overflow-x:hidden;}
-  h1,h2,.serif{font-family:'Cormorant Garamond',serif;font-weight:500;}
+  body{background:var(--cream);color:var(--ink);font-family:'Jost','Noto Sans',sans-serif;overflow-x:hidden;}
+  h1,h2,.serif{font-family:'Cormorant Garamond','Noto Serif',serif;font-weight:500;}
   a{text-decoration:none;color:inherit;}
 
   nav{
@@ -75,7 +75,7 @@
   .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:8px;}
   .btn-order{
     display:inline-block;cursor:pointer;background:var(--rose-deep);color:var(--cream);
-    border:none;padding:14px 30px;border-radius:999px;font-family:'Jost',sans-serif;
+    border:none;padding:14px 30px;border-radius:999px;font-family:'Jost','Noto Sans',sans-serif;
     font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;flex:1;text-align:center;
     transition:transform .25s ease, box-shadow .25s ease;
   }
@@ -100,7 +100,7 @@
   .accordion:not([open]) summary::after{content:'+';}
   .accordion-body{padding:20px 0 6px;}
   .accordion-body .meaning{
-    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-family:'Cormorant Garamond','Noto Serif',serif;font-style:italic;
     font-size:1.15rem;line-height:1.6;color:#7a5c68;margin-bottom:22px;
   }
   .accordion-body .includes-title{
@@ -149,14 +149,14 @@
   .cart-btn .cart-count{
     position:absolute;top:-4px;right:-6px;min-width:17px;height:17px;padding:0 4px;
     border-radius:999px;background:var(--rose-deep);color:var(--cream);
-    font-family:'Jost',sans-serif;font-size:0.62rem;font-weight:600;
+    font-family:'Jost','Noto Sans',sans-serif;font-size:0.62rem;font-weight:600;
     display:flex;align-items:center;justify-content:center;line-height:1;
   }
   .cart-btn .cart-count[hidden]{display:none;}
   .toast{
     position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);
     background:var(--plum);color:#fff;padding:12px 24px;border-radius:999px;
-    font-family:'Jost',sans-serif;font-size:0.82rem;white-space:nowrap;
+    font-family:'Jost','Noto Sans',sans-serif;font-size:0.82rem;white-space:nowrap;
     opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;
     z-index:250;box-shadow:0 10px 24px rgba(0,0,0,0.22);
   }
