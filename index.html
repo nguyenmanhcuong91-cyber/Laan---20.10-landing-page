@@ -1014,7 +1014,7 @@
     <div class="m-or" data-i18n="modal.or">hoặc nhắn trực tiếp</div>
     <div class="m-quick">
       <a class="mq mq-zalo" id="omZalo" href="https://zalo.me/0399995729" target="_blank" rel="noopener">Zalo</a>
-      <a class="mq mq-mess" href="https://m.me/laan.plantstore" target="_blank" rel="noopener">Messenger</a>
+      <a class="mq mq-mess" id="omMess" href="https://m.me/laan.plantstore" target="_blank" rel="noopener">Messenger</a>
       <a class="mq mq-call" href="tel:0399995729" data-i18n="modal.call">Gọi</a>
     </div>
   </div>
@@ -1647,6 +1647,28 @@
   });
   document.querySelectorAll('.cf-mess, .mq-mess').forEach(function(a){
     a.addEventListener('click', function(){ track('contact_click', { method: 'messenger' }); });
+  });
+
+  function buildConsultMessage(){
+    var lines = cart.map(function(item){
+      var p = PRODUCTS[item.pid];
+      var nm = p ? (currentLang === 'en' ? p.nameEn : p.nameVi) : item.pid;
+      return '- ' + nm + ' x' + item.qty;
+    });
+    if(!lines.length){ return ''; }
+    var itemsBlock = lines.join('\n');
+    return currentLang === 'en'
+      ? 'Hi Laan, I\'d like a quote / consultation for:\n' + itemsBlock
+      : 'Chào Laan, mình muốn được tư vấn báo giá cho:\n' + itemsBlock;
+  }
+  document.querySelectorAll('#orderModal .mq-zalo, #orderModal .mq-mess').forEach(function(a){
+    a.addEventListener('click', function(){
+      var msg = buildConsultMessage();
+      if(!msg || !navigator.clipboard || !navigator.clipboard.writeText){ return; }
+      navigator.clipboard.writeText(msg).then(function(){
+        showToast(currentLang === 'en' ? 'Message copied — paste it in the chat!' : 'Đã copy nội dung sản phẩm — dán vào khung chat nhé!');
+      }).catch(function(){});
+    });
   });
   document.querySelectorAll('.cf-call, .mq-call').forEach(function(a){
     a.addEventListener('click', function(){ track('contact_click', { method: 'phone' }); });
