@@ -474,15 +474,6 @@
     padding:0;margin-bottom:16px;
   }
 
-  /* thanh toán */
-  .pay-options{display:flex;flex-direction:column;gap:8px;margin-top:6px;}
-  .pay-opt{
-    display:flex;align-items:center;gap:9px;border:1px solid rgba(92,50,67,0.2);
-    border-radius:6px;padding:10px 12px;cursor:pointer;font-size:0.86rem;color:var(--ink);
-    transition:border-color .2s ease;
-  }
-  .pay-opt:has(input:checked){border-color:var(--rose-deep);background:#fdf3f2;}
-  .pay-opt input{accent-color:var(--rose-deep);}
   .qr-box{
     text-align:center;background:#fff;border:1px solid rgba(92,50,67,0.15);
     border-radius:8px;padding:18px;margin-top:16px;
@@ -1009,18 +1000,6 @@
       <label for="omNote" data-i18n="modal.note">Ghi chú (lời chúc, thời gian giao…)</label>
       <textarea id="omNote" name="note" rows="2"></textarea>
 
-      <label data-i18n="modal.payment">Hình thức thanh toán</label>
-      <div class="pay-options">
-        <label class="pay-opt">
-          <input type="radio" name="payment" value="cod" checked>
-          <span data-i18n="pay.cod">Thanh toán khi nhận hàng (COD)</span>
-        </label>
-        <label class="pay-opt">
-          <input type="radio" name="payment" value="bank">
-          <span data-i18n="pay.bank">Chuyển khoản QR</span>
-        </label>
-      </div>
-
       <button type="submit" class="m-submit" data-i18n="modal.submit">Gửi đơn hàng</button>
       <p class="m-msg" id="omMsg" role="status"></p>
     </form>
@@ -1206,13 +1185,10 @@
     'modal.phone': 'Phone number *',
     'modal.address': 'Delivery address *',
     'modal.note': 'Note (wishes, delivery time…)',
-    'modal.payment': 'Payment method',
     'modal.submit': 'Send Order',
     'modal.or': 'or message us directly',
     'modal.call': 'Call',
 
-    'pay.cod': 'Cash on delivery (COD)',
-    'pay.bank': 'Bank transfer (QR code)',
     'pay.qrNote': 'Scan to transfer the exact amount. The transfer note already includes your order code — please keep it so we can match your payment quickly.'
   };
 
@@ -1237,7 +1213,7 @@
       errPhone: 'Số điện thoại chưa đúng (vd 0912345678).',
       errAddress: 'Vui lòng nhập địa chỉ nhận hàng.',
       notConfigured: 'Form chưa cấu hình (thiếu Web3Forms key). Bạn nhắn Zalo giúp shop nhé.',
-      bankNotReady: 'Chuyển khoản QR chưa sẵn sàng. Bạn chọn COD hoặc nhắn Zalo giúp shop nhé.',
+      bankNotReady: 'Chuyển khoản QR chưa sẵn sàng. Bạn nhắn Zalo giúp shop nhé.',
       sending: 'Đang gửi…',
       sendBtn: 'Gửi đơn hàng',
       success: 'Đã nhận đơn của bạn! Shop sẽ gọi xác nhận trong 24h. Cảm ơn bạn 💐',
@@ -1246,7 +1222,6 @@
       noNote: '(không có)',
       noItems: '(chưa chọn sản phẩm — yêu cầu tư vấn)',
       subject: 'Đơn 20/10',
-      paymentCod: 'Thanh toán khi nhận hàng (COD)',
       paymentBank: 'Chuyển khoản QR',
       orderCodeLabel: 'Mã đơn',
       onRequest: 'Liên hệ',
@@ -1266,7 +1241,7 @@
       errPhone: 'Phone number looks invalid (e.g. 0912345678).',
       errAddress: 'Please enter your delivery address.',
       notConfigured: 'Form is not set up yet — please message us on Zalo.',
-      bankNotReady: 'Bank transfer isn’t set up yet. Please choose COD or message us on Zalo.',
+      bankNotReady: 'Bank transfer isn’t set up yet. Please message us on Zalo.',
       sending: 'Sending…',
       sendBtn: 'Send Order',
       success: 'Your order has been received! We’ll call to confirm within 24h. Thank you 💐',
@@ -1275,7 +1250,6 @@
       noNote: '(none)',
       noItems: '(no items selected — general enquiry)',
       subject: '20/10 Order',
-      paymentCod: 'Cash on delivery (COD)',
       paymentBank: 'Bank transfer (QR)',
       orderCodeLabel: 'Order code',
       onRequest: 'On request',
@@ -1516,16 +1490,12 @@
   var qrImg    = document.getElementById('qrImg');
   var qrOrderCode = document.getElementById('qrOrderCode');
 
-  var paymentLabelEl = form.querySelector('[data-i18n="modal.payment"]');
-  var paymentOptsEl = form.querySelector('.pay-options');
   function applyConsultModalLabels(){
     var S = STR[currentLang];
     if(consultMode){
       document.getElementById('omTitle').textContent = S.consultTitle;
       modal.querySelector('.m-sub').textContent = S.consultSub;
       if(!submit.disabled) submit.textContent = S.consultSendBtn;
-      if(paymentLabelEl) paymentLabelEl.hidden = true;
-      if(paymentOptsEl) paymentOptsEl.hidden = true;
     }else{
       [document.getElementById('omTitle'), modal.querySelector('.m-sub')].forEach(function(el){
         var key = el.getAttribute('data-i18n');
@@ -1534,8 +1504,6 @@
         }
       });
       if(!submit.disabled) submit.textContent = S.sendBtn;
-      if(paymentLabelEl) paymentLabelEl.hidden = false;
-      if(paymentOptsEl) paymentOptsEl.hidden = false;
     }
   }
   function openOrderModal(){
@@ -1583,8 +1551,7 @@
     var name = fName.value.trim();
     var phone = fPhone.value.trim().replace(/[^\d+]/g,'');
     var address = fAddress.value.trim();
-    var paymentEl = form.querySelector('input[name="payment"]:checked');
-    var payment = paymentEl ? paymentEl.value : 'cod';
+    var payment = 'bank';
 
     if(name.length < 2){ showErr(S.errName); fName.focus(); return; }
     if(!/^(0|\+84)\d{8,10}$/.test(phone)){ showErr(S.errPhone); fPhone.focus(); return; }
@@ -1627,7 +1594,7 @@
       'Điện thoại / Phone': phone,
       'Địa chỉ / Address': address,
       'Ghi chú / Note': fNote.value.trim() || S.noNote,
-      'Thanh toán / Payment': consultMode ? '—' : (payment === 'bank' ? S.paymentBank : S.paymentCod),
+      'Thanh toán / Payment': consultMode ? '—' : S.paymentBank,
       'Ngôn ngữ / Language': currentLang
     };
 
