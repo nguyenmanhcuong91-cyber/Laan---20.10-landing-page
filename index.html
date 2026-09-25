@@ -191,7 +191,7 @@
   @media(max-width:600px){.grid{grid-template-columns:1fr;}}
 
   .card{
-    position:relative;border-radius:4px;overflow:hidden;
+    position:relative;border-radius:4px;overflow:hidden;cursor:pointer;
     background:#fff;
     box-shadow:0 4px 20px rgba(92,50,67,0.08);
     transition:transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease;
@@ -1776,6 +1776,16 @@
   });
   document.querySelectorAll('.cf-call, .mq-call').forEach(function(a){
     a.addEventListener('click', function(){ track('contact_click', { method: 'phone' }); });
+  });
+
+  document.querySelectorAll('.grid .card').forEach(function(card){
+    var detailLink = card.querySelector('.btn-detail');
+    if(!detailLink) return;
+    var href = detailLink.getAttribute('href');
+    card.addEventListener('click', function(e){
+      if(e.target.closest('a, button')) return;
+      window.location.href = href;
+    });
   });
 
   renderCart();
