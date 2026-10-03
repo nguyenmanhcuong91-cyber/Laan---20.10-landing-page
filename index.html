@@ -187,6 +187,19 @@
     max-width:1180px;margin:0 auto;
     display:grid;grid-template-columns:repeat(3,1fr);gap:34px;
   }
+  .price-filter{
+    max-width:1180px;margin:-14px auto 34px;
+    display:flex;justify-content:center;flex-wrap:wrap;gap:10px;
+  }
+  .pf-chip{
+    border:1px solid rgba(92,50,67,0.25);background:transparent;cursor:pointer;
+    padding:9px 20px;border-radius:999px;
+    font-family:'Jost','Noto Sans',sans-serif;font-size:0.8rem;letter-spacing:0.05em;
+    color:var(--plum);transition:all .2s ease;
+  }
+  .pf-chip:hover{border-color:var(--rose-deep);color:var(--rose-deep);}
+  .pf-chip.active{background:var(--rose-deep);border-color:var(--rose-deep);color:var(--cream);}
+  .grid .card[hidden]{display:none;}
   @media(max-width:900px){.grid{grid-template-columns:1fr 1fr;}}
   @media(max-width:600px){.grid{grid-template-columns:1fr;}}
 
@@ -611,6 +624,12 @@
   <div class="section-head">
     <h2 data-i18n="collection.h2">Bộ sưu tập<br>20.10</h2>
     <p data-i18n="collection.p">14 set quà “Blossom Her” — mỗi set một cái tên, một câu chuyện riêng, dành cho một kiểu phụ nữ mà bạn nghĩ đến.</p>
+  </div>
+  <div class="price-filter" role="group" data-i18n-aria="filter.aria" aria-label="Lọc theo giá">
+    <button type="button" class="pf-chip active" data-range="all" data-i18n="filter.all">Tất cả</button>
+    <button type="button" class="pf-chip" data-range="lt300" data-i18n="filter.lt300">Dưới 300k</button>
+    <button type="button" class="pf-chip" data-range="mid" data-i18n="filter.mid">300k – 700k</button>
+    <button type="button" class="pf-chip" data-range="gt700" data-i18n="filter.gt700">Trên 700k</button>
   </div>
   <div class="grid">
 
@@ -1176,6 +1195,10 @@
     'strip.h2': 'Every woman carries her own story. <em>The right gift should tell that story.</em>',
 
     'collection.h2': 'The 20.10<br>Collection',
+    'filter.all': 'All',
+    'filter.lt300': 'Under 300k',
+    'filter.mid': '300k – 700k',
+    'filter.gt700': 'Over 700k',
     'collection.p': '14 “Blossom Her” sets — each with its own name and story, for a different kind of woman you have in mind.',
 
     'price.contact': 'Price: on request',
@@ -1299,6 +1322,7 @@
   // Bản dịch cho thuộc tính (aria-label, data-label)
   var EN_ATTR = {
     'modal.close': 'Close',
+    'filter.aria': 'Filter by price',
     'cart.aria': 'Shopping cart',
     'fab.group': 'Quick contact',
     'fab.zalo': 'Zalo Chat',
@@ -1775,6 +1799,27 @@
   });
   document.querySelectorAll('.cf-call, .mq-call').forEach(function(a){
     a.addEventListener('click', function(){ track('contact_click', { method: 'phone' }); });
+  });
+
+  var pfChips = document.querySelectorAll('.pf-chip');
+  var pfCards = Array.prototype.slice.call(document.querySelectorAll('.grid .card'));
+  function pfMatch(price, range){
+    if(range === 'lt300') return price < 300000;
+    if(range === 'mid') return price >= 300000 && price <= 700000;
+    if(range === 'gt700') return price > 700000;
+    return true;
+  }
+  pfChips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      var range = chip.getAttribute('data-range');
+      pfChips.forEach(function(x){ x.classList.toggle('active', x === chip); });
+      pfCards.forEach(function(card){
+        var btn = card.querySelector('.btn-order');
+        var price = btn ? parseInt(btn.getAttribute('data-price'), 10) || 0 : 0;
+        card.hidden = !pfMatch(price, range);
+      });
+      track('filter_price', { range: range });
+    });
   });
 
   document.querySelectorAll('.grid .card').forEach(function(card){
