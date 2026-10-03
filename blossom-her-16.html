@@ -138,6 +138,14 @@
   @media(max-width:900px){
     .product{grid-template-columns:1fr;padding-top:112px;gap:16px;}
     .main-view{order:1;}
+  .badge-best{
+    position:absolute;top:14px;left:14px;z-index:3;pointer-events:none;
+    display:inline-flex;align-items:center;gap:6px;
+    background:linear-gradient(135deg,#ecd29c,#d9b878 55%,#c4a165);color:var(--ink);
+    font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+    padding:7px 15px;border-radius:999px;box-shadow:0 4px 14px rgba(92,50,67,0.25);
+  }
+  .badge-best svg{width:13px;height:13px;flex:none;}
     .thumbs{order:2;flex-direction:row !important;overflow-x:auto;width:100%;}
     .thumbs img{width:68px;height:68px;flex:none;}
     .product-info{order:3;}
@@ -191,6 +199,7 @@
 <section class="product">
   <div class="thumbs" id="thumbs"></div>
   <div class="main-view">
+    <span class="badge-best"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.3l7.1-.7z"/></svg>Best Seller</span>
     <button class="nav-arrow nav-prev" aria-label="Ảnh trước" onclick="changeImg(-1)">&#8249;</button>
     <img id="mainImg" alt="Blossom Her 04">
     <button class="nav-arrow nav-next" aria-label="Ảnh sau" onclick="changeImg(1)">&#8250;</button>
