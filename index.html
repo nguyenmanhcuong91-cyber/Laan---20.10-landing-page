@@ -592,6 +592,7 @@
     .hero .sub{margin-left:auto;margin-right:auto;}
     .hero p.desc{margin:0 auto 30px;}
     .hero-btns{justify-content:center;}
+    .prev-season{text-align:center;}
     .hero-art{order:2;position:relative;top:auto;bottom:auto;right:auto;height:auto;width:calc(100% + 12vw);margin:-30% -6vw 0;
       -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 22%);mask-image:linear-gradient(to bottom,transparent 0,#000 22%);}
     .scroll-hint{display:none;}
@@ -609,11 +610,9 @@
   .card-body .set-sub{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.15rem;letter-spacing:.02em;color:var(--gold);margin:-4px 0 10px;}
   .nav-links a{white-space:nowrap;}
   @media(max-width:1180px){.nav-links{gap:20px;font-size:.78rem;letter-spacing:.05em;}}
-  @media(max-width:1180px){.nav-cta{display:none;}}
-  .nav-prev-btn{display:inline-flex;align-items:center;white-space:nowrap;padding:9px 20px;border-radius:999px;background:linear-gradient(135deg,#ecd29c,#d9b878 55%,#c4a165);color:#17110a;font-size:.78rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;box-shadow:0 4px 16px rgba(217,184,120,.22);transition:transform .25s ease,box-shadow .25s ease;}
-  .nav-prev-btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(217,184,120,.38);}
-  .nav-prev-btn .lbl-short{display:none;}
-  @media(max-width:1000px){.nav-prev-btn{padding:9px 16px;}.nav-prev-btn .lbl-full{display:none;}.nav-prev-btn .lbl-short{display:inline;}}
+  .prev-season{margin-bottom:22px;}
+  .prev-season a{display:inline-block;font-size:.8rem;letter-spacing:.04em;color:var(--gold);padding-bottom:2px;border-bottom:1px solid rgba(217,184,120,.45);transition:color .2s ease,border-color .2s ease;}
+  .prev-season a:hover{color:var(--gold-bright);border-color:var(--gold-bright);}
   .vat-note{max-width:1180px;margin:-10px auto 28px;text-align:center;font-size:.78rem;letter-spacing:.06em;color:var(--muted-2);}
   .card{background:var(--panel);border:1px solid rgba(217,184,120,.14);box-shadow:0 8px 30px rgba(0,0,0,.45);}
   .card:hover{box-shadow:0 22px 48px rgba(0,0,0,.6),0 0 0 1px rgba(217,184,120,.4);}
@@ -737,7 +736,6 @@
       <span class="cart-count" id="cartCount" hidden>0</span>
     </button>
     <a href="#collection" class="nav-cta" data-i18n="nav.cta">Khám phá</a>
-    <a href="20-10/" class="nav-prev-btn" data-i18n-aria="nav.prevAria" aria-label="Xem bộ sưu tập 20/10 Blossom Her"><span class="lbl-full" data-i18n="nav.prev">Bộ sưu tập 20/10</span><span class="lbl-short" aria-hidden="true">20/10</span></a>
   </div>
 </nav>
 
@@ -745,6 +743,7 @@
 <section class="hero">
   <div class="hero-art" aria-hidden="true"></div>
   <div class="hero-inner">
+    <div class="prev-season"><a href="20-10/" data-i18n="hero.prev">Xem bộ sưu tập 20/10 “Blossom Her” →</a></div>
     <span class="eyebrow" data-i18n="hero.eyebrow">20 · 11 Collection <span>&mdash;</span> Ngày Nhà giáo Việt Nam</span>
     <h1 class="sr-only">The Light — Ánh sáng dẫn lối</h1>
     <div class="the-light">
@@ -1375,13 +1374,13 @@
     'nav.guide': 'Gift Guide',
     'nav.story': 'Our Story',
     'nav.cta': 'Explore',
-    'nav.prev': '20/10 Collection',
 
     'hero.eyebrow': '20 · 11 Collection <span>&mdash;</span> Vietnamese Teachers’ Day',
     'hero.sub': 'A thank-you to those who lit the way for us',
     'hero.desc': 'A curated gift collection to thank our teachers — the quiet ones who lit the way, guided us, and stayed in every one of our memories.',
     'hero.btn1': 'Shop Thank-You Gifts',
     'hero.scroll': 'Scroll',
+    'hero.prev': 'View the 20/10 “Blossom Her” collection →',
     'set2.sub': 'Stillness',
     'set1.sub': 'A Teacher’s Smile',
     'set6.sub': 'Morning Sun',
@@ -1532,7 +1531,6 @@
   // Bản dịch cho thuộc tính (aria-label, data-label)
   var EN_ATTR = {
     'modal.close': 'Close',
-    'nav.prevAria': 'View the 20/10 Blossom Her collection',
     'filter.aria': 'Filter by price',
     'cart.aria': 'Shopping cart',
     'fab.group': 'Quick contact',
