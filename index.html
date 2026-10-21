@@ -642,6 +642,18 @@
   .qr-box .qr-code{color:#8a6420;}
   .contact-fab .cf-call{color:#17110a;}
   .contact-fab a::after{background:#2a2218;color:#f4e8c8;}
+.logo-link{display:block;line-height:0;}
+  footer .logo-link{display:block;width:max-content;margin:0 auto 14px;}
+  footer .logo-link .logo-img{margin:0;}
+  .loose-img,.loose-body .name{cursor:zoom-in;}
+  .lb{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.88);}
+  .lb.open{display:flex;}
+  .lb-box{max-width:min(92vw,560px);width:100%;text-align:center;}
+  .lb-box img{width:auto;max-width:100%;max-height:68vh;object-fit:contain;border-radius:8px;display:block;margin:0 auto;}
+  .lb-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--ink);margin:14px 0 4px;}
+  .lb-price{font-size:.9rem;color:var(--muted);margin-bottom:14px;}
+  .lb-add{display:inline-block;cursor:pointer;border:none;border-radius:999px;padding:12px 30px;background:linear-gradient(135deg,#ecd29c,#d9b878 55%,#c4a165);color:#17110a;font-family:'Be Vietnam Pro',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}
+  .lb-x{position:absolute;top:14px;right:18px;background:none;border:none;cursor:pointer;color:#f4e8c8;font-size:2rem;line-height:1;}
 </style>
 
 <!-- Google tag (gtag.js) -->
@@ -681,7 +693,7 @@
 <body>
 
 <nav>
-  <img class="logo-img" src="img/logo-gold.png" alt="Laan Plant & Gift Store">
+  <a href="#" class="logo-link" aria-label="Laan Plant &amp; Gift Store — về đầu trang"><img class="logo-img" src="img/logo-gold.png" alt="Laan Plant & Gift Store"></a>
   <div class="nav-links">
     <a href="#collection" data-i18n="nav.collection">Bộ sưu tập</a>
     <a href="#guide" data-i18n="nav.guide">Gợi ý chọn quà</a>
@@ -1188,7 +1200,7 @@
 </section>
 
 <footer>
-  <img class="logo-img" src="img/logo-gold.png" alt="Laan Plant & Gift Store">
+  <a href="#" class="logo-link" aria-label="Laan Plant &amp; Gift Store — về đầu trang"><img class="logo-img" src="img/logo-gold.png" alt="Laan Plant & Gift Store"></a>
   <div class="foot-links">
     <a href="https://www.facebook.com/laan.plantstore" target="_blank" rel="noopener">Fanpage</a>
     <a href="https://zalo.me/0399995729" target="_blank" rel="noopener">Zalo</a>
@@ -1845,12 +1857,14 @@
 
     var orderCode = 'LAAN' + Date.now().toString(36).toUpperCase();
     var total = cartTotal();
-    var itemsText = cart.map(function(item){
+    var itemsText = cart.map(function(item, idx){
       var p = PRODUCTS[item.pid];
       var nm = p ? (currentLang === 'en' ? p.nameEn : p.nameVi) : item.pid;
-      var amt = p ? (p.price > 0 ? fmtVnd(p.price * item.qty) : fmtPrice(0)) : '';
-      return nm + ' x' + item.qty + (amt ? ' (' + amt + ')' : '');
-    }).join('; ') || S.noItems;
+      var line = (idx + 1) + '. ' + nm + '  |  SL: ' + item.qty;
+      if(p && p.price > 0) line += '  |  Đơn giá: ' + fmtVnd(p.price) + '  |  Thành tiền: ' + fmtVnd(p.price * item.qty);
+      else line += '  |  Giá: liên hệ';
+      return line;
+    }).join('\n') || S.noItems;
     var gaItems = cart.map(function(item){
       var p = PRODUCTS[item.pid];
       return {
@@ -1866,13 +1880,15 @@
       subject: (consultMode ? S.consultSubject : S.subject) + ' [' + orderCode + '] — ' + name,
       from_name: 'Landing 20/11 · laan.info',
       'Mã đơn / Order code': orderCode,
-      'Sản phẩm / Items': itemsText,
+      'Sản phẩm / Items (nhập KiotViet)': itemsText,
       'Tổng tiền / Total': consultMode ? S.onRequest : fmtVnd(total),
       'Họ tên / Name': name,
       'Điện thoại / Phone': phone,
       'Địa chỉ / Address': address,
       'Ghi chú / Note': fNote.value.trim() || S.noNote,
       'Thanh toán / Payment': consultMode ? '—' : S.paymentBank,
+      'Giá / Price note': 'Chưa bao gồm VAT / Excl. VAT',
+      'Nguồn / Source': 'laan.info — The Light 20/11',
       'Ngôn ngữ / Language': currentLang
     };
 
@@ -1981,6 +1997,31 @@
       window.location.href = href;
     });
   });
+
+  /* loose products: enlarge photo */
+  (function(){
+    var lb=document.createElement('div'); lb.className='lb'; lb.setAttribute('role','dialog'); lb.setAttribute('aria-modal','true');
+    lb.innerHTML='<button type="button" class="lb-x" aria-label="Đóng / Close">&times;</button><div class="lb-box"><img alt=""><div class="lb-name"></div><div class="lb-price"></div><button type="button" class="lb-add"></button></div>';
+    document.body.appendChild(lb);
+    var img=lb.querySelector('img'), nm=lb.querySelector('.lb-name'), pr=lb.querySelector('.lb-price'), add=lb.querySelector('.lb-add'), cur=null;
+    function close(){ lb.classList.remove('open'); cur=null; }
+    function open(item){
+      cur=item;
+      img.src=item.querySelector('.loose-img img').src;
+      nm.textContent=item.querySelector('.name').textContent;
+      pr.textContent=(item.querySelector('.price')||{}).textContent||'';
+      add.textContent=item.querySelector('.btn-order').textContent;
+      lb.classList.add('open');
+    }
+    document.querySelectorAll('.loose-item').forEach(function(item){
+      [item.querySelector('.loose-img'), item.querySelector('.name')].forEach(function(el){
+        if(el) el.addEventListener('click', function(){ open(item); });
+      });
+    });
+    lb.addEventListener('click', function(e){ if(e.target===lb || e.target.closest('.lb-x')) close(); });
+    add.addEventListener('click', function(){ if(cur){ cur.querySelector('.btn-order').click(); } close(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && cur) close(); });
+  })();
 
   renderCart();
   applyLang(currentLang);
