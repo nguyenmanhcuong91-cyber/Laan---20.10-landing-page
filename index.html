@@ -607,6 +607,12 @@
   .section-head p{color:var(--muted);}
   .pf-chip{border-color:rgba(217,184,120,.3);}
   .card-body .set-sub{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.15rem;letter-spacing:.02em;color:var(--gold);margin:-4px 0 10px;}
+  .prev-link{max-width:1180px;margin:-20px auto 22px;text-align:center;}
+  .prev-link a{display:inline-block;font-size:.85rem;letter-spacing:.06em;color:var(--gold);padding-bottom:3px;border-bottom:1px solid rgba(217,184,120,.45);transition:color .2s ease,border-color .2s ease;}
+  .prev-link a:hover{color:var(--gold-bright);border-color:var(--gold-bright);}
+  .nav-links a{white-space:nowrap;}
+  @media(max-width:1180px){.nav-links{gap:20px;font-size:.78rem;letter-spacing:.05em;}}
+  @media(min-width:821px) and (max-width:1180px){.nav-cta{display:none;}}
   .vat-note{max-width:1180px;margin:-10px auto 28px;text-align:center;font-size:.78rem;letter-spacing:.06em;color:var(--muted-2);}
   .card{background:var(--panel);border:1px solid rgba(217,184,120,.14);box-shadow:0 8px 30px rgba(0,0,0,.45);}
   .card:hover{box-shadow:0 22px 48px rgba(0,0,0,.6),0 0 0 1px rgba(217,184,120,.4);}
@@ -716,6 +722,7 @@
     <a href="#collection" data-i18n="nav.collection">Bộ sưu tập</a>
     <a href="#guide" data-i18n="nav.guide">Gợi ý chọn quà</a>
     <a href="#story" data-i18n="nav.story">Câu chuyện</a>
+    <a href="20-10/" data-i18n="nav.prev">Bộ sưu tập 20/10</a>
   </div>
   <div class="nav-right">
     <div class="lang-switch" role="group" aria-label="Chọn ngôn ngữ / Language">
@@ -777,6 +784,7 @@
     <button type="button" class="pf-chip" data-range="mid" data-i18n="filter.mid">300k – 700k</button>
     <button type="button" class="pf-chip" data-range="gt700" data-i18n="filter.gt700">Trên 700k</button>
   </div>
+  <p class="prev-link"><a href="20-10/" data-i18n="collection.prev">Xem bộ sưu tập 20/10 “Blossom Her” →</a></p>
   <p class="vat-note" data-i18n="collection.vat">Giá niêm yết chưa bao gồm VAT.</p>
   <div class="grid">
 
@@ -1367,6 +1375,8 @@
     'nav.guide': 'Gift Guide',
     'nav.story': 'Our Story',
     'nav.cta': 'Explore',
+    'nav.prev': '20/10 Collection',
+    'collection.prev': 'View the 20/10 “Blossom Her” collection →',
 
     'hero.eyebrow': '20 · 11 Collection <span>&mdash;</span> Vietnamese Teachers’ Day',
     'hero.sub': 'A thank-you to those who lit the way for us',
