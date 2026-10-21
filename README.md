@@ -1,6 +1,9 @@
-# Laan — 20.10 Landing Page
+# Laan — Landing Page theo mùa quà tặng
 
-Landing page bán hàng dịp 20/10 cho **Laan Plant & Gift Store** — bộ sưu tập "HER, beyond ordinary".
+Landing page bán hàng theo mùa cho **Laan Plant & Gift Store**.
+
+- **Trang chủ (hiện tại):** 20/11 Ngày Nhà giáo Việt Nam — "The Light · Ánh sáng dẫn lối".
+- **Trang phụ:** `20-10/` — bộ sưu tập 20/10 "Blossom Her" (HER, beyond ordinary).
 
 🔗 **Bản đang chạy:** https://laan.info
 
@@ -8,7 +11,8 @@ Landing page bán hàng dịp 20/10 cho **Laan Plant & Gift Store** — bộ sư
 
 | File | Mô tả |
 |------|-------|
-| `index.html` | Trang landing page (một file HTML tự chứa, gồm CSS nội tuyến và hình nền nhúng base64). |
+| `index.html`, `blossom-her-NN.html`, `img/` | Trang chủ 20/11 "The Light": trang chính, 15 trang chi tiết set, ảnh tách thành file riêng. |
+| `20-10/` | Trang 20/10 "Blossom Her" (trang chính + 15 trang chi tiết, ảnh nhúng base64) — mở tại `/20-10/`. |
 
 ## Xem thử tại máy
 
