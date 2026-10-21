@@ -290,26 +290,6 @@
   }
   .btn-order-sm:hover{background:var(--rose-deep);color:var(--cream);}
 
-  /* ===== QUOTE / SIGNATURE ===== */
-  .signature{
-    position:relative;
-    padding:150px 6vw;
-    background:linear-gradient(180deg,var(--plum),#452434);
-    color:var(--cream);
-    text-align:center;
-    overflow:hidden;
-  }
-  .signature .frame{max-width:720px;margin:0 auto;position:relative;z-index:2;}
-  .signature .mark{width:56px;margin:0 auto 30px;opacity:0.85;}
-  .signature h2{
-    font-size:clamp(2rem,5vw,3.6rem);
-    font-weight:400;font-style:italic;line-height:1.35;
-    color:#fbe9ec;
-  }
-  .signature h2 .accent{color:var(--gold);font-style:normal;font-weight:500;}
-  .signature .attribution{margin-top:30px;font-size:0.78rem;letter-spacing:0.2em;text-transform:uppercase;color:#d9a7b4;}
-  .signature-petals{position:absolute;inset:0;opacity:0.15;z-index:1;}
-
   /* ===== GIFTING GUIDE / STEPS ===== */
   .guide{padding:130px 6vw;max-width:1100px;margin:0 auto;}
   .guide .section-head{border:none;padding-bottom:0;margin-bottom:70px;}
@@ -624,14 +604,6 @@
   .loose-item{background:var(--panel);border:1px solid rgba(217,184,120,.12);box-shadow:0 6px 22px rgba(0,0,0,.4);}
   .loose-item:hover{box-shadow:0 16px 34px rgba(0,0,0,.55);}
 
-  /* quote */
-  .signature{background:linear-gradient(180deg,#120e09,#080605);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .signature h2{color:#f4e8c8;}
-  .signature-petals{opacity:.08;}
-  .signature-petals g{stroke:#d9b878;}
-  .sig-flowers{position:absolute;left:-7vw;bottom:-70px;width:clamp(220px,25vw,420px);z-index:1;pointer-events:none;}
-  @media(max-width:760px){.sig-flowers{display:none;}}
-
   /* guide */
   .step p{color:var(--muted);}
 
@@ -721,7 +693,6 @@
   <div class="nav-links">
     <a href="#collection" data-i18n="nav.collection">Bộ sưu tập</a>
     <a href="#guide" data-i18n="nav.guide">Gợi ý chọn quà</a>
-    <a href="#story" data-i18n="nav.story">Câu chuyện</a>
   </div>
   <div class="nav-right">
     <div class="lang-switch" role="group" aria-label="Chọn ngôn ngữ / Language">
@@ -1195,24 +1166,6 @@
   </div>
 </section>
 
-<!-- SIGNATURE QUOTE -->
-<section class="signature" id="story">
-  <svg class="signature-petals" viewBox="0 0 1600 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" stroke="#ffffff" stroke-width="1.5">
-      <path d="M200,700 C120,650 100,520 220,460 C340,400 460,470 440,590 C425,680 300,730 200,700 Z"/>
-      <path d="M1400,120 C1320,70 1200,90 1180,200 C1160,310 1280,370 1370,320 C1440,280 1460,160 1400,120 Z"/>
-    </g>
-  </svg>
-  <img class="sig-flowers" src="img/flowers.webp" alt="" aria-hidden="true" loading="lazy">
-  <div class="frame">
-    <svg class="mark" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M30,55 C15,45 8,30 15,18 C22,6 38,8 40,22 C41,30 34,36 28,32" stroke="#d9b878" stroke-width="2"/>
-      <circle cx="40" cy="22" r="2.5" fill="#d9b878"/>
-    </svg>
-    <h2 data-i18n="quote.h2">“Thầy cô không cần ai nhắc rằng mình đã thắp sáng bao cuộc đời.<br>Chúng ta chỉ cần một món quà <span class="accent">để nói lời cảm ơn.</span>”</h2>
-  </div>
-</section>
-
 <!-- GIFTING GUIDE -->
 <section class="guide" id="guide">
   <div class="section-head">
@@ -1372,7 +1325,6 @@
   var EN_HTML = {
     'nav.collection': 'Collection',
     'nav.guide': 'Gift Guide',
-    'nav.story': 'Our Story',
     'nav.cta': 'Explore',
 
     'hero.eyebrow': '20 · 11 Collection <span>&mdash;</span> Vietnamese Teachers’ Day',
@@ -1489,7 +1441,6 @@
 
     'btn.addcart': 'Add to Cart',
 
-    'quote.h2': '“Teachers don’t need reminding that they’ve lit countless lives.<br>We simply need a gift <span class="accent">to say thank you.</span>”',
     'guide.h2': 'Shop by<br>the Teacher You Want to Thank',
     'guide.1.h3': 'For your homeroom teacher',
     'guide.1.p': 'A small, warm, personal gift — a scented candle, honey, a cup to sip tea after class.',
