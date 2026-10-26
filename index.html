@@ -660,6 +660,13 @@
   .gift-note .gift-kicker{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
   .gift-note h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(1.4rem,3vw,1.9rem);color:var(--gold-bright);margin-bottom:10px;}
   .gift-note p{font-size:.92rem;line-height:1.75;color:var(--muted);font-weight:300;max-width:62ch;margin:0 auto;}
+  /* Nhóm set theo công năng */
+  .tl-group{margin:0 auto 56px;max-width:1180px;scroll-margin-top:110px;}
+  .group-head{display:grid;gap:6px;margin:0 0 22px;padding-bottom:14px;border-bottom:1px solid var(--line);}
+  .group-head .group-count{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);}
+  .group-head h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(1.6rem,3.4vw,2.2rem);color:var(--gold-bright);}
+  .group-head p{font-size:.9rem;line-height:1.65;color:var(--muted);font-weight:300;max-width:70ch;}
+  .tl-group[hidden]{display:none!important;}
 </style>
 
 <!-- Google tag (gtag.js) -->
@@ -770,8 +777,14 @@
     <h3 data-i18n="gift.title">Ngọn nến tri ân 20.11</h3>
     <p data-i18n="gift.p">Mỗi set quà The Light đều có một ngọn nến nhỏ Laan gửi tặng — lời tri ân Laan muốn gửi đến những người thầy, người cô nhân dịp 20.11. Như ngọn nến lặng lẽ tỏa sáng, thầy cô đã thắp lên trong mỗi chúng ta ánh sáng của tri thức và lòng tử tế. Cảm ơn thầy cô — những người dẫn lối.</p>
   </div>
-  <div class="grid">
-
+  
+  <div class="tl-group" id="nhom-tra">
+    <div class="group-head">
+      <div class="group-count">The Light 01–05</div>
+      <h3 data-i18n="grp.tra.t">Trà &amp; Đặc sản Việt</h3>
+      <p data-i18n="grp.tra.d">Trà Shan Mohodo, hạt macca, mật ong hoa chôm chôm — trang nhã, hợp biếu thầy cô lớn tuổi.</p>
+    </div>
+    <div class="grid">
     <div class="card">
       <div class="card-img"><a href="the-light-a6.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-a6-card.webp" alt="The Light 01 — Trà nhài &amp; bình kem" loading="lazy"></a></div>
       <div class="card-body">
@@ -852,6 +865,15 @@
         </div>
       </div>
     </div>
+    </div>
+  </div>
+  <div class="tl-group" id="nhom-nau">
+    <div class="group-head">
+      <div class="group-count">The Light 06–09</div>
+      <h3 data-i18n="grp.nau.t">Tông nâu ấm</h3>
+      <p data-i18n="grp.nau.d">Bình đồng, socola, cà phê và hương nến trầm ấm — hợp tặng thầy giáo hoặc người mê cà phê.</p>
+    </div>
+    <div class="grid">
     <div class="card">
       <div class="card-img"><a href="the-light-c1.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-c1-card.webp" alt="The Light 06 — Xoài socola &amp; bình đồng" loading="lazy"></a></div>
       <div class="card-body">
@@ -916,6 +938,15 @@
         </div>
       </div>
     </div>
+    </div>
+  </div>
+  <div class="tl-group" id="nhom-huong">
+    <div class="group-head">
+      <div class="group-count">The Light 10–12</div>
+      <h3 data-i18n="grp.huong.t">Hương thơm</h3>
+      <p data-i18n="grp.huong.d">Xịt thơm vải và nến thơm — để góc làm việc của thầy cô luôn dịu nhẹ, ấm áp.</p>
+    </div>
+    <div class="grid">
     <div class="card">
       <div class="card-img"><a href="the-light-d1.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-d1-card.webp" alt="The Light 10 — Cherry Blossom &amp; Pear Freesia" loading="lazy"></a></div>
       <div class="card-body">
@@ -964,6 +995,15 @@
         </div>
       </div>
     </div>
+    </div>
+  </div>
+  <div class="tl-group" id="nhom-hong">
+    <div class="group-head">
+      <div class="group-count">The Light 13–15</div>
+      <h3 data-i18n="grp.hong.t">Ngọt ngào tông hồng</h3>
+      <p data-i18n="grp.hong.d">Bình hồng, kẹp tóc, muối ngâm chân — dành cho cô giáo trẻ yêu sự điệu đà.</p>
+    </div>
+    <div class="grid">
     <div class="card">
       <div class="card-img"><a href="the-light-e1.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-e1-card.webp" alt="The Light 13 — Điệu đà" loading="lazy"></a></div>
       <div class="card-body">
@@ -1012,6 +1052,15 @@
         </div>
       </div>
     </div>
+    </div>
+  </div>
+  <div class="tl-group" id="nhom-spa">
+    <div class="group-head">
+      <div class="group-count">The Light 16–21</div>
+      <h3 data-i18n="grp.spa.t">Thư giãn &amp; Spa</h3>
+      <p data-i18n="grp.spa.d">Túi chườm thảo mộc, gối chườm mắt, bộ tắm — món quà để thầy cô được nghỉ ngơi sau những ngày dài.</p>
+    </div>
+    <div class="grid">
     <div class="card">
       <div class="card-img"><a href="the-light-f1.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-f1-card.webp" alt="The Light 16 — Bình hồng &amp; túi chườm" loading="lazy"></a></div>
       <div class="card-body">
@@ -1108,8 +1157,9 @@
         </div>
       </div>
     </div>
+    </div>
+  </div>
 
-      </div>
 </section>
 
 <!-- SẢN PHẨM LẺ -->
@@ -1566,6 +1616,16 @@
     'gift.title': 'The Candle of Gratitude · 20/11',
     'gift.p': 'Every The Light set comes with a small candle from Laan — our thank-you to the teachers who light the way this Vietnamese Teachers’ Day. Like a quiet flame, teachers kindle in each of us the light of knowledge and kindness. Thank you to those who guide us.',
     'gift.card': '+ Free Candle of Gratitude for 20/11',
+    'grp.tra.t': 'Tea &amp; Vietnamese Specialties',
+    'grp.tra.d': 'Mohodo Shan tea, macadamia and rambutan blossom honey — refined gifts, lovely for senior teachers.',
+    'grp.nau.t': 'Warm Browns',
+    'grp.nau.d': 'Copper tumblers, chocolate, coffee and warm candle scents — for male teachers and coffee lovers.',
+    'grp.huong.t': 'Fragrance',
+    'grp.huong.d': 'Fabric sprays and scented candles — keeping a teacher’s desk gently fragrant and warm.',
+    'grp.hong.t': 'Sweet in Pink',
+    'grp.hong.d': 'Pink tumblers, hair clips and foot soaks — for young teachers who love pretty things.',
+    'grp.spa.t': 'Rest &amp; Spa',
+    'grp.spa.d': 'Herbal compresses, eye pillows and bath sets — a gift that lets teachers rest after long days.',
     'loose.p': 'Prefer to build your own gift box? Pick individual items below and message us to put together your own set.',
 
     'l.plant': 'Mini Succulent Gift Box',
@@ -2172,5 +2232,16 @@
 })();
 </script>
 
+<script>
+(function(){
+  function syncGroups(){
+    document.querySelectorAll('.tl-group').forEach(function(g){
+      var vis = Array.prototype.some.call(g.querySelectorAll('.card'), function(c){ return !c.hidden; });
+      g.hidden = !vis;
+    });
+  }
+  document.querySelectorAll('.pf-chip').forEach(function(ch){ ch.addEventListener('click', function(){ setTimeout(syncGroups, 0); }); });
+})();
+</script>
 </body>
 </html>
