@@ -667,6 +667,21 @@
   .group-head h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(1.6rem,3.4vw,2.2rem);color:var(--gold-bright);}
   .group-head p{font-size:.9rem;line-height:1.65;color:var(--muted);font-weight:300;max-width:70ch;}
   .tl-group[hidden]{display:none!important;}
+  /* THEME: xanh đen đêm */
+  :root{--cream:#0d1626;--panel:#14213a;--blush:#192842;--blush-deep:#22345a;--muted:#bcb49c;--muted-2:#a29c88;--line:rgba(217,184,120,.24);}
+  nav{background:rgba(13,22,38,.86)!important;}
+  .card-tag{background:rgba(13,22,38,.78)!important;}
+  .toast,.contact-fab a::after{background:#22345a!important;}
+  .modal input,.modal textarea,.cart-item .ci-qty button,.checkout-summary{background:#0a1220!important;}
+  .modal input[readonly]{background:#192842!important;}
+  .cta-band .btn-primary{background:#0d1626!important;}
+  /* + quầng sáng ấm như ánh nến */
+  body{background:radial-gradient(1200px 700px at 50% -120px,rgba(236,190,110,.16),transparent 70%),radial-gradient(900px 600px at 100% 45%,rgba(236,190,110,.06),transparent 70%),linear-gradient(180deg,#0f1b30 0%,#0d1626 40%,#101d33 100%) fixed!important;}
+  .card{box-shadow:0 0 0 1px rgba(217,184,120,.10),0 18px 40px -20px rgba(236,190,110,.18)!important;}
+  .hero-art,img[src="img/lantern.webp"]{mix-blend-mode:lighten;}
+  .nav-arrow:hover{background:#0d1626!important;}
+  .corporate-inner{background:radial-gradient(700px 300px at 50% 0%,rgba(236,190,110,.10),transparent 70%),linear-gradient(135deg,#16243d,#0f1a2d)!important;}
+  .cta-band .btn-primary:hover{background:#192842!important;}
 </style>
 
 <!-- Google tag (gtag.js) -->
@@ -942,7 +957,7 @@
   </div>
   <div class="tl-group" id="nhom-huong">
     <div class="group-head">
-      <div class="group-count">The Light 10–12</div>
+      <div class="group-count">The Light 10–11</div>
       <h3 data-i18n="grp.huong.t">Hương thơm</h3>
       <p data-i18n="grp.huong.d">Xịt thơm vải và nến thơm — để góc làm việc của thầy cô luôn dịu nhẹ, ấm áp.</p>
     </div>
@@ -979,75 +994,59 @@
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="card-img"><a href="the-light-d3.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-d3-card.webp" alt="The Light 12 — Ngọn nến tri ân" loading="lazy"></a></div>
-      <div class="card-body">
-        <div class="cat" data-i18n="tl-d3.for">Món quà nhỏ, hợp để cả lớp cùng gửi tặng thầy cô</div>
-        <h3><a href="the-light-d3.html">The Light 12</a></h3>
-        <div class="set-sub" data-i18n="tl-d3.sub">Ngọn nến tri ân</div>
-        <p class="set-tagline" data-i18n="tl-d3.tag">Một ngọn nến nhỏ — lời cảm ơn giản dị mà ấm áp.</p>
-        <p class="set-includes" data-i18n="tl-d3.inc">Gồm: nến thơm hũ thạch cao thủ công.</p>
-        <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">170.000₫</div>
-        <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-d3" data-price="170000" data-name="The Light 12" data-name-en="The Light 12" data-i18n="btn.addcart">Thêm vào giỏ</button>
-          <a class="btn-detail" href="the-light-d3.html" data-i18n="btn.detail">Xem chi tiết</a>
-        </div>
-      </div>
-    </div>
     </div>
   </div>
   <div class="tl-group" id="nhom-hong">
     <div class="group-head">
-      <div class="group-count">The Light 13–15</div>
+      <div class="group-count">The Light 12–14</div>
       <h3 data-i18n="grp.hong.t">Ngọt ngào tông hồng</h3>
       <p data-i18n="grp.hong.d">Bình hồng, kẹp tóc, muối ngâm chân — dành cho cô giáo trẻ yêu sự điệu đà.</p>
     </div>
     <div class="grid">
     <div class="card">
-      <div class="card-img"><a href="the-light-e1.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-e1-card.webp" alt="The Light 13 — Điệu đà" loading="lazy"></a></div>
+      <div class="card-img"><a href="the-light-e1.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-e1-card.webp" alt="The Light 12 — Điệu đà" loading="lazy"></a></div>
       <div class="card-body">
         <div class="cat" data-i18n="tl-e1.for">Dành tặng cô giáo trẻ yêu sự điệu đà</div>
-        <h3><a href="the-light-e1.html">The Light 13</a></h3>
+        <h3><a href="the-light-e1.html">The Light 12</a></h3>
         <div class="set-sub" data-i18n="tl-e1.sub">Điệu đà</div>
         <p class="set-tagline" data-i18n="tl-e1.tag">Chút điệu đà cho cô — để mỗi ngày lên lớp thêm rạng rỡ.</p>
         <p class="set-includes" data-i18n="tl-e1.inc">Gồm: bình giữ nhiệt TYESO màu hồng, kẹp tóc càng cua đỏ chấm bi, dây buộc tóc vải, nến thơm hũ thạch cao thủ công.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
         <div class="price">680.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-e1" data-price="680000" data-name="The Light 13" data-name-en="The Light 13" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-pid="tl-e1" data-price="680000" data-name="The Light 12" data-name-en="The Light 12" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-e1.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
     </div>
     <div class="card">
-      <div class="card-img"><a href="the-light-e2.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-e2-card.webp" alt="The Light 14 — Hồng thơm trọn vẹn" loading="lazy"></a></div>
+      <div class="card-img"><a href="the-light-e2.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-e2-card.webp" alt="The Light 13 — Hồng thơm trọn vẹn" loading="lazy"></a></div>
       <div class="card-body">
         <div class="cat" data-i18n="tl-e2.for">Dành tặng cô giáo yêu sắc hồng và hương thơm</div>
-        <h3><a href="the-light-e2.html">The Light 14</a></h3>
+        <h3><a href="the-light-e2.html">The Light 13</a></h3>
         <div class="set-sub" data-i18n="tl-e2.sub">Hồng thơm trọn vẹn</div>
         <p class="set-tagline" data-i18n="tl-e2.tag">Từ hương thơm đến phút ngâm chân thư giãn — chăm sóc cô thật trọn vẹn.</p>
         <p class="set-includes" data-i18n="tl-e2.inc">Gồm: bình giữ nhiệt TYESO màu hồng, xịt thơm vải Cherry Blossom 50ml, muối hồng ngâm chân thảo dược Laan 100g, kẹp tóc càng cua đỏ chấm bi.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
         <div class="price">640.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-e2" data-price="640000" data-name="The Light 14" data-name-en="The Light 14" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-pid="tl-e2" data-price="640000" data-name="The Light 13" data-name-en="The Light 13" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-e2.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
     </div>
     <div class="card">
-      <div class="card-img"><a href="the-light-e3.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-e3-card.webp" alt="The Light 15 — Ngọt ngào" loading="lazy"></a></div>
+      <div class="card-img"><a href="the-light-e3.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-e3-card.webp" alt="The Light 14 — Ngọt ngào" loading="lazy"></a></div>
       <div class="card-body">
         <div class="cat" data-i18n="tl-e3.for">Dành tặng cô giáo hiền dịu, yêu đồ ngọt</div>
-        <h3><a href="the-light-e3.html">The Light 15</a></h3>
+        <h3><a href="the-light-e3.html">The Light 14</a></h3>
         <div class="set-sub" data-i18n="tl-e3.sub">Ngọt ngào</div>
         <p class="set-tagline" data-i18n="tl-e3.tag">Ngọt ngào và đáng yêu — như cách cô đã thương học trò.</p>
         <p class="set-includes" data-i18n="tl-e3.inc">Gồm: bình giữ nhiệt TYESO màu hồng, xoài sấy phủ socola đen và hạt 120g, kẹp tóc càng cua đỏ chấm bi.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
         <div class="price">610.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-e3" data-price="610000" data-name="The Light 15" data-name-en="The Light 15" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-pid="tl-e3" data-price="610000" data-name="The Light 14" data-name-en="The Light 14" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-e3.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -1056,103 +1055,103 @@
   </div>
   <div class="tl-group" id="nhom-spa">
     <div class="group-head">
-      <div class="group-count">The Light 16–21</div>
+      <div class="group-count">The Light 15–20</div>
       <h3 data-i18n="grp.spa.t">Thư giãn &amp; Spa</h3>
       <p data-i18n="grp.spa.d">Túi chườm thảo mộc, gối chườm mắt, bộ tắm — món quà để thầy cô được nghỉ ngơi sau những ngày dài.</p>
     </div>
     <div class="grid">
     <div class="card">
-      <div class="card-img"><a href="the-light-f1.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-f1-card.webp" alt="The Light 16 — Bình hồng &amp; túi chườm" loading="lazy"></a></div>
+      <div class="card-img"><a href="the-light-f1.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-f1-card.webp" alt="The Light 15 — Bình hồng &amp; túi chườm" loading="lazy"></a></div>
       <div class="card-body">
         <div class="cat" data-i18n="tl-f1.for">Dành tặng cô giáo cần phút thư giãn sau giờ đứng lớp</div>
-        <h3><a href="the-light-f1.html">The Light 16</a></h3>
+        <h3><a href="the-light-f1.html">The Light 15</a></h3>
         <div class="set-sub" data-i18n="tl-f1.sub">Bình hồng &amp; túi chườm</div>
         <p class="set-tagline" data-i18n="tl-f1.tag">Ấm nóng và dịu nhẹ — một phút thư giãn sau những giờ đứng lớp.</p>
         <p class="set-includes" data-i18n="tl-f1.inc">Gồm: bình giữ nhiệt TYESO màu hồng, túi chườm thảo mộc màu hồng.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
         <div class="price">600.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-f1" data-price="600000" data-name="The Light 16" data-name-en="The Light 16" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-pid="tl-f1" data-price="600000" data-name="The Light 15" data-name-en="The Light 15" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-f1.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
     </div>
     <div class="card">
-      <div class="card-img"><a href="the-light-f2.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-f2-card.webp" alt="The Light 17 — Bình kem &amp; túi chườm" loading="lazy"></a></div>
+      <div class="card-img"><a href="the-light-f2.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-f2-card.webp" alt="The Light 16 — Bình kem &amp; túi chườm" loading="lazy"></a></div>
       <div class="card-body">
         <div class="cat" data-i18n="tl-f2.for">Dành tặng thầy cô yêu sự giản dị, nhẹ nhàng</div>
-        <h3><a href="the-light-f2.html">The Light 17</a></h3>
+        <h3><a href="the-light-f2.html">The Light 16</a></h3>
         <div class="set-sub" data-i18n="tl-f2.sub">Bình kem &amp; túi chườm</div>
         <p class="set-tagline" data-i18n="tl-f2.tag">Tông kem dịu mắt, thảo mộc ấm nóng — giản dị mà chu đáo.</p>
         <p class="set-includes" data-i18n="tl-f2.inc">Gồm: bình giữ nhiệt TYESO màu kem có quai, túi chườm thảo mộc màu be.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
         <div class="price">600.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-f2" data-price="600000" data-name="The Light 17" data-name-en="The Light 17" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-pid="tl-f2" data-price="600000" data-name="The Light 16" data-name-en="The Light 16" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-f2.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
     </div>
     <div class="card">
-      <div class="card-img"><a href="the-light-f3.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-f3-card.webp" alt="The Light 18 — Thư giãn đôi mắt (be)" loading="lazy"></a></div>
+      <div class="card-img"><a href="the-light-f3.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-f3-card.webp" alt="The Light 17 — Thư giãn đôi mắt (be)" loading="lazy"></a></div>
       <div class="card-body">
         <div class="cat" data-i18n="tl-f3.for">Dành cho thầy cô sau những đêm soạn bài, chấm bài</div>
-        <h3><a href="the-light-f3.html">The Light 18</a></h3>
+        <h3><a href="the-light-f3.html">The Light 17</a></h3>
         <div class="set-sub" data-i18n="tl-f3.sub">Thư giãn đôi mắt (be)</div>
         <p class="set-tagline" data-i18n="tl-f3.tag">Một phút nghỉ cho đôi mắt đã thức khuya vì học trò.</p>
         <p class="set-includes" data-i18n="tl-f3.inc">Gồm: gối chườm mắt thảo mộc “be you!” màu be, túi chườm thảo mộc màu be, nến thơm Pear &amp; Freesia.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
         <div class="price">470.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-f3" data-price="470000" data-name="The Light 18" data-name-en="The Light 18" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-pid="tl-f3" data-price="470000" data-name="The Light 17" data-name-en="The Light 17" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-f3.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
     </div>
     <div class="card">
-      <div class="card-img"><a href="the-light-f4.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-f4-card.webp" alt="The Light 19 — Thư giãn đôi mắt (hồng)" loading="lazy"></a></div>
+      <div class="card-img"><a href="the-light-f4.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-f4-card.webp" alt="The Light 18 — Thư giãn đôi mắt (hồng)" loading="lazy"></a></div>
       <div class="card-body">
         <div class="cat" data-i18n="tl-f4.for">Dành cho cô giáo sau những đêm soạn bài, chấm bài</div>
-        <h3><a href="the-light-f4.html">The Light 19</a></h3>
+        <h3><a href="the-light-f4.html">The Light 18</a></h3>
         <div class="set-sub" data-i18n="tl-f4.sub">Thư giãn đôi mắt (hồng)</div>
         <p class="set-tagline" data-i18n="tl-f4.tag">Sắc hồng dịu dàng và hương thảo mộc — xoa dịu đôi mắt mỏi.</p>
         <p class="set-includes" data-i18n="tl-f4.inc">Gồm: gối chườm mắt thảo mộc “be you!” màu hồng, túi chườm thảo mộc màu hồng, nến thơm Pear &amp; Freesia.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
         <div class="price">470.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-f4" data-price="470000" data-name="The Light 19" data-name-en="The Light 19" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-pid="tl-f4" data-price="470000" data-name="The Light 18" data-name-en="The Light 18" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-f4.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
     </div>
     <div class="card">
-      <div class="card-img"><a href="the-light-f5.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-f5-card.webp" alt="The Light 20 — Spa tại nhà" loading="lazy"></a></div>
+      <div class="card-img"><a href="the-light-f5.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-f5-card.webp" alt="The Light 19 — Spa tại nhà" loading="lazy"></a></div>
       <div class="card-body">
         <div class="cat" data-i18n="tl-f5.for">Dành tặng cô giáo xứng đáng được nâng niu</div>
-        <h3><a href="the-light-f5.html">The Light 20</a></h3>
+        <h3><a href="the-light-f5.html">The Light 19</a></h3>
         <div class="set-sub" data-i18n="tl-f5.sub">Spa tại nhà</div>
         <p class="set-tagline" data-i18n="tl-f5.tag">Một buổi spa nhỏ tại nhà — chăm sóc từ đôi mắt đến đôi chân.</p>
         <p class="set-includes" data-i18n="tl-f5.inc">Gồm: gối chườm mắt thảo mộc “be you!” màu hồng, túi chườm thảo mộc màu hồng, muối hồng ngâm chân thảo dược Laan 100g, nến thơm hũ thạch cao thủ công.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
         <div class="price">560.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-f5" data-price="560000" data-name="The Light 20" data-name-en="The Light 20" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-pid="tl-f5" data-price="560000" data-name="The Light 19" data-name-en="The Light 19" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-f5.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
     </div>
     <div class="card">
-      <div class="card-img"><a href="the-light-f6.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-f6-card.webp" alt="The Light 21 — Bộ tắm thư thái" loading="lazy"></a></div>
+      <div class="card-img"><a href="the-light-f6.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-f6-card.webp" alt="The Light 20 — Bộ tắm thư thái" loading="lazy"></a></div>
       <div class="card-body">
         <div class="cat" data-i18n="tl-f6.for">Dành tặng thầy cô sau một ngày dài trên bục giảng</div>
-        <h3><a href="the-light-f6.html">The Light 21</a></h3>
+        <h3><a href="the-light-f6.html">The Light 20</a></h3>
         <div class="set-sub" data-i18n="tl-f6.sub">Bộ tắm thư thái</div>
         <p class="set-tagline" data-i18n="tl-f6.tag">Một buổi tối thư thái, gột rửa mệt nhọc sau ngày dài.</p>
         <p class="set-includes" data-i18n="tl-f6.inc">Gồm: bộ tắm Bath: khăn thêu chữ Bath, bông tắm, đá kỳ chân, bàn chải gỗ, lược gỗ massage, muối hồng ngâm chân thảo dược Laan 100g.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
         <div class="price">420.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-f6" data-price="420000" data-name="The Light 21" data-name-en="The Light 21" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-pid="tl-f6" data-price="420000" data-name="The Light 20" data-name-en="The Light 20" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-f6.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -1161,11 +1160,27 @@
   </div>
   <div class="tl-group" id="nhom-nho">
     <div class="group-head">
-      <div class="group-count">The Light 22–26</div>
+      <div class="group-count">The Light 21–26</div>
       <h3 data-i18n="grp.nho.t">Quà nhỏ dưới 300k</h3>
       <p data-i18n="grp.nho.d">Món quà nhỏ xinh, gọn gàng — hợp để cả lớp cùng góp gửi thầy cô chủ nhiệm, giáo viên bộ môn.</p>
     </div>
     <div class="grid">
+    <div class="card">
+      <div class="card-img"><a href="the-light-d3.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/tl-d3-card.webp" alt="The Light 21 — Ngọn nến tri ân" loading="lazy"></a></div>
+      <div class="card-body">
+        <div class="cat" data-i18n="tl-d3.for">Món quà nhỏ, hợp để cả lớp cùng gửi tặng thầy cô</div>
+        <h3><a href="the-light-d3.html">The Light 21</a></h3>
+        <div class="set-sub" data-i18n="tl-d3.sub">Ngọn nến tri ân</div>
+        <p class="set-tagline" data-i18n="tl-d3.tag">Một ngọn nến nhỏ — lời cảm ơn giản dị mà ấm áp.</p>
+        <p class="set-includes" data-i18n="tl-d3.inc">Gồm: nến thơm hũ thạch cao thủ công.</p>
+        <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
+        <div class="price">170.000₫</div>
+        <div class="card-actions">
+          <button type="button" class="btn-order" data-pid="tl-d3" data-price="170000" data-name="The Light 21" data-name-en="The Light 21" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <a class="btn-detail" href="the-light-d3.html" data-i18n="btn.detail">Xem chi tiết</a>
+        </div>
+      </div>
+    </div>
     <div class="card">
       <div class="card-img"><a href="the-light-g1.html" class="card-img-link" tabindex="-1" aria-hidden="true"><img src="img/card11.webp" alt="The Light 22 — Ngọn nến ấm" loading="lazy"></a></div>
       <div class="card-body">
@@ -1661,10 +1676,6 @@
     'tl-d2.sub': 'Cherry Blossom &amp; Plaster Candle',
     'tl-d2.tag': 'A handmade plaster candle and cherry blossom scent — a refined touch for the desk.',
     'tl-d2.inc': 'Includes: TYESO insulated tumbler with handle — cream, Cherry Blossom fabric spray, 50ml, scented candle in a handmade plaster vessel.',
-    'tl-d3.for': 'A small gift — perfect for a whole class to give together',
-    'tl-d3.sub': 'A Candle of Thanks',
-    'tl-d3.tag': 'One small candle — a simple, warm thank-you.',
-    'tl-d3.inc': 'Includes: scented candle in a handmade plaster vessel.',
     'tl-e1.for': 'For a young teacher who loves pretty details',
     'tl-e1.sub': 'Little Charms',
     'tl-e1.tag': 'A little charm for her — so every school day feels a bit brighter.',
@@ -1701,6 +1712,10 @@
     'tl-f6.sub': 'Unwind Bath Set',
     'tl-f6.tag': 'A relaxing evening to wash away a long day.',
     'tl-f6.inc': 'Includes: bath set: embroidered “Bath” towel, bath sponges, foot pumice, wooden brush, wooden massage comb, Laan herbal pink salt foot soak, 100g.',
+    'tl-d3.for': 'A small gift — perfect for a whole class to give together',
+    'tl-d3.sub': 'A Candle of Thanks',
+    'tl-d3.tag': 'One small candle — a simple, warm thank-you.',
+    'tl-d3.inc': 'Includes: scented candle in a handmade plaster vessel.',
     'tl-g1.for': 'A small gift for a homeroom or subject teacher',
     'tl-g1.sub': 'A Warm Little Candle',
     'tl-g1.tag': 'One small candle — just as our teachers lit up so much in us.',

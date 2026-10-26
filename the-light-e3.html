@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Light 15 · Ngọt ngào — Quà tri ân 20/11 | Laan</title>
+<title>The Light 14 · Ngọt ngào — Quà tri ân 20/11 | Laan</title>
 <meta name="description" content="Ngọt ngào và đáng yêu — như cách cô đã thương học trò.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -214,6 +214,21 @@
   .gift-box{margin:18px 0 16px;padding:14px 16px;border:1px dashed rgba(217,184,120,.45);border-radius:10px;background:rgba(236,210,156,.06);}
   .gift-box .gift-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--gold-bright);margin-bottom:6px;}
   .gift-box p{font-size:.88rem;line-height:1.65;color:var(--muted);font-weight:300;}
+  /* THEME: xanh đen đêm */
+  :root{--cream:#0d1626;--panel:#14213a;--blush:#192842;--blush-deep:#22345a;--muted:#bcb49c;--muted-2:#a29c88;--line:rgba(217,184,120,.24);}
+  nav{background:rgba(13,22,38,.86)!important;}
+  .card-tag{background:rgba(13,22,38,.78)!important;}
+  .toast,.contact-fab a::after{background:#22345a!important;}
+  .modal input,.modal textarea,.cart-item .ci-qty button,.checkout-summary{background:#0a1220!important;}
+  .modal input[readonly]{background:#192842!important;}
+  .cta-band .btn-primary{background:#0d1626!important;}
+  /* + quầng sáng ấm như ánh nến */
+  body{background:radial-gradient(1200px 700px at 50% -120px,rgba(236,190,110,.16),transparent 70%),radial-gradient(900px 600px at 100% 45%,rgba(236,190,110,.06),transparent 70%),linear-gradient(180deg,#0f1b30 0%,#0d1626 40%,#101d33 100%) fixed!important;}
+  .card{box-shadow:0 0 0 1px rgba(217,184,120,.10),0 18px 40px -20px rgba(236,190,110,.18)!important;}
+  .hero-art,img[src="img/lantern.webp"]{mix-blend-mode:lighten;}
+  .nav-arrow:hover{background:#0d1626!important;}
+  .corporate-inner{background:radial-gradient(700px 300px at 50% 0%,rgba(236,190,110,.10),transparent 70%),linear-gradient(135deg,#16243d,#0f1a2d)!important;}
+  .cta-band .btn-primary:hover{background:#192842!important;}
 </style>
 </head>
 <body>
@@ -236,12 +251,12 @@
   <div class="thumbs" id="thumbs"></div>
   <div class="main-view">
     <button class="nav-arrow nav-prev" aria-label="Ảnh trước" onclick="changeImg(-1)">&#8249;</button>
-    <img id="mainImg" alt="The Light 15">
+    <img id="mainImg" alt="The Light 14">
     <button class="nav-arrow nav-next" aria-label="Ảnh sau" onclick="changeImg(1)">&#8250;</button>
   </div>
   <div class="product-info">
     <div class="cat">Dành tặng cô giáo hiền dịu, yêu đồ ngọt</div>
-    <h1>The Light 15</h1>
+    <h1>The Light 14</h1>
     <div class="sub-name">Ngọt ngào</div>
     <div class="price-row"><span class="price">610.000₫</span><span class="vat">Giá chưa bao gồm VAT</span></div>
     <div class="bulk-note">
@@ -249,7 +264,7 @@
       <a href="https://zalo.me/0399995729" target="_blank" rel="noopener">Liên hệ tư vấn →</a>
     </div>
     <div class="cta-row">
-      <button type="button" class="btn-order" data-pid="tl-e3" data-price="610000" data-name="The Light 15" data-name-en="The Light 15">Thêm vào giỏ</button>
+      <button type="button" class="btn-order" data-pid="tl-e3" data-price="610000" data-name="The Light 14" data-name-en="The Light 14">Thêm vào giỏ</button>
       <a class="btn-call" href="https://zalo.me/0399995729" target="_blank" rel="noopener">Liên hệ Zalo</a>
       <a class="btn-call" href="tel:0399995729">Gọi điện</a>
     </div>
@@ -271,9 +286,9 @@
 </section>
 
 <div class="set-nav">
-  <a href="the-light-e2.html">&larr; The Light 14</a>
+  <a href="the-light-e2.html">&larr; The Light 13</a>
   <a href="index.html#collection" class="to-collection">Xem tất cả set quà</a>
-  <a href="the-light-f1.html">The Light 16 &rarr;</a>
+  <a href="the-light-f1.html">The Light 15 &rarr;</a>
 </div>
 
 <footer>
@@ -288,7 +303,7 @@
 
 <script>
   var IMAGES = ["img/tl-e3-0.webp"];
-  var ALTS = ["The Light 15"];
+  var ALTS = ["The Light 14"];
   var current = 0;
   var thumbsEl = document.getElementById('thumbs');
   IMAGES.forEach(function(b64, idx){
