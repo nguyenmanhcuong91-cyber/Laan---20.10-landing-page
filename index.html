@@ -682,6 +682,14 @@
   .nav-arrow:hover{background:#0d1626!important;}
   .corporate-inner{background:radial-gradient(700px 300px at 50% 0%,rgba(236,190,110,.10),transparent 70%),linear-gradient(135deg,#16243d,#0f1a2d)!important;}
   .cta-band .btn-primary:hover{background:#192842!important;}
+
+  .box-opt{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px 0 2px;}
+  .box-opt .bo-lbl{font-size:.72rem;letter-spacing:.08em;color:var(--muted);margin-right:2px;}
+  .bo-chip{font:inherit;font-size:.74rem;padding:5px 11px;border-radius:999px;border:1px solid rgba(217,184,120,.35);background:transparent;color:var(--plum);cursor:pointer;transition:all .2s;}
+  .bo-chip.active{background:rgba(217,184,120,.16);border-color:var(--gold);color:var(--gold-bright);}
+  .box-opt-detail{margin:4px 0 14px;}
+  .box-opt-detail .bo-chip{font-size:.82rem;padding:7px 14px;}
+  .btn-order.bo-hide{display:none!important;}
 </style>
 
 <!-- Google tag (gtag.js) -->
@@ -809,9 +817,10 @@
         <p class="set-tagline" data-i18n="tl-a6.tag">Hương nhài dịu nhẹ trong chiếc bình ấm — cho những phút nghỉ giữa giờ lên lớp.</p>
         <p class="set-includes" data-i18n="tl-a6.inc">Gồm: bình giữ nhiệt TYESO màu kem có quai, trà Shan Mohodo ướp hoa nhài tự nhiên 30g.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">600.000₫</div>
+        <div class="box-opt" data-delta="40000"><span class="bo-lbl" data-i18n="box.lbl">Chọn hộp:</span><button type="button" class="bo-chip active" data-box="kraft" data-i18n="box.kraft">Hộp kraft</button><button type="button" class="bo-chip" data-box="up" data-i18n="box.up40">Hộp giấy trắng +40k</button></div>
+        <div class="price" data-base="560000">560.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-a6" data-price="600000" data-name="The Light 01" data-name-en="The Light 01" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-box="kraft" data-pid="tl-a6-kraft" data-price="560000" data-name="The Light 01 · hộp kraft" data-name-en="The Light 01 · kraft box" data-i18n="btn.addcart">Thêm vào giỏ</button><button type="button" class="btn-order bo-hide" data-box="up" data-pid="tl-a6" data-price="600000" data-name="The Light 01 · hộp giấy trắng" data-name-en="The Light 01 · white paper box" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-a6.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -825,9 +834,10 @@
         <p class="set-tagline" data-i18n="tl-a7.tag">Hương sen Tây Hồ thanh khiết, giữ ấm trọn buổi giảng.</p>
         <p class="set-includes" data-i18n="tl-a7.inc">Gồm: cốc giữ nhiệt TYESO màu đồng, trà Shan Mohodo ướp sen Tây Hồ 30g (hộp xanh lá).</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">610.000₫</div>
+        <div class="box-opt" data-delta="60000"><span class="bo-lbl" data-i18n="box.lbl">Chọn hộp:</span><button type="button" class="bo-chip active" data-box="kraft" data-i18n="box.kraft">Hộp kraft</button><button type="button" class="bo-chip" data-box="up" data-i18n="box.up60">Hộp mây tre lớn +60k</button></div>
+        <div class="price" data-base="550000">550.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-a7" data-price="610000" data-name="The Light 02" data-name-en="The Light 02" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-box="kraft" data-pid="tl-a7-kraft" data-price="550000" data-name="The Light 02 · hộp kraft" data-name-en="The Light 02 · kraft box" data-i18n="btn.addcart">Thêm vào giỏ</button><button type="button" class="btn-order bo-hide" data-box="up" data-pid="tl-a7" data-price="610000" data-name="The Light 02 · hộp mây tre lớn" data-name-en="The Light 02 · large rattan box" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-a7.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -841,9 +851,10 @@
         <p class="set-tagline" data-i18n="tl-b2.tag">Trà sen thanh, macca bùi, mật ong ngọt — ba món quê nhà gói trọn lòng biết ơn.</p>
         <p class="set-includes" data-i18n="tl-b2.inc">Gồm: trà Shan Mohodo ướp sen Tây Hồ 20g (hộp đỏ), hạt macca Laan 150g, mật ong hoa chôm chôm Miele 260g.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">490.000₫</div>
+        <div class="box-opt" data-delta="60000"><span class="bo-lbl" data-i18n="box.lbl">Chọn hộp:</span><button type="button" class="bo-chip active" data-box="kraft" data-i18n="box.kraft">Hộp kraft</button><button type="button" class="bo-chip" data-box="up" data-i18n="box.up60">Hộp mây tre lớn +60k</button></div>
+        <div class="price" data-base="430000">430.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-b2" data-price="490000" data-name="The Light 03" data-name-en="The Light 03" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-box="kraft" data-pid="tl-b2-kraft" data-price="430000" data-name="The Light 03 · hộp kraft" data-name-en="The Light 03 · kraft box" data-i18n="btn.addcart">Thêm vào giỏ</button><button type="button" class="btn-order bo-hide" data-box="up" data-pid="tl-b2" data-price="490000" data-name="The Light 03 · hộp mây tre lớn" data-name-en="The Light 03 · large rattan box" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-b2.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -857,9 +868,10 @@
         <p class="set-tagline" data-i18n="tl-b4.tag">Chiếc bình tre mộc và tách oolong nhài thơm — một góc bình yên sau giờ giảng.</p>
         <p class="set-includes" data-i18n="tl-b4.inc">Gồm: bình giữ nhiệt vỏ tre, trà Oolong Jasmine Mohodo, mật ong hoa chôm chôm Miele 260g.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">620.000₫</div>
+        <div class="box-opt" data-delta="60000"><span class="bo-lbl" data-i18n="box.lbl">Chọn hộp:</span><button type="button" class="bo-chip active" data-box="kraft" data-i18n="box.kraft">Hộp kraft</button><button type="button" class="bo-chip" data-box="up" data-i18n="box.up60">Hộp mây tre lớn +60k</button></div>
+        <div class="price" data-base="560000">560.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-b4" data-price="620000" data-name="The Light 04" data-name-en="The Light 04" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-box="kraft" data-pid="tl-b4-kraft" data-price="560000" data-name="The Light 04 · hộp kraft" data-name-en="The Light 04 · kraft box" data-i18n="btn.addcart">Thêm vào giỏ</button><button type="button" class="btn-order bo-hide" data-box="up" data-pid="tl-b4" data-price="620000" data-name="The Light 04 · hộp mây tre lớn" data-name-en="The Light 04 · large rattan box" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-b4.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -873,9 +885,10 @@
         <p class="set-tagline" data-i18n="tl-b5.tag">Bốn hương vị Việt chọn lọc — ngọt ngào như những năm tháng được thầy cô dìu dắt.</p>
         <p class="set-includes" data-i18n="tl-b5.inc">Gồm: xoài sấy phủ socola đen và hạt 120g, hạt macca Laan 150g, trà hoa hồng Laan 50g, mật ong hoa chôm chôm Miele 260g.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">560.000₫</div>
+        <div class="box-opt" data-delta="40000"><span class="bo-lbl" data-i18n="box.lbl">Chọn hộp:</span><button type="button" class="bo-chip active" data-box="kraft" data-i18n="box.kraft">Hộp kraft</button><button type="button" class="bo-chip" data-box="up" data-i18n="box.up40">Hộp giấy trắng +40k</button></div>
+        <div class="price" data-base="520000">520.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-b5" data-price="560000" data-name="The Light 05" data-name-en="The Light 05" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-box="kraft" data-pid="tl-b5-kraft" data-price="520000" data-name="The Light 05 · hộp kraft" data-name-en="The Light 05 · kraft box" data-i18n="btn.addcart">Thêm vào giỏ</button><button type="button" class="btn-order bo-hide" data-box="up" data-pid="tl-b5" data-price="560000" data-name="The Light 05 · hộp giấy trắng" data-name-en="The Light 05 · white paper box" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-b5.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -898,9 +911,10 @@
         <p class="set-tagline" data-i18n="tl-c1.tag">Chút ngọt đắng của socola, chút ấm của cà phê — năng lượng cho mỗi sớm lên lớp.</p>
         <p class="set-includes" data-i18n="tl-c1.inc">Gồm: cốc giữ nhiệt TYESO màu đồng, xoài sấy phủ socola đen và hạt 120g.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">580.000₫</div>
+        <div class="box-opt" data-delta="60000"><span class="bo-lbl" data-i18n="box.lbl">Chọn hộp:</span><button type="button" class="bo-chip active" data-box="kraft" data-i18n="box.kraft">Hộp kraft</button><button type="button" class="bo-chip" data-box="up" data-i18n="box.up60">Hộp mây tre lớn +60k</button></div>
+        <div class="price" data-base="520000">520.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-c1" data-price="580000" data-name="The Light 06" data-name-en="The Light 06" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-box="kraft" data-pid="tl-c1-kraft" data-price="520000" data-name="The Light 06 · hộp kraft" data-name-en="The Light 06 · kraft box" data-i18n="btn.addcart">Thêm vào giỏ</button><button type="button" class="btn-order bo-hide" data-box="up" data-pid="tl-c1" data-price="580000" data-name="The Light 06 · hộp mây tre lớn" data-name-en="The Light 06 · large rattan box" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-c1.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -914,9 +928,10 @@
         <p class="set-tagline" data-i18n="tl-c3.tag">Thân đen trầm, nắp gỗ ấm — lịch lãm và bền bỉ như người thầy.</p>
         <p class="set-includes" data-i18n="tl-c3.inc">Gồm: bình giữ nhiệt màu đen nắp gỗ, xoài sấy phủ socola đen và hạt 120g.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">530.000₫</div>
+        <div class="box-opt" data-delta="60000"><span class="bo-lbl" data-i18n="box.lbl">Chọn hộp:</span><button type="button" class="bo-chip active" data-box="kraft" data-i18n="box.kraft">Hộp kraft</button><button type="button" class="bo-chip" data-box="up" data-i18n="box.up60">Hộp mây tre lớn +60k</button></div>
+        <div class="price" data-base="470000">470.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-c3" data-price="530000" data-name="The Light 07" data-name-en="The Light 07" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-box="kraft" data-pid="tl-c3-kraft" data-price="470000" data-name="The Light 07 · hộp kraft" data-name-en="The Light 07 · kraft box" data-i18n="btn.addcart">Thêm vào giỏ</button><button type="button" class="btn-order bo-hide" data-box="up" data-pid="tl-c3" data-price="530000" data-name="The Light 07 · hộp mây tre lớn" data-name-en="The Light 07 · large rattan box" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-c3.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -930,9 +945,10 @@
         <p class="set-tagline" data-i18n="tl-c4.tag">Hương Tobacco &amp; Vanilla trầm ấm — thắp sáng góc bàn soạn giáo án.</p>
         <p class="set-includes" data-i18n="tl-c4.inc">Gồm: cốc giữ nhiệt TYESO màu đồng, nến thơm Tobacco &amp; Vanilla, xịt thơm vải Laan 50ml.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">690.000₫</div>
+        <div class="box-opt" data-delta="60000"><span class="bo-lbl" data-i18n="box.lbl">Chọn hộp:</span><button type="button" class="bo-chip active" data-box="kraft" data-i18n="box.kraft">Hộp kraft</button><button type="button" class="bo-chip" data-box="up" data-i18n="box.up60">Hộp mây tre lớn +60k</button></div>
+        <div class="price" data-base="630000">630.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-c4" data-price="690000" data-name="The Light 08" data-name-en="The Light 08" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-box="kraft" data-pid="tl-c4-kraft" data-price="630000" data-name="The Light 08 · hộp kraft" data-name-en="The Light 08 · kraft box" data-i18n="btn.addcart">Thêm vào giỏ</button><button type="button" class="btn-order bo-hide" data-box="up" data-pid="tl-c4" data-price="690000" data-name="The Light 08 · hộp mây tre lớn" data-name-en="The Light 08 · large rattan box" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-c4.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -946,9 +962,10 @@
         <p class="set-tagline" data-i18n="tl-c5.tag">Ly thủy tinh bọc gỗ, ngọn nến ấm và bình đồng — đủ cho một góc cà phê riêng.</p>
         <p class="set-includes" data-i18n="tl-c5.inc">Gồm: cốc giữ nhiệt TYESO màu đồng, nến thơm Tobacco &amp; Vanilla, ly thủy tinh bọc gỗ thủ công.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">695.000₫</div>
+        <div class="box-opt" data-delta="60000"><span class="bo-lbl" data-i18n="box.lbl">Chọn hộp:</span><button type="button" class="bo-chip active" data-box="kraft" data-i18n="box.kraft">Hộp kraft</button><button type="button" class="bo-chip" data-box="up" data-i18n="box.up60">Hộp mây tre lớn +60k</button></div>
+        <div class="price" data-base="635000">635.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-c5" data-price="695000" data-name="The Light 09" data-name-en="The Light 09" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-box="kraft" data-pid="tl-c5-kraft" data-price="635000" data-name="The Light 09 · hộp kraft" data-name-en="The Light 09 · kraft box" data-i18n="btn.addcart">Thêm vào giỏ</button><button type="button" class="btn-order bo-hide" data-box="up" data-pid="tl-c5" data-price="695000" data-name="The Light 09 · hộp mây tre lớn" data-name-en="The Light 09 · large rattan box" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-c5.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -971,9 +988,10 @@
         <p class="set-tagline" data-i18n="tl-d1.tag">Hương anh đào và lê – lan dịu dàng — như một lời cảm ơn khẽ khàng.</p>
         <p class="set-includes" data-i18n="tl-d1.inc">Gồm: bình giữ nhiệt TYESO màu kem có quai, xịt thơm vải Cherry Blossom 50ml, nến thơm Pear &amp; Freesia.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">640.000₫</div>
+        <div class="box-opt" data-delta="40000"><span class="bo-lbl" data-i18n="box.lbl">Chọn hộp:</span><button type="button" class="bo-chip active" data-box="kraft" data-i18n="box.kraft">Hộp kraft</button><button type="button" class="bo-chip" data-box="up" data-i18n="box.up40">Hộp giấy trắng +40k</button></div>
+        <div class="price" data-base="600000">600.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-d1" data-price="640000" data-name="The Light 10" data-name-en="The Light 10" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-box="kraft" data-pid="tl-d1-kraft" data-price="600000" data-name="The Light 10 · hộp kraft" data-name-en="The Light 10 · kraft box" data-i18n="btn.addcart">Thêm vào giỏ</button><button type="button" class="btn-order bo-hide" data-box="up" data-pid="tl-d1" data-price="640000" data-name="The Light 10 · hộp giấy trắng" data-name-en="The Light 10 · white paper box" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-d1.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -987,9 +1005,10 @@
         <p class="set-tagline" data-i18n="tl-d2.tag">Hũ nến thạch cao thủ công và hương hoa anh đào — tinh tế trên bàn làm việc.</p>
         <p class="set-includes" data-i18n="tl-d2.inc">Gồm: bình giữ nhiệt TYESO màu kem có quai, xịt thơm vải Cherry Blossom 50ml, nến thơm hũ thạch cao thủ công.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">680.000₫</div>
+        <div class="box-opt" data-delta="40000"><span class="bo-lbl" data-i18n="box.lbl">Chọn hộp:</span><button type="button" class="bo-chip active" data-box="kraft" data-i18n="box.kraft">Hộp kraft</button><button type="button" class="bo-chip" data-box="up" data-i18n="box.up40">Hộp giấy trắng +40k</button></div>
+        <div class="price" data-base="640000">640.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-d2" data-price="680000" data-name="The Light 11" data-name-en="The Light 11" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-box="kraft" data-pid="tl-d2-kraft" data-price="640000" data-name="The Light 11 · hộp kraft" data-name-en="The Light 11 · kraft box" data-i18n="btn.addcart">Thêm vào giỏ</button><button type="button" class="btn-order bo-hide" data-box="up" data-pid="tl-d2" data-price="680000" data-name="The Light 11 · hộp giấy trắng" data-name-en="The Light 11 · white paper box" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-d2.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -1012,9 +1031,10 @@
         <p class="set-tagline" data-i18n="tl-e1.tag">Chút điệu đà cho cô — để mỗi ngày lên lớp thêm rạng rỡ.</p>
         <p class="set-includes" data-i18n="tl-e1.inc">Gồm: bình giữ nhiệt TYESO màu hồng, kẹp tóc càng cua đỏ chấm bi, dây buộc tóc vải, nến thơm hũ thạch cao thủ công.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">680.000₫</div>
+        <div class="box-opt" data-delta="40000"><span class="bo-lbl" data-i18n="box.lbl">Chọn hộp:</span><button type="button" class="bo-chip active" data-box="kraft" data-i18n="box.kraft">Hộp kraft</button><button type="button" class="bo-chip" data-box="up" data-i18n="box.up40">Hộp giấy trắng +40k</button></div>
+        <div class="price" data-base="640000">640.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-e1" data-price="680000" data-name="The Light 12" data-name-en="The Light 12" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-box="kraft" data-pid="tl-e1-kraft" data-price="640000" data-name="The Light 12 · hộp kraft" data-name-en="The Light 12 · kraft box" data-i18n="btn.addcart">Thêm vào giỏ</button><button type="button" class="btn-order bo-hide" data-box="up" data-pid="tl-e1" data-price="680000" data-name="The Light 12 · hộp giấy trắng" data-name-en="The Light 12 · white paper box" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-e1.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -1028,9 +1048,10 @@
         <p class="set-tagline" data-i18n="tl-e2.tag">Từ hương thơm đến phút ngâm chân thư giãn — chăm sóc cô thật trọn vẹn.</p>
         <p class="set-includes" data-i18n="tl-e2.inc">Gồm: bình giữ nhiệt TYESO màu hồng, xịt thơm vải Cherry Blossom 50ml, muối hồng ngâm chân thảo dược Laan 100g, kẹp tóc càng cua đỏ chấm bi.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">640.000₫</div>
+        <div class="box-opt" data-delta="40000"><span class="bo-lbl" data-i18n="box.lbl">Chọn hộp:</span><button type="button" class="bo-chip active" data-box="kraft" data-i18n="box.kraft">Hộp kraft</button><button type="button" class="bo-chip" data-box="up" data-i18n="box.up40">Hộp giấy trắng +40k</button></div>
+        <div class="price" data-base="600000">600.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-e2" data-price="640000" data-name="The Light 13" data-name-en="The Light 13" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-box="kraft" data-pid="tl-e2-kraft" data-price="600000" data-name="The Light 13 · hộp kraft" data-name-en="The Light 13 · kraft box" data-i18n="btn.addcart">Thêm vào giỏ</button><button type="button" class="btn-order bo-hide" data-box="up" data-pid="tl-e2" data-price="640000" data-name="The Light 13 · hộp giấy trắng" data-name-en="The Light 13 · white paper box" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-e2.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -1044,9 +1065,10 @@
         <p class="set-tagline" data-i18n="tl-e3.tag">Ngọt ngào và đáng yêu — như cách cô đã thương học trò.</p>
         <p class="set-includes" data-i18n="tl-e3.inc">Gồm: bình giữ nhiệt TYESO màu hồng, xoài sấy phủ socola đen và hạt 120g, kẹp tóc càng cua đỏ chấm bi.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">610.000₫</div>
+        <div class="box-opt" data-delta="40000"><span class="bo-lbl" data-i18n="box.lbl">Chọn hộp:</span><button type="button" class="bo-chip active" data-box="kraft" data-i18n="box.kraft">Hộp kraft</button><button type="button" class="bo-chip" data-box="up" data-i18n="box.up40">Hộp giấy trắng +40k</button></div>
+        <div class="price" data-base="570000">570.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-e3" data-price="610000" data-name="The Light 14" data-name-en="The Light 14" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-box="kraft" data-pid="tl-e3-kraft" data-price="570000" data-name="The Light 14 · hộp kraft" data-name-en="The Light 14 · kraft box" data-i18n="btn.addcart">Thêm vào giỏ</button><button type="button" class="btn-order bo-hide" data-box="up" data-pid="tl-e3" data-price="610000" data-name="The Light 14 · hộp giấy trắng" data-name-en="The Light 14 · white paper box" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-e3.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -1069,9 +1091,10 @@
         <p class="set-tagline" data-i18n="tl-f1.tag">Ấm nóng và dịu nhẹ — một phút thư giãn sau những giờ đứng lớp.</p>
         <p class="set-includes" data-i18n="tl-f1.inc">Gồm: bình giữ nhiệt TYESO màu hồng, túi chườm thảo mộc màu hồng.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">600.000₫</div>
+        <div class="box-opt" data-delta="40000"><span class="bo-lbl" data-i18n="box.lbl">Chọn hộp:</span><button type="button" class="bo-chip active" data-box="kraft" data-i18n="box.kraft">Hộp kraft</button><button type="button" class="bo-chip" data-box="up" data-i18n="box.up40">Hộp giấy trắng +40k</button></div>
+        <div class="price" data-base="560000">560.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-f1" data-price="600000" data-name="The Light 15" data-name-en="The Light 15" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-box="kraft" data-pid="tl-f1-kraft" data-price="560000" data-name="The Light 15 · hộp kraft" data-name-en="The Light 15 · kraft box" data-i18n="btn.addcart">Thêm vào giỏ</button><button type="button" class="btn-order bo-hide" data-box="up" data-pid="tl-f1" data-price="600000" data-name="The Light 15 · hộp giấy trắng" data-name-en="The Light 15 · white paper box" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-f1.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -1085,9 +1108,10 @@
         <p class="set-tagline" data-i18n="tl-f2.tag">Tông kem dịu mắt, thảo mộc ấm nóng — giản dị mà chu đáo.</p>
         <p class="set-includes" data-i18n="tl-f2.inc">Gồm: bình giữ nhiệt TYESO màu kem có quai, túi chườm thảo mộc màu be.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">600.000₫</div>
+        <div class="box-opt" data-delta="40000"><span class="bo-lbl" data-i18n="box.lbl">Chọn hộp:</span><button type="button" class="bo-chip active" data-box="kraft" data-i18n="box.kraft">Hộp kraft</button><button type="button" class="bo-chip" data-box="up" data-i18n="box.up40">Hộp giấy trắng +40k</button></div>
+        <div class="price" data-base="560000">560.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-f2" data-price="600000" data-name="The Light 16" data-name-en="The Light 16" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-box="kraft" data-pid="tl-f2-kraft" data-price="560000" data-name="The Light 16 · hộp kraft" data-name-en="The Light 16 · kraft box" data-i18n="btn.addcart">Thêm vào giỏ</button><button type="button" class="btn-order bo-hide" data-box="up" data-pid="tl-f2" data-price="600000" data-name="The Light 16 · hộp giấy trắng" data-name-en="The Light 16 · white paper box" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-f2.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -1101,9 +1125,10 @@
         <p class="set-tagline" data-i18n="tl-f3.tag">Một phút nghỉ cho đôi mắt đã thức khuya vì học trò.</p>
         <p class="set-includes" data-i18n="tl-f3.inc">Gồm: gối chườm mắt thảo mộc “be you!” màu be, túi chườm thảo mộc màu be, nến thơm Pear &amp; Freesia.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">470.000₫</div>
+        <div class="box-opt" data-delta="40000"><span class="bo-lbl" data-i18n="box.lbl">Chọn hộp:</span><button type="button" class="bo-chip active" data-box="kraft" data-i18n="box.kraft">Hộp kraft</button><button type="button" class="bo-chip" data-box="up" data-i18n="box.up40">Hộp giấy trắng +40k</button></div>
+        <div class="price" data-base="430000">430.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-f3" data-price="470000" data-name="The Light 17" data-name-en="The Light 17" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-box="kraft" data-pid="tl-f3-kraft" data-price="430000" data-name="The Light 17 · hộp kraft" data-name-en="The Light 17 · kraft box" data-i18n="btn.addcart">Thêm vào giỏ</button><button type="button" class="btn-order bo-hide" data-box="up" data-pid="tl-f3" data-price="470000" data-name="The Light 17 · hộp giấy trắng" data-name-en="The Light 17 · white paper box" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-f3.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -1117,9 +1142,10 @@
         <p class="set-tagline" data-i18n="tl-f4.tag">Sắc hồng dịu dàng và hương thảo mộc — xoa dịu đôi mắt mỏi.</p>
         <p class="set-includes" data-i18n="tl-f4.inc">Gồm: gối chườm mắt thảo mộc “be you!” màu hồng, túi chườm thảo mộc màu hồng, nến thơm Pear &amp; Freesia.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">470.000₫</div>
+        <div class="box-opt" data-delta="40000"><span class="bo-lbl" data-i18n="box.lbl">Chọn hộp:</span><button type="button" class="bo-chip active" data-box="kraft" data-i18n="box.kraft">Hộp kraft</button><button type="button" class="bo-chip" data-box="up" data-i18n="box.up40">Hộp giấy trắng +40k</button></div>
+        <div class="price" data-base="430000">430.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-f4" data-price="470000" data-name="The Light 18" data-name-en="The Light 18" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-box="kraft" data-pid="tl-f4-kraft" data-price="430000" data-name="The Light 18 · hộp kraft" data-name-en="The Light 18 · kraft box" data-i18n="btn.addcart">Thêm vào giỏ</button><button type="button" class="btn-order bo-hide" data-box="up" data-pid="tl-f4" data-price="470000" data-name="The Light 18 · hộp giấy trắng" data-name-en="The Light 18 · white paper box" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-f4.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -1133,9 +1159,10 @@
         <p class="set-tagline" data-i18n="tl-f5.tag">Một buổi spa nhỏ tại nhà — chăm sóc từ đôi mắt đến đôi chân.</p>
         <p class="set-includes" data-i18n="tl-f5.inc">Gồm: gối chườm mắt thảo mộc “be you!” màu hồng, túi chườm thảo mộc màu hồng, muối hồng ngâm chân thảo dược Laan 100g, nến thơm hũ thạch cao thủ công.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">560.000₫</div>
+        <div class="box-opt" data-delta="40000"><span class="bo-lbl" data-i18n="box.lbl">Chọn hộp:</span><button type="button" class="bo-chip active" data-box="kraft" data-i18n="box.kraft">Hộp kraft</button><button type="button" class="bo-chip" data-box="up" data-i18n="box.up40">Hộp giấy trắng +40k</button></div>
+        <div class="price" data-base="520000">520.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-f5" data-price="560000" data-name="The Light 19" data-name-en="The Light 19" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-box="kraft" data-pid="tl-f5-kraft" data-price="520000" data-name="The Light 19 · hộp kraft" data-name-en="The Light 19 · kraft box" data-i18n="btn.addcart">Thêm vào giỏ</button><button type="button" class="btn-order bo-hide" data-box="up" data-pid="tl-f5" data-price="560000" data-name="The Light 19 · hộp giấy trắng" data-name-en="The Light 19 · white paper box" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-f5.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -1149,9 +1176,10 @@
         <p class="set-tagline" data-i18n="tl-f6.tag">Một buổi tối thư thái, gột rửa mệt nhọc sau ngày dài.</p>
         <p class="set-includes" data-i18n="tl-f6.inc">Gồm: bộ tắm Bath: khăn thêu chữ Bath, bông tắm, đá kỳ chân, bàn chải gỗ, lược gỗ massage, muối hồng ngâm chân thảo dược Laan 100g.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">420.000₫</div>
+        <div class="box-opt" data-delta="40000"><span class="bo-lbl" data-i18n="box.lbl">Chọn hộp:</span><button type="button" class="bo-chip active" data-box="kraft" data-i18n="box.kraft">Hộp kraft</button><button type="button" class="bo-chip" data-box="up" data-i18n="box.up40">Hộp giấy trắng +40k</button></div>
+        <div class="price" data-base="380000">380.000₫</div>
         <div class="card-actions">
-          <button type="button" class="btn-order" data-pid="tl-f6" data-price="420000" data-name="The Light 20" data-name-en="The Light 20" data-i18n="btn.addcart">Thêm vào giỏ</button>
+          <button type="button" class="btn-order" data-box="kraft" data-pid="tl-f6-kraft" data-price="380000" data-name="The Light 20 · hộp kraft" data-name-en="The Light 20 · kraft box" data-i18n="btn.addcart">Thêm vào giỏ</button><button type="button" class="btn-order bo-hide" data-box="up" data-pid="tl-f6" data-price="420000" data-name="The Light 20 · hộp giấy trắng" data-name-en="The Light 20 · white paper box" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-f6.html" data-i18n="btn.detail">Xem chi tiết</a>
         </div>
       </div>
@@ -1174,7 +1202,8 @@
         <p class="set-tagline" data-i18n="tl-d3.tag">Một ngọn nến nhỏ — lời cảm ơn giản dị mà ấm áp.</p>
         <p class="set-includes" data-i18n="tl-d3.inc">Gồm: nến thơm hũ thạch cao thủ công.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">170.000₫</div>
+        
+        <div class="price" data-base="170000">170.000₫</div>
         <div class="card-actions">
           <button type="button" class="btn-order" data-pid="tl-d3" data-price="170000" data-name="The Light 21" data-name-en="The Light 21" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-d3.html" data-i18n="btn.detail">Xem chi tiết</a>
@@ -1190,7 +1219,8 @@
         <p class="set-tagline" data-i18n="tl-g1.tag">Một ngọn nến nhỏ — như cách thầy cô đã thắp sáng bao điều trong ta.</p>
         <p class="set-includes" data-i18n="tl-g1.inc">Gồm: nến thơm Tobacco &amp; Vanilla (nhỏ).</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">180.000₫</div>
+        
+        <div class="price" data-base="180000">180.000₫</div>
         <div class="card-actions">
           <button type="button" class="btn-order" data-pid="tl-g1" data-price="180000" data-name="The Light 22" data-name-en="The Light 22" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-g1.html" data-i18n="btn.detail">Xem chi tiết</a>
@@ -1206,7 +1236,8 @@
         <p class="set-tagline" data-i18n="tl-g2.tag">Hương lê và hoa lan Nam Phi nhẹ nhàng — một lời cảm ơn dịu dàng.</p>
         <p class="set-includes" data-i18n="tl-g2.inc">Gồm: nến thơm Pear &amp; Freesia (nhỏ).</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">180.000₫</div>
+        
+        <div class="price" data-base="180000">180.000₫</div>
         <div class="card-actions">
           <button type="button" class="btn-order" data-pid="tl-g2" data-price="180000" data-name="The Light 23" data-name-en="The Light 23" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-g2.html" data-i18n="btn.detail">Xem chi tiết</a>
@@ -1222,7 +1253,8 @@
         <p class="set-tagline" data-i18n="tl-g3.tag">Nhẹ nhàng tô điểm cho người luôn tận tâm với từng bài giảng.</p>
         <p class="set-includes" data-i18n="tl-g3.inc">Gồm: khăn lụa 70×70cm, dây buộc tóc vải, lược gỗ massage.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">180.000₫</div>
+        
+        <div class="price" data-base="180000">180.000₫</div>
         <div class="card-actions">
           <button type="button" class="btn-order" data-pid="tl-g3" data-price="180000" data-name="The Light 24" data-name-en="The Light 24" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-g3.html" data-i18n="btn.detail">Xem chi tiết</a>
@@ -1238,7 +1270,8 @@
         <p class="set-tagline" data-i18n="tl-g4.tag">Một phút nghỉ ngơi cho đôi mắt đã thức khuya vì học trò.</p>
         <p class="set-includes" data-i18n="tl-g4.inc">Gồm: túi chườm mắt thảo mộc “be you!”.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">260.000₫</div>
+        
+        <div class="price" data-base="260000">260.000₫</div>
         <div class="card-actions">
           <button type="button" class="btn-order" data-pid="tl-g4" data-price="260000" data-name="The Light 25" data-name-en="The Light 25" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-g4.html" data-i18n="btn.detail">Xem chi tiết</a>
@@ -1254,7 +1287,8 @@
         <p class="set-tagline" data-i18n="tl-g5.tag">Vị ngọt thanh của hoa chôm chôm — ngọt như những lời dạy ta nhớ mãi.</p>
         <p class="set-includes" data-i18n="tl-g5.inc">Gồm: mật ong hoa chôm chôm Miele 260g.</p>
         <p class="set-gift" data-i18n="gift.card">+ Tặng kèm nến tri ân 20.11</p>
-        <div class="price">260.000₫</div>
+        
+        <div class="price" data-base="260000">260.000₫</div>
         <div class="card-actions">
           <button type="button" class="btn-order" data-pid="tl-g5" data-price="260000" data-name="The Light 26" data-name-en="The Light 26" data-i18n="btn.addcart">Thêm vào giỏ</button>
           <a class="btn-detail" href="the-light-g5.html" data-i18n="btn.detail">Xem chi tiết</a>
@@ -1752,6 +1786,10 @@
     'grp.spa.d': 'Herbal compresses, eye pillows and bath sets — a gift that lets teachers rest after long days.',
     'grp.nho.t': 'Little Gifts Under 300k',
     'grp.nho.d': 'Small, neat and lovely — perfect for a class to give a homeroom or subject teacher together.',
+    'box.lbl': 'Box:',
+    'box.up40': 'White paper box +40k',
+    'box.up60': 'Large rattan box +60k',
+    'box.kraft': 'Kraft box',
     'loose.p': 'Prefer to build your own gift box? Pick individual items below and message us to put together your own set.',
 
     'l.plant': 'Mini Succulent Gift Box',
@@ -2367,6 +2405,24 @@
     });
   }
   document.querySelectorAll('.pf-chip').forEach(function(ch){ ch.addEventListener('click', function(){ setTimeout(syncGroups, 0); }); });
+})();
+</script>
+<script>
+(function(){
+  function fmt(n){ return n.toLocaleString('vi-VN').replace(/,/g,'.') + '₫'; }
+  document.querySelectorAll('.box-opt').forEach(function(opt){
+    var scope = opt.closest('.card') || opt.closest('.product-info') || document;
+    opt.querySelectorAll('.bo-chip').forEach(function(chip){
+      chip.addEventListener('click', function(ev){
+        ev.stopPropagation();
+        var box = chip.getAttribute('data-box');
+        opt.querySelectorAll('.bo-chip').forEach(function(c){ c.classList.toggle('active', c === chip); });
+        scope.querySelectorAll('.btn-order[data-box]').forEach(function(b){ b.classList.toggle('bo-hide', b.getAttribute('data-box') !== box); });
+        var pr = scope.querySelector('.price[data-base]');
+        if(pr){ var base = parseInt(pr.getAttribute('data-base'),10); var delta = parseInt(opt.getAttribute('data-delta'),10) || 0; pr.textContent = fmt(box === 'up' ? base + delta : base); }
+      });
+    });
+  });
 })();
 </script>
 </body>

@@ -229,6 +229,14 @@
   .nav-arrow:hover{background:#0d1626!important;}
   .corporate-inner{background:radial-gradient(700px 300px at 50% 0%,rgba(236,190,110,.10),transparent 70%),linear-gradient(135deg,#16243d,#0f1a2d)!important;}
   .cta-band .btn-primary:hover{background:#192842!important;}
+
+  .box-opt{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px 0 2px;}
+  .box-opt .bo-lbl{font-size:.72rem;letter-spacing:.08em;color:var(--muted);margin-right:2px;}
+  .bo-chip{font:inherit;font-size:.74rem;padding:5px 11px;border-radius:999px;border:1px solid rgba(217,184,120,.35);background:transparent;color:var(--plum);cursor:pointer;transition:all .2s;}
+  .bo-chip.active{background:rgba(217,184,120,.16);border-color:var(--gold);color:var(--gold-bright);}
+  .box-opt-detail{margin:4px 0 14px;}
+  .box-opt-detail .bo-chip{font-size:.82rem;padding:7px 14px;}
+  .btn-order.bo-hide{display:none!important;}
 </style>
 </head>
 <body>
@@ -258,13 +266,14 @@
     <div class="cat">Dành tặng cô giáo hiền dịu, yêu đồ ngọt</div>
     <h1>The Light 14</h1>
     <div class="sub-name">Ngọt ngào</div>
-    <div class="price-row"><span class="price">610.000₫</span><span class="vat">Giá chưa bao gồm VAT</span></div>
+    <div class="price-row"><span class="price" data-base="570000">570.000₫</span><span class="vat">Giá chưa bao gồm VAT</span></div>
+    <div class="box-opt box-opt-detail" data-delta="40000"><span class="bo-lbl" data-i18n="box.lbl">Chọn hộp:</span><button type="button" class="bo-chip active" data-box="kraft" data-i18n="box.kraft">Hộp kraft</button><button type="button" class="bo-chip" data-box="up" data-i18n="box.up40">Hộp giấy trắng +40k</button></div>
     <div class="bulk-note">
       <span><strong>Chiết khấu 10–20%</strong> theo số lượng: 10% từ 20 phần · 15% từ 50 phần · 20% từ 100 phần.</span>
       <a href="https://zalo.me/0399995729" target="_blank" rel="noopener">Liên hệ tư vấn →</a>
     </div>
     <div class="cta-row">
-      <button type="button" class="btn-order" data-pid="tl-e3" data-price="610000" data-name="The Light 14" data-name-en="The Light 14">Thêm vào giỏ</button>
+      <button type="button" class="btn-order" data-box="kraft" data-pid="tl-e3-kraft" data-price="570000" data-name="The Light 14 · hộp kraft" data-name-en="The Light 14 · kraft box">Thêm vào giỏ</button><button type="button" class="btn-order bo-hide" data-box="up" data-pid="tl-e3" data-price="610000" data-name="The Light 14 · hộp giấy trắng" data-name-en="The Light 14 · white paper box">Thêm vào giỏ</button>
       <a class="btn-call" href="https://zalo.me/0399995729" target="_blank" rel="noopener">Liên hệ Zalo</a>
       <a class="btn-call" href="tel:0399995729">Gọi điện</a>
     </div>
@@ -279,7 +288,7 @@
       <li>Kẹp tóc càng cua đỏ chấm bi</li>
         </ul>
         <div class="gift-box"><div class="gift-title">Quà tặng kèm: Ngọn nến tri ân</div><p>Mỗi set quà The Light đều có một ngọn nến nhỏ Laan gửi tặng — lời tri ân Laan muốn gửi đến những người thầy, người cô nhân dịp 20.11. Như ngọn nến lặng lẽ tỏa sáng, thầy cô đã thắp lên trong mỗi chúng ta ánh sáng của tri thức và lòng tử tế.</p></div>
-        <div class="box-note">Đóng gói: hộp giấy trắng thắt nơ, lót giấy rơm</div>
+        <div class="box-note">Đóng gói: hộp kraft thắt nơ, lót giấy rơm — hoặc hộp giấy trắng thắt nơ (+40.000₫)</div>
       </div>
     </details>
   </div>
@@ -346,8 +355,7 @@
     setTimeout(function(){ t.classList.remove('show'); setTimeout(function(){ t.remove(); }, 300); }, 2200);
   }
   updateBadge();
-  var btn = document.querySelector('.btn-order[data-pid]');
-  if(btn){
+  document.querySelectorAll('.btn-order[data-pid]').forEach(function(btn){
     btn.addEventListener('click', function(){
       var pid = btn.getAttribute('data-pid');
       var cart = loadCart();
@@ -359,7 +367,25 @@
       updateBadge();
       showToast('Đã thêm vào giỏ hàng');
     });
-  }
+  });
+})();
+</script>
+<script>
+(function(){
+  function fmt(n){ return n.toLocaleString('vi-VN').replace(/,/g,'.') + '₫'; }
+  document.querySelectorAll('.box-opt').forEach(function(opt){
+    var scope = opt.closest('.card') || opt.closest('.product-info') || document;
+    opt.querySelectorAll('.bo-chip').forEach(function(chip){
+      chip.addEventListener('click', function(ev){
+        ev.stopPropagation();
+        var box = chip.getAttribute('data-box');
+        opt.querySelectorAll('.bo-chip').forEach(function(c){ c.classList.toggle('active', c === chip); });
+        scope.querySelectorAll('.btn-order[data-box]').forEach(function(b){ b.classList.toggle('bo-hide', b.getAttribute('data-box') !== box); });
+        var pr = scope.querySelector('.price[data-base]');
+        if(pr){ var base = parseInt(pr.getAttribute('data-base'),10); var delta = parseInt(opt.getAttribute('data-delta'),10) || 0; pr.textContent = fmt(box === 'up' ? base + delta : base); }
+      });
+    });
+  });
 })();
 </script>
 </body>
