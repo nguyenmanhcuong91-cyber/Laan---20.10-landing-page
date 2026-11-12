@@ -2,8 +2,9 @@
 
 Landing page bán hàng theo mùa cho **Laan Plant & Gift Store**.
 
-- **Trang chủ (hiện tại):** 20/11 Ngày Nhà giáo Việt Nam — "The Light · Ánh sáng dẫn lối".
-- **Trang phụ:** `20-10/` — bộ sưu tập 20/10 "Blossom Her" (HER, beyond ordinary).
+- **Trang chủ (hiện tại):** Quà Tết Đinh Mùi 2027 — "Mộc Hoa Các" (5 bộ quà, đặt trước, báo giá doanh nghiệp).
+- **Trang phụ:** `20-11/` — 20/11 "The Light"; `20-10/` — 20/10 "Blossom Her".
+- File `the-light-*.html`, `blossom-her-*.html` ở thư mục gốc chỉ là trang chuyển hướng sang `20-11/` để link cũ vẫn mở được.
 
 🔗 **Bản đang chạy:** https://laan.info
 
@@ -11,7 +12,8 @@ Landing page bán hàng theo mùa cho **Laan Plant & Gift Store**.
 
 | File | Mô tả |
 |------|-------|
-| `index.html`, `blossom-her-NN.html`, `img/` | Trang chủ 20/11 "The Light": trang chính, 15 trang chi tiết set, ảnh tách thành file riêng. |
+| `index.html`, `img/tet/` | Trang chủ Tết 2027 "Mộc Hoa Các": dữ liệu 5 set nằm trong mảng `SETS` cuối file (sửa giá/thành phần ở đó). Giỏ hàng `laan_cart_tet2027`, đơn gửi qua Web3Forms. |
+| `20-11/` | Trang 20/11 "The Light" (dùng chung ảnh ở `img/`). |
 | `20-10/` | Trang 20/10 "Blossom Her" (trang chính + 15 trang chi tiết, ảnh nhúng base64) — mở tại `/20-10/`. |
 
 ## Xem thử tại máy

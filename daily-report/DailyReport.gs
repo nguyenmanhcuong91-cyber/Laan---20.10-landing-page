@@ -36,6 +36,13 @@ var CONFIG = {
   // Email nhận báo cáo mỗi ngày
   RECIPIENT_EMAIL: 'REPLACE_EMAIL@example.com',
 
+  // Facebook Ads: ID tài khoản quảng cáo (chỉ số, không có "act_") và token đọc số liệu.
+  // Token: business.facebook.com/settings > Người dùng hệ thống > tạo > gán tài khoản quảng cáo
+  // (quyền xem) > Tạo mã > chọn quyền ads_read. Để trống token thì bỏ qua mục Facebook Ads.
+  META_AD_ACCOUNT_ID: '1999895177514570',
+  META_ACCESS_TOKEN: 'REPLACE_META_ACCESS_TOKEN',
+  META_API_VERSION: 'v23.0',
+
   SITE_NAME: 'Laan — 20.10 Landing (laan.info)',
   TIMEZONE: 'Asia/Ho_Chi_Minh'
 };
@@ -47,7 +54,8 @@ function sendDailyReport() {
 
   var ga = fetchGA4Summary_();
   var clarity = fetchClaritySummary_();
-  var html = buildEmailHtml_(dateLabel, ga, clarity);
+  var meta = fetchMetaAds_();
+  var html = buildEmailHtml_(dateLabel, ga, clarity, meta);
 
   MailApp.sendEmail({
     to: CONFIG.RECIPIENT_EMAIL,
@@ -157,6 +165,43 @@ function fetchClaritySummary_() {
   }
 }
 
+/* ===================== FACEBOOK ADS (từng quảng cáo) ===================== */
+// Lấy số liệu HÔM QUA của từng quảng cáo qua Marketing API (chỉ đọc).
+function fetchMetaAds_() {
+  if (!CONFIG.META_ACCESS_TOKEN || CONFIG.META_ACCESS_TOKEN.indexOf('REPLACE') === 0) {
+    return { skipped: true };
+  }
+  var fields = ['ad_name', 'campaign_name', 'spend', 'impressions', 'reach',
+    'inline_link_clicks', 'inline_link_click_ctr', 'actions'].join(',');
+  var url = 'https://graph.facebook.com/' + CONFIG.META_API_VERSION + '/act_' + CONFIG.META_AD_ACCOUNT_ID +
+    '/insights?level=ad&date_preset=yesterday&limit=100&fields=' + fields;
+  try {
+    var resp = UrlFetchApp.fetch(url, {
+      headers: { Authorization: 'Bearer ' + CONFIG.META_ACCESS_TOKEN },
+      muteHttpExceptions: true
+    });
+    var body = JSON.parse(resp.getContentText());
+    if (resp.getResponseCode() !== 200) {
+      return { error: 'HTTP ' + resp.getResponseCode() + ' — ' + ((body.error && body.error.message) || '').slice(0, 300) };
+    }
+    var ads = (body.data || []).map(function (r) {
+      var msgs = 0;
+      (r.actions || []).forEach(function (a) {
+        if (a.action_type === 'onsite_conversion.messaging_conversation_started_7d') msgs = Number(a.value);
+      });
+      return {
+        name: r.ad_name, campaign: r.campaign_name,
+        spend: Number(r.spend || 0), impressions: Number(r.impressions || 0), reach: Number(r.reach || 0),
+        clicks: Number(r.inline_link_clicks || 0), ctr: Number(r.inline_link_click_ctr || 0), msgs: msgs
+      };
+    }).filter(function (a) { return a.spend > 0 || a.impressions > 0; });
+    ads.sort(function (a, b) { return b.spend - a.spend; });
+    return { ads: ads };
+  } catch (e) {
+    return { error: String(e) };
+  }
+}
+
 /* ===================== DỊCH SỐ LIỆU CLARITY SANG TIẾNG VIỆT ===================== */
 // Trả về [nhãn tiếng Việt, giá trị dễ đọc] hoặc null nếu không có dữ liệu để hiển thị.
 var CLARITY_LABELS_ = {
@@ -228,7 +273,7 @@ function formatClarityBlock_(block) {
 
 /* ===================== TẠO NỘI DUNG EMAIL ===================== */
 
-function buildEmailHtml_(dateLabel, ga, clarity) {
+function buildEmailHtml_(dateLabel, ga, clarity, meta) {
   function n(v) { return (v === undefined || v === null) ? '—' : v; }
   function pct(v) { return (v === undefined || v === null) ? '—' : (Number(v) * 100).toFixed(1) + '%'; }
   function sec(v) { return (v === undefined || v === null) ? '—' : Math.round(Number(v)) + ' giây'; }
@@ -290,6 +335,35 @@ function buildEmailHtml_(dateLabel, ga, clarity) {
     }
   }
 
+  var metaHtml = '';
+  if (meta && !meta.skipped) {
+    if (meta.error) {
+      metaHtml = '<p style="color:#b3453b;font-size:13px;">Không lấy được dữ liệu Facebook Ads: ' + meta.error + '</p>';
+    } else if (!meta.ads.length) {
+      metaHtml = '<p style="color:#9a7d88;font-size:13px;">Hôm qua không có quảng cáo nào chi tiêu.</p>';
+    } else {
+      var th = 'padding:5px 6px;border-bottom:2px solid #f1e7ea;text-align:right;font-size:11px;color:#7a5c68;';
+      var td = 'padding:5px 6px;border-bottom:1px solid #f1e7ea;text-align:right;font-size:12px;';
+      var tot = { spend: 0, reach: 0, clicks: 0, msgs: 0 };
+      var rowsHtml = meta.ads.map(function (a) {
+        tot.spend += a.spend; tot.reach += a.reach; tot.clicks += a.clicks; tot.msgs += a.msgs;
+        return '<tr><td style="' + td + 'text-align:left;">' + a.name + '<br><span style="color:#9a7d88;font-size:11px;">' + a.campaign + '</span></td>'
+          + '<td style="' + td + '">' + vnd(a.spend) + '</td><td style="' + td + '">' + a.reach + '</td>'
+          + '<td style="' + td + '">' + a.clicks + '</td><td style="' + td + '">' + a.ctr.toFixed(2) + '%</td>'
+          + '<td style="' + td + 'font-weight:600;color:#9c3b54;">' + a.msgs + '</td>'
+          + '<td style="' + td + '">' + (a.msgs ? vnd(Math.round(a.spend / a.msgs)) : '—') + '</td></tr>';
+      }).join('');
+      metaHtml = '<table style="width:100%;border-collapse:collapse;"><tr><th style="' + th + 'text-align:left;">Quảng cáo</th>'
+        + '<th style="' + th + '">Chi tiêu</th><th style="' + th + '">Tiếp cận</th><th style="' + th + '">Click link</th>'
+        + '<th style="' + th + '">CTR</th><th style="' + th + '">Tin nhắn</th><th style="' + th + '">Chi phí/tin nhắn</th></tr>'
+        + rowsHtml
+        + '<tr><td style="' + td + 'text-align:left;font-weight:700;">Tổng</td><td style="' + td + 'font-weight:700;">' + vnd(tot.spend) + '</td>'
+        + '<td style="' + td + '">—</td><td style="' + td + 'font-weight:700;">' + tot.clicks + '</td><td style="' + td + '">—</td>'
+        + '<td style="' + td + 'font-weight:700;">' + tot.msgs + '</td><td style="' + td + 'font-weight:700;">' + (tot.msgs ? vnd(Math.round(tot.spend / tot.msgs)) : '—') + '</td></tr></table>'
+        + '<p style="color:#9a7d88;font-size:11px;margin-top:6px;">"Tin nhắn" = lượt bắt đầu cuộc trò chuyện. Chỉ tính quảng cáo có chi tiêu hôm qua.</p>';
+    }
+  }
+
   function h3(t) { return '<h3 style="border-bottom:1px solid #eee;padding-bottom:6px;margin:26px 0 10px;color:#3a232c;font-family:Georgia,serif;">' + t + '</h3>'; }
 
   return '<div style="font-family:Arial,Helvetica,sans-serif;max-width:640px;margin:0 auto;color:#3a232c;">'
@@ -300,6 +374,7 @@ function buildEmailHtml_(dateLabel, ga, clarity) {
     + h3('Doanh thu') + revenueTable
     + h3('Nguồn truy cập (top 5)') + sourcesHtml
     + h3('Thiết bị') + devicesHtml
+    + (metaHtml ? h3('Facebook Ads — số liệu từng quảng cáo') + metaHtml : '')
     + h3('Hành vi thao tác (Microsoft Clarity)') + clarityHtml + clarityNote
     + '<p style="color:#9a7d88;font-size:12px;margin-top:30px;">Email tự động mỗi ngày. Xem chi tiết đầy đủ tại analytics.google.com và clarity.microsoft.com.</p>'
     + '</div>';
