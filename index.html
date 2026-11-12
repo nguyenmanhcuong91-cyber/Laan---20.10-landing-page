@@ -600,6 +600,7 @@
         { p:779000, items:['Hạt điều bơ mật ong','Macca','Khô gà lá chanh','Xoài sấy dẻo',W500,DE] },
         { p:889000, items:['Hạt điều bơ mật ong','Macca','Khô gà lá chanh','Hoa atiso sấy dẻo',FUS,DE] } ] },
     { id:'cam-dinh', name:'Cẩm Đình', box:'Hộp gỗ nắp khóa bọc mây', img:'img/tet/cam-dinh.webp', illus:false,
+      extra:[{ src:'img/tet/cam-dinh-open.webp', alt:'Hộp gỗ Cẩm Đình mở nắp, bên trong là các hộp giấy ép kim' }],
       wish:'“Sân đình rợp gấm, xuân về đầy nhà.”',
       desc:'Rương gỗ nắp bọc mây, khóa đồng nhỏ, gợi nhớ chiếc tráp ngày xưa. Hộp gỗ dùng lâu dài, càng dùng càng đẹp.',
       tiers:[
@@ -649,11 +650,13 @@
     return '<article class="set" id="'+s.id+'" data-set="'+s.id+'">'+
       '<div class="gal"><div class="slides">'+
         '<figure><img src="'+s.img.replace('.webp','-model.webp')+'" alt="Người mẫu cầm hộp quà '+esc(s.name)+'" loading="lazy"></figure>'+
-        '<figure><img src="'+s.img+'" alt="Bộ quà '+esc(s.name)+' bày cùng đồ ăn và rượu" loading="lazy"></figure></div>'+
+        '<figure><img src="'+s.img+'" alt="Bộ quà '+esc(s.name)+' bày cùng đồ ăn và rượu" loading="lazy"></figure>'+
+        (s.extra||[]).map(function(x){ return '<figure><img src="'+x.src+'" alt="'+esc(x.alt)+'" loading="lazy"></figure>'; }).join('')+'</div>'+
         '<button type="button" class="nav-a prev" aria-label="Ảnh trước">‹</button><button type="button" class="nav-a next" aria-label="Ảnh sau">›</button>'+
-        '<span class="cnt">1 / 2</span>'+
+        '<span class="cnt">1 / '+(2+(s.extra||[]).length)+'</span>'+
         '<div class="thumbs"><button type="button" class="on" data-k="0" aria-label="Ảnh người mẫu cầm hộp"><img src="'+s.img.replace('.webp','-model.webp')+'" alt="" loading="lazy"></button>'+
-        '<button type="button" data-k="1" aria-label="Ảnh trọn bộ quà bày tiệc"><img src="'+s.img+'" alt="" loading="lazy"></button>'+'</div></div>'+
+        '<button type="button" data-k="1" aria-label="Ảnh trọn bộ quà bày tiệc"><img src="'+s.img+'" alt="" loading="lazy"></button>'+
+        (s.extra||[]).map(function(x,j){ return '<button type="button" data-k="'+(2+j)+'" aria-label="'+esc(x.alt)+'"><img src="'+x.src+'" alt="" loading="lazy"></button>'; }).join('')+'</div></div>'+
       '<div class="set-body">'+
         '<div class="num">0'+(si+1)+' / 05</div><h2>'+esc(s.name)+'</h2><div class="box">'+esc(s.box)+'</div>'+
         '<p class="wish">'+esc(s.wish)+'</p><p class="desc">'+esc(s.desc)+'</p>'+
@@ -670,11 +673,13 @@
   /* Ảnh vuốt */
   document.querySelectorAll('.gal').forEach(function(g){
     var sl = g.querySelector('.slides'), dots = g.querySelectorAll('.thumbs button'), cnt = g.querySelector('.cnt');
-    function go(k){ sl.scrollTo({left: k*sl.clientWidth, behavior:'smooth'}); }
+    var n = dots.length;
+    function cur(){ return Math.round(sl.scrollLeft/sl.clientWidth); }
+    function go(k){ k=(k+n)%n; sl.scrollTo({left: k*sl.clientWidth, behavior:'smooth'}); }
     dots.forEach(function(d){ d.addEventListener('click', function(){ go(+d.dataset.k); }); });
-    g.querySelector('.prev').addEventListener('click', function(){ go(0); });
-    g.querySelector('.next').addEventListener('click', function(){ go(1); });
-    sl.addEventListener('scroll', function(){ var k = Math.round(sl.scrollLeft/sl.clientWidth); dots.forEach(function(d,j){ d.classList.toggle('on', j===k); }); cnt.textContent=(k+1)+' / 2'; }, {passive:true});
+    g.querySelector('.prev').addEventListener('click', function(){ go(cur()-1); });
+    g.querySelector('.next').addEventListener('click', function(){ go(cur()+1); });
+    sl.addEventListener('scroll', function(){ var k = Math.round(sl.scrollLeft/sl.clientWidth); dots.forEach(function(d,j){ d.classList.toggle('on', j===k); }); cnt.textContent=(k+1)+' / '+n; }, {passive:true});
   });
 
   function showTier(art, i){
