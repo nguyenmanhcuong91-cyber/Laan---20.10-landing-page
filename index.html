@@ -188,6 +188,40 @@
   .mq h3{font-size:23px;color:var(--gold-soft);margin-top:14px}
   .mq h3::before{content:"";display:block;width:30px;height:1px;background:var(--gold);margin:0 auto 8px}
   .mq p{font-size:14px;color:var(--muted)}
+  /* Vang laRuVie: chiều cao chai theo tỷ lệ thật (500 ml = H, 200 ml = H/2) */
+  .wn{position:relative;max-width:980px;margin:64px auto 0;padding-top:48px;border-top:1px solid var(--line);text-align:center;--H:300px}
+  .wn-title{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(34px,5vw,48px);color:var(--gold-soft);line-height:1.1;margin:8px 0 10px}
+  .wn-title em{color:var(--gold);font-style:italic}
+  .wn .sec-lead{margin:0 auto}
+  .wn-hero{display:block;width:100%;aspect-ratio:16/8;object-fit:cover;object-position:50% 55%;border-radius:18px;border:1px solid var(--line);margin:32px 0 40px}
+  .wn-grid{display:grid;grid-template-columns:1.5fr 1fr .85fr .85fr;gap:20px;align-items:start}
+  .wc{display:flex;flex-direction:column;align-items:center;min-width:0}
+  .wst{height:calc(var(--H) + 6px);width:100%;display:flex;align-items:flex-end;justify-content:center;position:relative}
+  .wst::after{content:"";position:absolute;bottom:-4px;left:14%;right:14%;height:14px;border-radius:50%;background:radial-gradient(ellipse,rgba(0,0,0,.65),rgba(0,0,0,0) 70%)}
+  .wst img{position:relative;z-index:1;max-width:100%;width:auto;object-fit:contain}
+  .w-b500 .wst img,.w-fus .wst img{height:var(--H)}
+  .w-b200 .wst img{height:calc(var(--H) / 2)}
+  .w-duo .wst img{height:calc(var(--H) * .625)}
+  .wc h4{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--gold-soft);margin-top:18px;line-height:1.15}
+  .wc h4::before{content:"";display:block;width:30px;height:1px;background:var(--gold);margin:0 auto 8px}
+  .wc em{font-style:normal;font-size:12px;letter-spacing:.22em;color:var(--gold);margin:4px 0 6px}
+  .wc p{font-size:14px;color:var(--muted);line-height:1.5;max-width:220px}
+  @media(max-width:700px){
+    .wn{--H:190px;margin-top:48px;padding-top:36px}
+    .wn-hero{aspect-ratio:4/3;margin:24px 0 28px}
+    .wn-grid{grid-template-columns:1fr 1fr;gap:28px 12px}
+    .wc h4{font-size:18px}.wc p{font-size:12.5px}
+  }
+  /* Bậc chiết khấu doanh nghiệp */
+  .ck{margin-top:28px}
+  .ck-h{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+  .ck-h small{letter-spacing:.04em;text-transform:none;color:var(--muted);font-size:12px}
+  .ck-g{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .ck-g div{border:1px solid rgba(230,207,156,.45);border-radius:14px;padding:14px 8px;text-align:center;background:rgba(122,18,22,.35)}
+  .ck-g span{display:block;font-size:12.5px;color:var(--gold-soft)}
+  .ck-g b{display:block;font-family:'Cormorant Garamond',serif;font-variant-numeric:lining-nums;font-size:34px;font-weight:600;color:var(--gold-soft);line-height:1.1;margin-top:4px}
+  .ck p{font-size:13px;color:var(--muted);margin-top:10px}
+  @media(max-width:700px){ .ck-g{grid-template-columns:repeat(2,1fr)} }
   .mq-more{position:relative;max-width:900px;margin:40px auto 0;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
   .mq-more span{display:block;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
   .mq-more b{color:var(--ink);font-weight:500}
@@ -430,7 +464,18 @@
       <div class="mq"><div class="mq-bowl"><img src="img/tet/food/kho-ga.webp" alt="Khô gà lá chanh" loading="lazy"></div><h3>Khô gà lá chanh</h3><p>Cay nhẹ, thơm lá chanh</p></div>
       <div class="mq"><div class="mq-bowl"><img src="img/tet/food/tra-lai.webp" alt="Trà lài thượng hạng" loading="lazy"></div><h3>Trà lài thượng hạng</h3><p>Thơm dịu hương nhài</p></div>
     </div>
-    <div class="mq-more"><span>Cùng có trong bộ quà</span><b>Vang trái cây laRuVie</b> (200 ml, 500 ml, Fusion 500 ml)</div>
+    <div class="wn">
+      <span class="eyebrow">Đi cùng bộ quà</span>
+      <h3 class="wn-title">Vang trái cây <em>laRuVie</em></h3>
+      <p class="sec-lead">Rượu trái cây lên men 13,5% vol, làm từ trái cây Việt Nam. Mỗi bộ quà kèm một chai theo lựa chọn bạn đặt.</p>
+      <img class="wn-hero" src="img/tet/wine/hero.webp" alt="Các chai vang trái cây laRuVie bày trên nền nhung đỏ" loading="lazy">
+      <div class="wn-grid">
+        <div class="wc w-duo"><div class="wst"><img src="img/tet/wine/duo.webp" alt="Vang laRuVie chanh dây và xoài 200 ml" loading="lazy"></div><h4>Chanh dây · Xoài</h4><em>200 ml</em><p>Hương trái cây nhiệt đới, nhẹ và dễ uống.</p></div>
+        <div class="wc w-b200"><div class="wst"><img src="img/tet/wine/blend200.webp" alt="Vang laRuVie RuVie Blend 200 ml" loading="lazy"></div><h4>RuVie Blend</h4><em>200 ml</em><p>Sắc hổ phách, phối từ nhiều loại trái cây.</p></div>
+        <div class="wc w-b500"><div class="wst"><img src="img/tet/wine/blend500.webp" alt="Vang laRuVie RuVie Blend 500 ml" loading="lazy"></div><h4>RuVie Blend</h4><em>500 ml</em><p>Chai lớn để cả nhà cùng nâng ly.</p></div>
+        <div class="wc w-fus"><div class="wst"><img src="img/tet/wine/fusion.webp" alt="Vang laRuVie Fusion 500 ml" loading="lazy"></div><h4>laRuVie Fusion</h4><em>500 ml</em><p>Dòng cao cấp, phối tinh tế nhiều loại rượu trái cây lên men.</p></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -441,11 +486,21 @@
       <h2 class="sec-title">Mỗi món quà gửi đi là một lời cảm ơn</h2>
       <p class="sec-lead">Laan nhận đơn số lượng lớn cho doanh nghiệp, tư vấn chọn set theo ngân sách và đối tượng nhận quà.</p>
       <ul>
-        <li>Ưu đãi theo số lượng, báo giá riêng cho từng đơn</li>
+        <li>Chiết khấu đến 15% theo giá trị đơn hàng</li>
         <li>Thiệp chúc Tết in tên và lời chúc của quý công ty</li>
         <li>Xuất hóa đơn VAT 8% đầy đủ</li>
         <li>Giao tận nơi theo danh sách người nhận</li>
       </ul>
+      <div class="ck">
+        <div class="ck-h">Chiết khấu theo giá trị đơn <small>(đã gồm VAT)</small></div>
+        <div class="ck-g">
+          <div><span>5 – dưới 15 triệu</span><b>5%</b></div>
+          <div><span>15 – dưới 40 triệu</span><b>8%</b></div>
+          <div><span>40 – dưới 80 triệu</span><b>12%</b></div>
+          <div><span>Từ 80 triệu</span><b>15%</b></div>
+        </div>
+        <p>Áp dụng cho toàn bộ đơn hàng, được cộng gộp nhiều bộ quà khác nhau.</p>
+      </div>
     </div>
     <div class="corp-card">
       <h3>Nhận báo giá trong 24 giờ</h3>
