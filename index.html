@@ -222,6 +222,23 @@
   .ck-g b{display:block;font-family:'Cormorant Garamond',serif;font-variant-numeric:lining-nums;font-size:34px;font-weight:600;color:var(--gold-soft);line-height:1.1;margin-top:4px}
   .ck p{font-size:13px;color:var(--muted);margin-top:10px}
   @media(max-width:700px){ .ck-g{grid-template-columns:repeat(2,1fr)} }
+  /* Đối tác đã tin chọn Laan */
+  .partners{margin-top:64px;padding-top:48px;border-top:1px solid var(--line);text-align:center}
+  .pt-title{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(30px,4.4vw,44px);color:var(--gold-soft);line-height:1.1;margin:8px 0 28px}
+  .pt-title em{color:var(--gold);font-style:italic}
+  .pt-g{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:980px;margin:0 auto}
+  .pt{height:96px;border:1px solid rgba(226,190,120,.45);border-radius:12px;background:rgba(122,18,22,.35);display:flex;align-items:center;justify-content:center;padding:12px 16px;min-width:0}
+  .pt img{max-width:86%;max-height:46px;object-fit:contain}
+  .pt img.pt-techcombank,.pt img.pt-fpt,.pt img.pt-acb{max-height:52px}
+  .pt img.pt-jprotech{max-height:42px}
+  .pt.t span{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px;line-height:1.1;color:#e2be78}
+  .pt-n{font-size:14px;color:var(--muted);margin-top:16px}
+  @media(max-width:700px){
+    .pt-g{grid-template-columns:repeat(2,1fr);gap:10px}
+    .pt{height:76px;padding:10px}
+    .pt img{max-height:36px}.pt img.pt-techcombank,.pt img.pt-fpt,.pt img.pt-acb{max-height:40px}
+    .pt.t span{font-size:18px}
+  }
   .mq-more{position:relative;max-width:900px;margin:40px auto 0;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
   .mq-more span{display:block;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
   .mq-more b{color:var(--ink);font-weight:500}
@@ -508,6 +525,12 @@
       <button type="button" class="btn btn-gold" id="quoteBtn">Gửi yêu cầu báo giá</button>
       <div class="alt"><a class="mq-zalo" href="https://zalo.me/0399995729" target="_blank" rel="noopener">Zalo</a><a href="tel:0399995729">Gọi 0399 995 729</a></div>
     </div>
+  </div>
+  <div class="wrap partners">
+    <span class="eyebrow">Khách hàng doanh nghiệp</span>
+    <h3 class="pt-title">Những đối tác <em>đã tin chọn Laan</em></h3>
+    <div class="pt-g"><div class="pt"><img class="pt-vietinbank" src="img/tet/clients/vietinbank.webp" alt="VietinBank" loading="lazy"></div><div class="pt"><img class="pt-techcombank" src="img/tet/clients/techcombank.webp" alt="Techcombank" loading="lazy"></div><div class="pt"><img class="pt-acb" src="img/tet/clients/acb.webp" alt="ACB" loading="lazy"></div><div class="pt"><img class="pt-fpt" src="img/tet/clients/fpt.webp" alt="FPT" loading="lazy"></div><div class="pt"><img class="pt-vietravel" src="img/tet/clients/vietravel.webp" alt="Vietravel" loading="lazy"></div><div class="pt"><img class="pt-aaa" src="img/tet/clients/aaa.webp" alt="Bảo hiểm AAA" loading="lazy"></div><div class="pt t"><span>Tổng Công ty<br>Bến Thành</span></div><div class="pt"><img class="pt-fhsc" src="img/tet/clients/fhsc.webp" alt="Chứng khoán Finhay" loading="lazy"></div><div class="pt"><img class="pt-finhay" src="img/tet/clients/finhay.webp" alt="Finhay" loading="lazy"></div><div class="pt"><img class="pt-jprotech" src="img/tet/clients/jprotech.webp" alt="JProtech" loading="lazy"></div><div class="pt t"><span>WW Tech<br>Việt Nam</span></div><div class="pt t"><span>Seedhub</span></div><div class="pt t"><span>Qamera<br>Việt Nam</span></div><div class="pt t"><span>PNA</span></div><div class="pt t"><span>FinHub</span></div><div class="pt t"><span>TLS Firm</span></div></div>
+    <p class="pt-n">và nhiều doanh nghiệp khác</p>
   </div>
 </section>
 
