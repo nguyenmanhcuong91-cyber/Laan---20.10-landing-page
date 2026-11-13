@@ -144,6 +144,7 @@
   .inside .lab{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
   .inside ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;font-size:15px}
   .inside li{padding-left:16px;position:relative}
+  .inside .inc{margin-top:10px;font-size:13px;color:var(--muted,#c9b8a0);font-style:italic}
   .inside li::before{content:"";position:absolute;left:0;top:.66em;width:5px;height:5px;transform:rotate(45deg);background:var(--gold)}
   .buy{display:flex;align-items:center;gap:14px;margin-top:20px;flex-wrap:wrap}
   .price{font-family:'Cormorant Garamond',serif;font-variant-numeric:lining-nums;font-size:38px;font-weight:600;color:var(--gold-soft);line-height:1}
@@ -402,7 +403,7 @@
   <div class="hero-band">
     <span class="eyebrow" style="color:var(--gold)">Quà Tết Đinh Mùi 2027</span>
     <p class="serif" style="font-size:clamp(26px,3.6vw,38px);color:var(--gold-soft);font-style:italic;margin-top:10px">Gói trọn xuân sang trong nếp thủ công</p>
-    <p>Năm bộ quà mây tre, gỗ và giỏ đan, mỗi hộp kèm một chú dê sáp may mắn cho năm Đinh Mùi. Nhận đặt trước từ hôm nay, giao trước Tết.</p>
+    <p>Năm bộ quà từ mây tre, gỗ và hộp giấy ép kim, kèm chú dê sáp may mắn cho năm Đinh Mùi. Nhận đặt trước từ hôm nay, giao trước Tết.</p>
     <div class="hero-cta">
       <a href="#bo-qua" class="btn btn-gold">Xem 5 bộ quà</a>
       <a href="#doanh-nghiep" class="btn btn-line">Báo giá doanh nghiệp</a>
@@ -480,7 +481,7 @@
       <div class="mq"><div class="mq-bowl"><img src="img/tet/food/macca.webp" alt="Macca" loading="lazy"></div><h3>Macca</h3><p>Hạt to, béo thanh</p></div>
       <div class="mq"><div class="mq-bowl"><img src="img/tet/food/atiso.webp" alt="Hoa atiso sấy dẻo" loading="lazy"></div><h3>Hoa atiso sấy dẻo</h3><p>Ngọt thanh, dẻo mềm</p></div>
       <div class="mq"><div class="mq-bowl"><img src="img/tet/food/chala.webp" alt="Chà là sấy dẻo" loading="lazy"></div><h3>Chà là sấy dẻo</h3><p>Ngọt tự nhiên</p></div>
-      <div class="mq"><div class="mq-bowl"><img src="img/tet/food/chuoi-socola.webp" alt="Chuối phủ sô-cô-la" loading="lazy"></div><h3>Chuối phủ sô‑cô‑la</h3><p>Trẻ nhỏ đều mê</p></div>
+      <div class="mq"><div class="mq-bowl"><img src="img/tet/food/chuoi-socola.webp" alt="Chuối nhúng socola" loading="lazy"></div><h3>Chuối nhúng socola</h3><p>Trẻ nhỏ đều mê</p></div>
       <div class="mq"><div class="mq-bowl"><img src="img/tet/food/dieu-dom.webp" alt="Đậu phộng rong biển" loading="lazy"></div><h3>Đậu phộng rong biển</h3><p>Giòn rụm, đậm vị</p></div>
       <div class="mq"><div class="mq-bowl"><img src="img/tet/food/kho-ga.webp" alt="Khô gà lá chanh" loading="lazy"></div><h3>Khô gà lá chanh</h3><p>Cay nhẹ, thơm lá chanh</p></div>
       <div class="mq"><div class="mq-bowl"><img src="img/tet/food/tra-lai.webp" alt="Trà lài thượng hạng" loading="lazy"></div><h3>Trà lài thượng hạng</h3><p>Thơm dịu hương nhài</p></div>
@@ -505,7 +506,7 @@
     <div>
       <span class="eyebrow">Quà Tết cho doanh nghiệp</span>
       <h2 class="sec-title">Mỗi món quà gửi đi là một lời cảm ơn</h2>
-      <p class="sec-lead">Laan nhận đơn số lượng lớn cho doanh nghiệp, tư vấn chọn set theo ngân sách và đối tượng nhận quà.</p>
+      <p class="sec-lead">Laan nhận đơn số lượng lớn cho doanh nghiệp, tư vấn chọn bộ quà theo ngân sách và đối tượng nhận quà.</p>
       <ul>
         <li>Chiết khấu đến 15% theo giá trị đơn hàng</li>
         <li>Thiệp chúc Tết in tên và lời chúc của quý công ty</li>
@@ -525,7 +526,7 @@
     </div>
     <div class="corp-card">
       <h3>Nhận báo giá trong 24 giờ</h3>
-      <p>Cho Laan biết số lượng và ngân sách dự kiến, chúng tôi gửi báo giá và gợi ý set phù hợp.</p>
+      <p>Cho Laan biết số lượng và ngân sách dự kiến, chúng tôi gửi báo giá và gợi ý bộ quà phù hợp.</p>
       <button type="button" class="btn btn-gold" id="quoteBtn">Gửi yêu cầu báo giá</button>
       <div class="alt"><a class="mq-zalo" href="https://zalo.me/0399995729" target="_blank" rel="noopener">Zalo</a><a href="tel:0399995729">Gọi 0399 995 729</a></div>
     </div>
@@ -678,7 +679,7 @@
       wish:'“An khang thịnh vượng, vạn sự như ý.”',
       desc:'Hộp giấy cao cấp với sắc đỏ chủ đạo, kết hợp họa tiết ép kim tinh tế. Thiết kế chỉn chu cùng các lựa chọn quà đa dạng, phù hợp gửi trao lời chúc an khang đến gia đình và đối tác.',
       tiers:[
-        { p:739000, items:['Trà','Đậu phộng rong biển','Chà là sấy dẻo','Xoài sấy dẻo',W500,DE] },
+        { p:739000, items:['Trà lài thượng hạng','Đậu phộng rong biển','Chà là sấy dẻo','Xoài sấy dẻo',W500,DE] },
         { p:779000, items:['Hạt điều bơ mật ong','Macca','Khô gà lá chanh','Xoài sấy dẻo',W500,DE] },
         { p:889000, items:['Hạt điều bơ mật ong','Macca','Khô gà lá chanh','Hoa atiso sấy dẻo',FUS,DE] } ] },
     { id:'cam-dinh', name:'Cẩm Đình', box:'Hộp gỗ nắp khóa bọc mây', img:'img/tet/cam-dinh.webp', illus:false,
@@ -686,7 +687,7 @@
       wish:'“Nếp xưa lưu dấu, phúc lộc đong đầy.”',
       desc:'Lấy cảm hứng từ những chiếc tráp quà truyền thống, Cẩm Đình nổi bật với thiết kế hộp gỗ sang trọng, kết hợp nắp đan mây tinh xảo và chi tiết khóa kim loại trang nhã. Bên trong là những thức quà ngày Tết được sắp đặt chỉn chu trong từng ngăn riêng biệt, gửi gắm lời chúc sung túc, an khang và thịnh vượng đến người nhận.',
       tiers:[
-        { p:729000, items:['Trà','Đậu phộng rong biển','Chà là sấy dẻo','Xoài sấy dẻo',DE] },
+        { p:729000, items:['Trà lài thượng hạng','Đậu phộng rong biển','Chà là sấy dẻo','Xoài sấy dẻo',DE] },
         { p:839000, items:['Hạt điều bơ mật ong','Macca','Hoa atiso sấy dẻo',W200,DE] },
         { p:939000, items:['Đậu phộng rong biển','Chà là sấy dẻo','Xoài sấy dẻo',W500,DE] },
         { p:1039000, items:['Hạt điều bơ mật ong','Macca','Khô gà lá chanh',FUS,DE] },
@@ -695,9 +696,9 @@
       wish:'“Hương xuân thơm nếp gỗ, lộc Tết đầy khay.”',
       desc:'Khay gỗ thiết kế nhiều ngăn với nắp mica trong suốt, giúp trưng bày trọn vẹn từng món quà bên trong. Sự kết hợp giữa chất liệu gỗ và họa tiết Tết tạo nên một tổng thể sang trọng, chỉn chu và đầy đặn.',
       tiers:[
-        { p:939000, items:['Trà','Đậu phộng rong biển','Chà là sấy dẻo','Xoài sấy dẻo','Chuối nhúng socola',W200,DE] },
+        { p:939000, items:['Trà lài thượng hạng','Đậu phộng rong biển','Chà là sấy dẻo','Xoài sấy dẻo','Chuối nhúng socola',W200,DE] },
         { p:1039000, items:['Hạt điều bơ mật ong','Macca','Khô gà lá chanh','Hoa atiso sấy dẻo','Chuối nhúng socola',W200,DE] },
-        { p:1149000, items:['Trà','Đậu phộng rong biển','Chà là sấy dẻo','Xoài sấy dẻo','Chuối nhúng socola',W500,DE] },
+        { p:1149000, items:['Trà lài thượng hạng','Đậu phộng rong biển','Chà là sấy dẻo','Xoài sấy dẻo','Chuối nhúng socola',W500,DE] },
         { p:1249000, items:['Hạt điều bơ mật ong','Macca','Đậu phộng rong biển','Khô gà lá chanh','Hoa atiso sấy dẻo',FUS,DE] },
         { p:1359000, items:['Hạt điều bơ mật ong','Macca','Đậu phộng rong biển','Khô gà lá chanh','Hoa atiso sấy dẻo','Chà là sấy dẻo','Xoài sấy dẻo',FUS,DE] } ] }
   ];
@@ -745,7 +746,7 @@
         '<div class="tiers" role="tablist" aria-label="Lựa chọn '+esc(s.name)+'">'+s.tiers.map(function(t,i){
           return '<button type="button" class="tier'+(i===0?' active':'')+'" role="tab" aria-selected="'+(i===0)+'" data-i="'+i+'" data-p="'+t.p+'" aria-label="'+esc(s.name)+' '+(i+1)+'"><b>'+(i+1)+'</b><small>'+short(t.p)+'</small></button>';
         }).join('')+'</div>'+
-        '<div class="inside"><div class="lab">Bên trong '+esc(s.name)+' <span class="tn">1</span></div><ul class="items"></ul></div>'+
+        '<div class="inside"><div class="lab">Bên trong '+esc(s.name)+' <span class="tn">1</span></div><ul class="items"></ul><p class="inc">Mỗi lựa chọn kèm thiệp chúc Tết, hộp giấy riêng cho từng món và túi giấy trao tay.</p></div>'+
         '<div class="buy"><div class="price"><span class="pv"></span><small>Đã gồm VAT 8%</small></div>'+
           '<div class="qty"><button type="button" class="dec" aria-label="Giảm">−</button><input type="number" class="q" value="1" min="1" aria-label="Số lượng"><button type="button" class="inc" aria-label="Tăng">+</button></div>'+
           '<button type="button" class="btn btn-gold add">Thêm vào giỏ</button></div>'+
@@ -867,7 +868,7 @@
     mode = m; resetForm();
     var q = m==='quote';
     $('omTitle').textContent = q ? 'Yêu cầu báo giá doanh nghiệp' : 'Đặt trước quà Tết';
-    $('omSub').textContent = q ? 'Laan gửi báo giá và gợi ý set phù hợp trong 24 giờ.' : 'Để lại thông tin, Laan gọi xác nhận đơn và lịch giao trong 24 giờ.';
+    $('omSub').textContent = q ? 'Laan gửi báo giá và gợi ý bộ quà phù hợp trong 24 giờ.' : 'Để lại thông tin, Laan gọi xác nhận đơn và lịch giao trong 24 giờ.';
     $('quoteFields').hidden = !q;
     $('fAddressLab').textContent = q ? 'Địa chỉ / khu vực giao' : 'Địa chỉ nhận hàng *';
     btn.textContent = q ? 'Gửi yêu cầu báo giá' : 'Gửi đơn đặt trước';
